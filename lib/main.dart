@@ -4,8 +4,10 @@ import 'package:fujitsuweb/Routes/routes_generator.dart';
 import 'package:sizer/sizer.dart';
 
 import 'Ui/00_Auth/check_email.dart';
+import 'Ui/00_Auth/forgot_password.dart';
 import 'Ui/00_Auth/login_screen.dart';
 import 'Ui/00_Auth/register_screen.dart';
+import 'Ui/00_Auth/set_new_pass.dart';
 
 void main() {
   usePathUrlStrategy();
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: LoginScreen(),
+          home: SetNewPassword(),
           // initialRoute: '/',
           // onGenerateRoute: RouterGenerator.generateRoute,
         );
