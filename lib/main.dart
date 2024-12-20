@@ -4,6 +4,7 @@ import 'package:fujitsuweb/Routes/routes_generator.dart';
 import 'package:sizer/sizer.dart';
 
 import 'Ui/00_Auth/check_email.dart';
+import 'Ui/00_Auth/login_screen.dart';
 import 'Ui/00_Auth/register_screen.dart';
 
 void main() {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: CheckEmail(),
+          home: LoginScreen(),
           // initialRoute: '/',
           // onGenerateRoute: RouterGenerator.generateRoute,
         );
