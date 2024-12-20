@@ -9,6 +9,7 @@ import 'Ui/00_Auth/forgot_password.dart';
 import 'Ui/00_Auth/login_screen.dart';
 import 'Ui/00_Auth/register_screen.dart';
 import 'Ui/00_Auth/set_new_pass.dart';
+import 'Ui/00_Dashboard/dashboard.dart';
 
 void main() {
   usePathUrlStrategy();
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: SplashScreen(),
+          home: Dashboard(),
           // initialRoute: '/',
           // onGenerateRoute: RouterGenerator.generateRoute,
         );

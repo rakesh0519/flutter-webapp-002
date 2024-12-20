@@ -9,6 +9,11 @@ class AppColors{
   static const Color fontGrey = Color(0xFF535862);
   static const Color fontBlack = Color(0xFF181D27);
   static const Color borderColor = Color(0xFFE9EAEB);
+  static const Color selectColor = Color(0xFFE5FDFF);
+  static const Color selectIconColor = Color(0xFF414651);
+  static const Color unselectIconColor = Color(0xFF717680);
+  static const Color lightBg = Color(0xFFF9F9F9);
+  static const Color darkBorderColor = Color(0xFF717680);
 
   //white colors shades
   static const Color white_00 = Color(0xFFFFFFFF);
