@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fujitsuweb/Ui/00_Auth/set_new_pass.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../Values/AppColors.dart';
 import '../../Values/Constants.dart';
+import 'login_screen.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -147,24 +149,32 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
                     SizedBox(height: 3.h),
 
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                    InkWell(
+                      onTap: () {
 
-                        Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                            builder: (context) => LoginScreen()), (Route route) => false);
 
-                        SizedBox(width: 0.6.w),
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
 
-                        Text(
-                          "Back To log in",
-                          style: textStyle.SegoeUISemiBold.copyWith(
-                              fontSize: 12.px,
-                              color: AppColors.fontBlack
+                          Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+
+                          SizedBox(width: 0.6.w),
+
+                          Text(
+                            "Back To log in",
+                            style: textStyle.SegoeUISemiBold.copyWith(
+                                fontSize: 12.px,
+                                color: AppColors.fontBlack
+                            ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
 
 
@@ -216,7 +226,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     InkWell(
                       onTap: () {
 
-
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SetNewPassword()));
 
                       },
                       child: Container(
@@ -268,24 +278,32 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
                     SizedBox(height: 3.h),
 
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                    InkWell(
+                      onTap: () {
 
-                        Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                            builder: (context) => LoginScreen()), (Route route) => false);
 
-                        SizedBox(width: 0.6.w),
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
 
-                        Text(
-                          "Back To log in",
-                          style: textStyle.SegoeUISemiBold.copyWith(
-                              fontSize: 12.px,
-                              color: AppColors.fontBlack
+                          Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+
+                          SizedBox(width: 0.6.w),
+
+                          Text(
+                            "Back To log in",
+                            style: textStyle.SegoeUISemiBold.copyWith(
+                                fontSize: 12.px,
+                                color: AppColors.fontBlack
+                            ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
 
 

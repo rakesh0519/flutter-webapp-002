@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fujitsuweb/Ui/00_Auth/login_screen.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
 import 'package:pinput/pinput.dart';
@@ -129,24 +130,32 @@ class _CheckEmailState extends State<CheckEmail> {
 
                     SizedBox(height: 3.h),
 
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                    InkWell(
+                      onTap: () {
 
-                        Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                            builder: (context) => LoginScreen()), (Route route) => false);
 
-                        SizedBox(width: 0.6.w),
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
 
-                        Text(
-                          "Back To log in",
-                          style: textStyle.SegoeUISemiBold.copyWith(
-                              fontSize: 12.px,
-                              color: AppColors.fontBlack
+                          Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+
+                          SizedBox(width: 0.6.w),
+
+                          Text(
+                            "Back To log in",
+                            style: textStyle.SegoeUISemiBold.copyWith(
+                                fontSize: 12.px,
+                                color: AppColors.fontBlack
+                            ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
 
 
@@ -233,6 +242,8 @@ class _CheckEmailState extends State<CheckEmail> {
                           isEmailVerified = true;
                         });
 
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width,
@@ -282,24 +293,32 @@ class _CheckEmailState extends State<CheckEmail> {
 
                     SizedBox(height: 2.h),
 
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                    InkWell(
+                      onTap: () {
 
-                        Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                            builder: (context) => LoginScreen()), (Route route) => false);
 
-                        SizedBox(width: 0.6.w),
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
 
-                        Text(
-                          "Back To log in",
-                          style: textStyle.SegoeUISemiBold.copyWith(
-                              fontSize: 12.px,
-                              color: AppColors.fontBlack
+                          Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+
+                          SizedBox(width: 0.6.w),
+
+                          Text(
+                            "Back To log in",
+                            style: textStyle.SegoeUISemiBold.copyWith(
+                                fontSize: 12.px,
+                                color: AppColors.fontBlack
+                            ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
 
 

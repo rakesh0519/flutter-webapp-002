@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fujitsuweb/Ui/00_Auth/check_email.dart';
+import 'package:fujitsuweb/Ui/00_Auth/login_screen.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:sizer/sizer.dart';
 
@@ -348,19 +350,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                     SizedBox(height: 3.h),
 
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: AppColors.mainGreen
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Get Started",
-                          style: textStyle.SegoeUI.copyWith(
-                              fontSize: 14.px,
-                              color: AppColors.white_00
+                    InkWell(
+                      onTap: () {
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => CheckEmail()));
+
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: AppColors.mainGreen
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Get Started",
+                            style: textStyle.SegoeUI.copyWith(
+                                fontSize: 14.px,
+                                color: AppColors.white_00
+                            ),
                           ),
                         ),
                       ),
@@ -382,11 +391,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                         SizedBox(width: 0.6.w),
 
-                        Text(
-                          "Log in",
-                          style: textStyle.SegoeUISemiBold.copyWith(
-                              fontSize: 12.px,
-                              color: AppColors.mainGreen
+                        InkWell(
+                          onTap: () {
+
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+
+                          },
+                          child: Text(
+                            "Log in",
+                            style: textStyle.SegoeUISemiBold.copyWith(
+                                fontSize: 12.px,
+                                color: AppColors.mainGreen
+                            ),
                           ),
                         ),
 

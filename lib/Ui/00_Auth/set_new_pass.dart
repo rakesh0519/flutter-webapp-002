@@ -3,6 +3,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../Values/AppColors.dart';
 import '../../Values/Constants.dart';
+import 'login_screen.dart';
 
 class SetNewPassword extends StatefulWidget {
   const SetNewPassword({super.key});
@@ -251,24 +252,32 @@ class _SetNewPasswordState extends State<SetNewPassword> {
 
                     SizedBox(height: 3.h),
 
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                    InkWell(
+                      onTap: () {
 
-                        Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                            builder: (context) => LoginScreen()), (Route route) => false);
 
-                        SizedBox(width: 0.6.w),
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
 
-                        Text(
-                          "Back To log in",
-                          style: textStyle.SegoeUISemiBold.copyWith(
-                              fontSize: 12.px,
-                              color: AppColors.fontBlack
+                          Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+
+                          SizedBox(width: 0.6.w),
+
+                          Text(
+                            "Back To log in",
+                            style: textStyle.SegoeUISemiBold.copyWith(
+                                fontSize: 12.px,
+                                color: AppColors.fontBlack
+                            ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
 
 
@@ -344,24 +353,32 @@ class _SetNewPasswordState extends State<SetNewPassword> {
 
                     SizedBox(height: 3.h),
 
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                    InkWell(
+                      onTap: () {
 
-                        Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                            builder: (context) => LoginScreen()), (Route route) => false);
 
-                        SizedBox(width: 0.6.w),
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
 
-                        Text(
-                          "Back To log in",
-                          style: textStyle.SegoeUISemiBold.copyWith(
-                              fontSize: 12.px,
-                              color: AppColors.fontBlack
+                          Icon(Icons.arrow_back_rounded,color: AppColors.fontBlack,size: 20),
+
+                          SizedBox(width: 0.6.w),
+
+                          Text(
+                            "Back To log in",
+                            style: textStyle.SegoeUISemiBold.copyWith(
+                                fontSize: 12.px,
+                                color: AppColors.fontBlack
+                            ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
 
 

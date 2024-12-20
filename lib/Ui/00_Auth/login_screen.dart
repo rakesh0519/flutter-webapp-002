@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fujitsuweb/Ui/00_Auth/forgot_password.dart';
+import 'package:fujitsuweb/Ui/00_Auth/register_screen.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../Values/AppColors.dart';
 import '../../Values/Constants.dart';
+import '../00_Dashboard/dashboard.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -192,11 +195,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
                             Expanded(child: SizedBox()),
 
-                            Text(
-                              "Forgot password",
-                              style: textStyle.SegoeUISemiBold.copyWith(
-                                  fontSize: 12.px,
-                                  color: AppColors.mainGreen
+                            InkWell(
+                              onTap: () {
+
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword()));
+
+                              },
+                              child: Text(
+                                "Forgot password",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 12.px,
+                                    color: AppColors.mainGreen
+                                ),
                               ),
                             ),
                           ],
@@ -204,19 +214,26 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         SizedBox(height: 3.h),
 
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: AppColors.mainGreen
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Sign in",
-                              style: textStyle.SegoeUI.copyWith(
-                                  fontSize: 14.px,
-                                  color: AppColors.white_00
+                        InkWell(
+                          onTap: () {
+
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()));
+
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 40,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: AppColors.mainGreen
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Sign in",
+                                style: textStyle.SegoeUI.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.white_00
+                                ),
                               ),
                             ),
                           ),
@@ -238,11 +255,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
                             SizedBox(width: 0.6.w),
 
-                            Text(
-                              "Sign up",
-                              style: textStyle.SegoeUISemiBold.copyWith(
-                                  fontSize: 12.px,
-                                  color: AppColors.mainGreen
+                            InkWell(
+                              onTap: () {
+
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+
+                              },
+                              child: Text(
+                                "Sign up",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 12.px,
+                                    color: AppColors.mainGreen
+                                ),
                               ),
                             ),
 

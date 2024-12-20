@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:fujitsuweb/Routes/routes_generator.dart';
+import 'package:fujitsuweb/Ui/splash_screen.dart';
 import 'package:sizer/sizer.dart';
 
 import 'Ui/00_Auth/check_email.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: SetNewPassword(),
+          home: SplashScreen(),
           // initialRoute: '/',
           // onGenerateRoute: RouterGenerator.generateRoute,
         );
