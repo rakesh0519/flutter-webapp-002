@@ -3,6 +3,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../Values/AppColors.dart';
 import '../../Values/Constants.dart';
+import '../00_Dashboard/dashboard.dart';
 import 'login_screen.dart';
 
 class SetNewPassword extends StatefulWidget {
@@ -329,7 +330,7 @@ class _SetNewPasswordState extends State<SetNewPassword> {
                     InkWell(
                       onTap: () {
 
-
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
 
                       },
                       child: Container(

@@ -14,6 +14,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
 
   String selected = "projects";
+  String selectedDays = "12";
 
   @override
   Widget build(BuildContext context) {
@@ -337,12 +338,12 @@ class _DashboardState extends State<Dashboard> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
 
-                                Center(child: Image.asset("Assets/images/no_data.png",width: 130,height: 130,)),
+                                Center(child: Image.asset("Assets/images/no_data.png",width: 120,height: 120,)),
 
                                 Text(
                                   "No project found",
                                   style: textStyle.SegoeUISemiBold.copyWith(
-                                      fontSize: 15.px,
+                                      fontSize: 14.px,
                                       color: AppColors.fontBlack
                                   ),
                                 ),
@@ -352,15 +353,193 @@ class _DashboardState extends State<Dashboard> {
                                 Text(
                                   "You are yet to create your first project",
                                   style: textStyle.SegoeUI.copyWith(
-                                      fontSize: 15.px,
+                                      fontSize: 13.px,
                                       color: AppColors.fontBlack
                                   ),
                                 ),
 
+                                SizedBox(height: 3.h),
+
+                                InkWell(
+                                  onTap: () {
+
+                                    projectDialog();
+
+                                  },
+                                  child: Container(
+                                    height: 38,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: AppColors.mainGreen,
+                                    ),
+                                    padding: EdgeInsets.symmetric(horizontal: 0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+
+                                        Image.asset(
+                                            "Assets/icons/ic_add.png", width: 38, height: 38
+                                        ),
+
+                                        Text(
+                                          "New project",
+                                          style: textStyle.SegoeUI.copyWith(
+                                              fontSize: 14.px,
+                                              color: AppColors.white_00
+                                          ),
+                                        ),
+
+                                        SizedBox(width: 1.w)
+
+                                      ],
+                                    ),
+                                  ),
+                                ),
 
                               ],
                             ),
+                          ),
+
+                          Divider(
+                            color: AppColors.borderColor,
+                          ),
+
+                          SizedBox(height: 1.h),
+
+                          Row(
+                            children: [
+
+                              Expanded(child: SizedBox()),
+
+                              Row(
+                                children: [
+
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedDays = "12";
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(8),
+                                            bottomLeft: Radius.circular(8),
+                                          ),
+                                          border: Border.all(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                                        color: selectedDays == "12" ? AppColors.selectColor : AppColors.white_00,
+                                      ),
+                                      height: 35,
+                                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                                      child: Center(
+                                        child: Text(
+                                          "12 Months",
+                                          style: textStyle.SegoeUISemiBold.copyWith(
+                                              fontSize: 12.px,
+                                              color: AppColors.fontBlack
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedDays = "30";
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        border: Border(
+                                            top: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                                            bottom: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                                            right: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3))
+                                        ),
+                                        color: selectedDays == "30" ? AppColors.selectColor : AppColors.white_00,
+                                      ),
+                                      height: 35,
+                                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                                      child: Center(
+                                        child: Text(
+                                          "30 Days",
+                                          style: textStyle.SegoeUISemiBold.copyWith(
+                                              fontSize: 12.px,
+                                              color: AppColors.fontBlack
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedDays = "7";
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          border: Border(
+                                              top: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                                              bottom: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                                              right: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3))
+                                          ),
+                                        color: selectedDays == "7" ? AppColors.selectColor : AppColors.white_00,
+                                      ),
+                                      height: 35,
+                                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                                      child: Center(
+                                        child: Text(
+                                          "7 Days",
+                                          style: textStyle.SegoeUISemiBold.copyWith(
+                                              fontSize: 12.px,
+                                              color: AppColors.fontBlack
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedDays = "custom";
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(8),
+                                            bottomRight: Radius.circular(8),
+                                          ),
+                                          border: Border(
+                                              top: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                                              bottom: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                                              right: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3))
+                                          ),
+                                        color: selectedDays == "custom" ? AppColors.selectColor : AppColors.white_00,
+                                      ),
+                                      height: 35,
+                                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                                      child: Center(
+                                        child: Text(
+                                          "Custom",
+                                          style: textStyle.SegoeUISemiBold.copyWith(
+                                              fontSize: 12.px,
+                                              color: AppColors.fontBlack
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              )
+
+                            ],
                           )
+
 
                         ],
                       ),
@@ -375,4 +554,182 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
+
+  projectDialog() {
+
+    TextEditingController projectNameController = TextEditingController();
+
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                BorderRadius.circular(12.0)), //this right here
+            child: Container(
+              width: 400,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                color: AppColors.white_00,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+
+                    Row(
+                      children: [
+
+                        Image.asset("Assets/icons/ic_folder.png",width: 40),
+                        Spacer(),
+                        Icon(Icons.close, color: AppColors.darkBorderColor.withOpacity(0.3))
+
+                      ],
+                    ),
+
+                    SizedBox(height: 2.h),
+
+                    Text(
+                      "Project created",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 16.px,
+                          color: AppColors.fontBlack
+                      ),
+                    ),
+
+                    SizedBox(height: 0.4.h),
+
+                    Text(
+                      "Please enter a name for this project.",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 14.px,
+                          color: AppColors.fontBlack
+                      ),
+                    ),
+
+                    SizedBox(height: 3.h),
+
+                    Text(
+                      "Project name",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 12.px,
+                          color: AppColors.fontBlack
+                      ),
+                    ),
+
+                    SizedBox(height: 0.6.h),
+
+                    TextFormField(
+                        controller: projectNameController,
+                        style: textStyle.SegoeUI.copyWith(
+                            color: AppColors.fontBlack,
+                            fontSize: 14.px
+                        ),
+                        cursorHeight: 15,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          fillColor: AppColors.white_00,
+                          filled: true,
+                          hintText: "eg. New Skyline",
+                          hintStyle: textStyle.SegoeUI.copyWith(
+                              color: AppColors.fontGrey,
+                              fontSize: 14.px
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: AppColors.fontGrey.withOpacity(.4)),
+                              borderRadius: BorderRadius.circular(6)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: AppColors.fontGrey.withOpacity(.4)),
+                              borderRadius: BorderRadius.circular(6)),
+                          focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: AppColors.fontGrey.withOpacity(.4)),
+                              borderRadius: BorderRadius.circular(6)),
+                          errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: AppColors.red_00.withOpacity(.4)),
+                              borderRadius: BorderRadius.circular(6)),
+                        )
+                    ),
+
+                    SizedBox(height: 2.h),
+
+                    Row(
+                      children: [
+
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+
+                             Navigator.pop(context);
+
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: AppColors.white_00,
+                                  border: Border.all(color: AppColors.darkBorderColor.withOpacity(0.3))
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Cancel",
+                                  style: textStyle.SegoeUI.copyWith(
+                                      fontSize: 14.px,
+                                      color: AppColors.selectIconColor
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        SizedBox(width: 0.5.w),
+
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+
+                              Navigator.pop(context);
+
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: AppColors.mainGreen
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Confirm",
+                                  style: textStyle.SegoeUI.copyWith(
+                                      fontSize: 14.px,
+                                      color: AppColors.white_00
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    )
+
+                  ],
+                ),
+              ),
+            ),
+          );
+        }).whenComplete(() {
+
+    });
+  }
+
 }
