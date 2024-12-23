@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fujitsuweb/Ui/00_Auth/forgot_password.dart';
-import 'package:fujitsuweb/Ui/00_Auth/register_screen.dart';
+import 'package:fujitsuweb/Ui_web/00_Auth/forgot_password.dart';
+import 'package:fujitsuweb/Ui_web/00_Auth/register_screen.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../Values/AppColors.dart';

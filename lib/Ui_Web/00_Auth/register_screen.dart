@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fujitsuweb/Ui/00_Auth/check_email.dart';
-import 'package:fujitsuweb/Ui/00_Auth/login_screen.dart';
+import 'package:fujitsuweb/Ui_web/00_Auth/check_email.dart';
+import 'package:fujitsuweb/Ui_web/00_Auth/login_screen.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:sizer/sizer.dart';
 
@@ -309,6 +309,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: AppColors.fontBlack,
                             fontSize: 14.px
                         ),
+                        obscureText: true,
                         cursorHeight: 15,
                         decoration: InputDecoration(
                           isDense: true,

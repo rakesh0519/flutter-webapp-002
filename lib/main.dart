@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:fujitsuweb/Routes/routes_generator.dart';
-import 'package:fujitsuweb/Ui/splash_screen.dart';
+import 'package:fujitsuweb/Ui_web/splash_screen.dart';
 import 'package:sizer/sizer.dart';
 
-import 'Ui/00_Auth/check_email.dart';
-import 'Ui/00_Auth/forgot_password.dart';
-import 'Ui/00_Auth/login_screen.dart';
-import 'Ui/00_Auth/register_screen.dart';
-import 'Ui/00_Auth/set_new_pass.dart';
-import 'Ui/00_Dashboard/dashboard.dart';
+import 'Ui_Web/00_Dashboard/Sub_Page/00_Projects/projects_screen.dart';
+import 'Ui_Web/00_Dashboard/dashboard.dart';
 
 void main() {
   usePathUrlStrategy();

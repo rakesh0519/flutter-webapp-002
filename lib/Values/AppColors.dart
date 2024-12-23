@@ -8,6 +8,7 @@ class AppColors{
   static const Color mainGreen = Color(0xFF007E89);
   static const Color fontGrey = Color(0xFF535862);
   static const Color fontBlack = Color(0xFF181D27);
+  static const Color fontLightBlack = Color(0xFF414651);
   static const Color borderColor = Color(0xFFE9EAEB);
   static const Color selectColor = Color(0xFFE5FDFF);
   static const Color selectIconColor = Color(0xFF414651);

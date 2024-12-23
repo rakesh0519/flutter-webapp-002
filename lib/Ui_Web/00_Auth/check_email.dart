@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:fujitsuweb/Ui/00_Auth/set_new_pass.dart';
+import 'package:fujitsuweb/Ui_web/00_Auth/login_screen.dart';
+import 'package:fujitsuweb/Values/AppColors.dart';
+import 'package:fujitsuweb/Values/Constants.dart';
+import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../Values/AppColors.dart';
-import '../../Values/Constants.dart';
-import 'login_screen.dart';
-
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+class CheckEmail extends StatefulWidget {
+  const CheckEmail({super.key});
 
   @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
+  State<CheckEmail> createState() => _CheckEmailState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _CheckEmailState extends State<CheckEmail> {
 
-  TextEditingController emailController = TextEditingController();
-  bool isResetPass = false;
+  TextEditingController pinController = TextEditingController();
+
+  bool isSendCode = false;
+  bool isEmailVerified = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +33,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   child: Image.asset("Assets/images/bg_design.png")),
             ),
 
-            isResetPass == false
+            isEmailVerified == true
                 ?
             Center(
               child: SizedBox(
@@ -49,12 +51,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             border: Border.all(color: AppColors.borderColor)
                         ),
                         padding: EdgeInsets.all(11),
-                        child: Image.asset("Assets/icons/ic_key.png",width: 25,height: 25)),
+                        child: Image.asset("Assets/icons/ic_check.png",width: 25,height: 25)),
 
                     SizedBox(height: 3.h),
 
                     Text(
-                      "Forgot password?",
+                      "Email verified",
                       style: textStyle.SegoeUISemiBold.copyWith(
                           fontSize: 24.px,
                           color: AppColors.fontBlack
@@ -64,7 +66,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     SizedBox(height: 0.6.h),
 
                     Text(
-                      "No worries, we’ll send you reset instructions.",
+                      "Your password has been successfully reset.\nClick below to go back to the log in screen.",
                       style: textStyle.SegoeUI.copyWith(
                           fontSize: 14.px,
                           color: AppColors.fontBlack
@@ -73,59 +75,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
                     SizedBox(height: 3.h),
 
-                    Text(
-                      "Email",
-                      style: textStyle.SegoeUI.copyWith(
-                          fontSize: 12.px,
-                          color: AppColors.fontBlack
-                      ),
-                    ),
-
-                    SizedBox(height: 0.6.h),
-
-                    TextFormField(
-                        controller: emailController,
-                        style: textStyle.SegoeUI.copyWith(
-                            color: AppColors.fontBlack,
-                            fontSize: 14.px
-                        ),
-                        cursorHeight: 15,
-                        decoration: InputDecoration(
-                          isDense: true,
-                          fillColor: AppColors.white_00,
-                          filled: true,
-                          hintText: "Enter your email ",
-                          hintStyle: textStyle.SegoeUI.copyWith(
-                              color: AppColors.fontGrey,
-                              fontSize: 14.px
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: AppColors.fontGrey.withOpacity(.4)),
-                              borderRadius: BorderRadius.circular(6)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: AppColors.fontGrey.withOpacity(.4)),
-                              borderRadius: BorderRadius.circular(6)),
-                          focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: AppColors.fontGrey.withOpacity(.4)),
-                              borderRadius: BorderRadius.circular(6)),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: AppColors.red_00.withOpacity(.4)),
-                              borderRadius: BorderRadius.circular(6)),
-                        )
-                    ),
-
-                    SizedBox(height: 3.h),
-
                     InkWell(
                       onTap: () {
 
-                        setState(() {
-                          isResetPass = true;
-                        });
+
 
                       },
                       child: Container(
@@ -137,7 +90,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         ),
                         child: Center(
                           child: Text(
-                            "Reset password",
+                            "Continue",
                             style: textStyle.SegoeUI.copyWith(
                                 fontSize: 14.px,
                                 color: AppColors.white_00
@@ -145,6 +98,34 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           ),
                         ),
                       ),
+                    ),
+
+                    SizedBox(height: 2.h),
+
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+
+                        Text(
+                          "Didn’t receive the email?",
+                          style: textStyle.SegoeUI.copyWith(
+                              fontSize: 12.px,
+                              color: AppColors.fontBlack
+                          ),
+                        ),
+
+                        SizedBox(width: 0.6.w),
+
+                        Text(
+                          "Click to resend",
+                          style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 12.px,
+                              color: AppColors.mainGreen
+                          ),
+                        ),
+
+                      ],
                     ),
 
                     SizedBox(height: 3.h),
@@ -194,12 +175,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
                     Container(
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: AppColors.white_00,
-                            border: Border.all(color: AppColors.borderColor)
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColors.white_00,
+                          border: Border.all(color: AppColors.borderColor)
                         ),
                         padding: EdgeInsets.all(11),
-                        child: Image.asset("Assets/icons/ic_mail.png",width: 25,height: 25)),
+                        child: Image.asset("Assets/icons/ic_mail.png",width: 25,height: 25,)),
 
                     SizedBox(height: 3.h),
 
@@ -214,19 +195,54 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     SizedBox(height: 0.6.h),
 
                     Text(
-                      "We sent a password reset link to\nolivia@untitledui.com",
+                      "we send a verification link to olivia@untitledui.com",
                       style: textStyle.SegoeUI.copyWith(
                           fontSize: 14.px,
                           color: AppColors.fontBlack
                       ),
                     ),
 
+                    isSendCode == false
+                        ?
+                    SizedBox()
+                        :
                     SizedBox(height: 3.h),
 
+                    isSendCode == true
+                        ?
+                    Center(
+                      child: Pinput(
+                        controller: pinController,
+                        defaultPinTheme: PinTheme(
+                            textStyle: textStyle.SegoeUI.copyWith(
+                                fontSize: 30.px,
+                                color: AppColors.mainGreen
+                            ),
+                          width: 70,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            color: AppColors.white_00,
+                            borderRadius: BorderRadius.circular(6),
+                            border: Border.all(color: AppColors.mainGreen)
+                          )
+                        ),
+                      ),
+                    )
+                        :
+                    SizedBox(),
+
+                    SizedBox(height: 3.h),
+
+                    isSendCode == true
+                        ?
                     InkWell(
                       onTap: () {
 
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SetNewPassword()));
+                        setState(() {
+                          isEmailVerified = true;
+                        });
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
 
                       },
                       child: Container(
@@ -238,7 +254,34 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         ),
                         child: Center(
                           child: Text(
-                            "Open email app",
+                            "Verify email",
+                            style: textStyle.SegoeUI.copyWith(
+                                fontSize: 14.px,
+                                color: AppColors.white_00
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                        :
+                    InkWell(
+                      onTap: () {
+
+                        setState(() {
+                          isSendCode = true;
+                        });
+
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: AppColors.mainGreen
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Enter code manually",
                             style: textStyle.SegoeUI.copyWith(
                                 fontSize: 14.px,
                                 color: AppColors.white_00
@@ -249,34 +292,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     ),
 
                     SizedBox(height: 2.h),
-
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-
-                        Text(
-                          "Didn’t receive the email?",
-                          style: textStyle.SegoeUI.copyWith(
-                              fontSize: 12.px,
-                              color: AppColors.fontBlack
-                          ),
-                        ),
-
-                        SizedBox(width: 0.6.w),
-
-                        Text(
-                          "Click to resend",
-                          style: textStyle.SegoeUISemiBold.copyWith(
-                              fontSize: 12.px,
-                              color: AppColors.mainGreen
-                          ),
-                        ),
-
-                      ],
-                    ),
-
-                    SizedBox(height: 3.h),
 
                     InkWell(
                       onTap: () {
