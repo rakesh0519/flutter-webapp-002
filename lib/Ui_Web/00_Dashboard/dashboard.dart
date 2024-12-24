@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/project_details.dart';
 import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/projects_screen.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../Providers/ui_providers.dart';
 import '../../Values/Constants.dart';
 import 'Sub_Page/01_Products/products_screen.dart';
+import 'package:provider/provider.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -15,11 +18,24 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
 
-  String selected = "projects";
   String selectedDays = "12";
+
+  UiProvider uiProvider = UiProvider();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    uiProvider = Provider.of<UiProvider>(context, listen: false);
+
+  }
 
   @override
   Widget build(BuildContext context) {
+
+    uiProvider = Provider.of<UiProvider>(context, listen: true);
+
     return Scaffold(
       backgroundColor: AppColors.white_00,
       body: Padding(
@@ -61,21 +77,19 @@ class _DashboardState extends State<Dashboard> {
                       highlightColor: Colors.transparent,
                       onTap: () {
 
-                        setState(() {
-                          selected = "projects";
-                        });
+                        uiProvider.changeDashboardPage("Projects");
 
                       },
                       child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: selected == "projects" ? AppColors.selectColor : AppColors.white_00,
-                              border: Border.all(color: selected == "projects" ? AppColors.selectColor : AppColors.white_00,)
+                              color: uiProvider.dashboardPage == "Projects" ? AppColors.selectColor : AppColors.white_00,
+                              border: Border.all(color: uiProvider.dashboardPage == "Projects" ? AppColors.selectColor : AppColors.white_00,)
                           ),
                           padding: EdgeInsets.all(9),
                           child: Image.asset(
                               "Assets/icons/ic_projects.png", width: 20, height: 20,
-                            color: selected == "projects" ? AppColors.selectIconColor : AppColors.unselectIconColor,
+                            color:uiProvider.dashboardPage == "Projects" ? AppColors.selectIconColor : AppColors.unselectIconColor,
                           )),
                     ),
 
@@ -88,21 +102,19 @@ class _DashboardState extends State<Dashboard> {
                       highlightColor: Colors.transparent,
                       onTap: () {
 
-                        setState(() {
-                          selected = "products";
-                        });
+                        uiProvider.changeDashboardPage("Products");
 
                       },
                       child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: selected == "products" ? AppColors.selectColor : AppColors.white_00,
-                              border: Border.all(color: selected == "products" ? AppColors.selectColor : AppColors.white_00,)
+                              color: uiProvider.dashboardPage == "Products" ? AppColors.selectColor : AppColors.white_00,
+                              border: Border.all(color: uiProvider.dashboardPage == "Products" ? AppColors.selectColor : AppColors.white_00,)
                           ),
                           padding: EdgeInsets.all(9),
                           child: Image.asset(
                             "Assets/icons/ic_products.png", width: 20, height: 20,
-                            color: selected == "products" ? AppColors.selectIconColor : AppColors.unselectIconColor,
+                            color: uiProvider.dashboardPage == "Products" ? AppColors.selectIconColor : AppColors.unselectIconColor,
                           )),
                     ),
 
@@ -115,21 +127,19 @@ class _DashboardState extends State<Dashboard> {
                       highlightColor: Colors.transparent,
                       onTap: () {
 
-                        setState(() {
-                          selected = "wheel";
-                        });
+                        uiProvider.changeDashboardPage("wheel");
 
                       },
                       child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: selected == "wheel" ? AppColors.selectColor : AppColors.white_00,
-                              border: Border.all(color: selected == "wheel" ? AppColors.selectColor : AppColors.white_00,)
+                              color: uiProvider.dashboardPage == "wheel" ? AppColors.selectColor : AppColors.white_00,
+                              border: Border.all(color: uiProvider.dashboardPage == "wheel" ? AppColors.selectColor : AppColors.white_00,)
                           ),
                           padding: EdgeInsets.all(9),
                           child: Image.asset(
                             "Assets/icons/ic_wheel.png", width: 20, height: 20,
-                            color: selected == "wheel" ? AppColors.selectIconColor : AppColors.unselectIconColor,
+                            color: uiProvider.dashboardPage == "wheel" ? AppColors.selectIconColor : AppColors.unselectIconColor,
                           )),
                     ),
 
@@ -142,21 +152,19 @@ class _DashboardState extends State<Dashboard> {
                       highlightColor: Colors.transparent,
                       onTap: () {
 
-                        setState(() {
-                          selected = "setting";
-                        });
+                        uiProvider.changeDashboardPage("Setting");
 
                       },
                       child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: selected == "setting" ? AppColors.selectColor : AppColors.white_00,
-                              border: Border.all(color: selected == "setting" ? AppColors.selectColor : AppColors.white_00,)
+                              color: uiProvider.dashboardPage == "Setting" ? AppColors.selectColor : AppColors.white_00,
+                              border: Border.all(color: uiProvider.dashboardPage == "Setting" ? AppColors.selectColor : AppColors.white_00,)
                           ),
                           padding: EdgeInsets.all(9),
                           child: Image.asset(
                             "Assets/icons/ic_setting.png", width: 20, height: 20,
-                            color: selected == "setting" ? AppColors.selectIconColor : AppColors.unselectIconColor,
+                            color: uiProvider.dashboardPage == "Setting" ? AppColors.selectIconColor : AppColors.unselectIconColor,
                           )),
                     ),
 
@@ -204,20 +212,87 @@ class _DashboardState extends State<Dashboard> {
 
                               SizedBox(width: 0.7.w),
 
+                              uiProvider.dashboardPage == "Projects"
+                                  ?
                               Container(
                                 decoration: BoxDecoration(
                                   color: AppColors.lightBg,
                                   borderRadius: BorderRadius.circular(3)
                                 ),
-                                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 3),
+                                padding: EdgeInsets.only(left: 10,right: 10,top: 3,bottom: 5),
                                 child: Text(
                                   "Projects",
                                   style: textStyle.SegoeUISemiBold.copyWith(
-                                      fontSize: 12.px,
+                                      fontSize: 14.px,
                                       color: AppColors.selectIconColor
                                   ),
                                 ),
                               )
+                                  :
+                              uiProvider.dashboardPage == "Projects_Details"
+                                  ?
+                              Row(
+                                children: [
+
+                                  InkWell(
+                                    hoverColor: AppColors.white_00,
+                                    onTap: () {
+
+                                      uiProvider.changeDashboardPage("Projects");
+
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: 10,right: 10,top: 3,bottom: 5),
+                                      child: Text(
+                                        "Projects",
+                                        style: textStyle.SegoeUISemiBold.copyWith(
+                                            fontSize: 14.px,
+                                            color: AppColors.selectIconColor
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                  SizedBox(width: 0.7.w),
+
+                                  Icon(Icons.keyboard_arrow_right_rounded,color: AppColors.fontGrey.withOpacity(0.3)),
+
+                                  SizedBox(width: 0.7.w),
+
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: AppColors.lightBg,
+                                        borderRadius: BorderRadius.circular(3)
+                                    ),
+                                    padding: EdgeInsets.only(left: 10,right: 10,top: 3,bottom: 5),
+                                    child: Text(
+                                      "Project Name",
+                                      style: textStyle.SegoeUISemiBold.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.selectIconColor
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                                  :
+                              uiProvider.dashboardPage == "Products"
+                                  ?
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: AppColors.lightBg,
+                                    borderRadius: BorderRadius.circular(3)
+                                ),
+                                padding: EdgeInsets.only(left: 10,right: 10,top: 3,bottom: 5),
+                                child: Text(
+                                  "Products",
+                                  style: textStyle.SegoeUISemiBold.copyWith(
+                                      fontSize: 14.px,
+                                      color: AppColors.selectIconColor
+                                  ),
+                                ),
+                              ) :
+                                  SizedBox()
 
                             ],
                           ),
@@ -225,7 +300,20 @@ class _DashboardState extends State<Dashboard> {
                           SizedBox(height: 2.h),
 
                           Expanded(
-                              child: Projects()
+                              child:
+                              uiProvider.dashboardPage == "Projects"
+                                  ?
+                              Projects()
+                                  :
+                              uiProvider.dashboardPage == "Projects_Details"
+                                  ?
+                              ProjectDetails()
+                                  :
+                              uiProvider.dashboardPage == "Products"
+                                  ?
+                              Products()
+                                  :
+                              SizedBox()
                           ),
 
                           Divider(
@@ -367,7 +455,6 @@ class _DashboardState extends State<Dashboard> {
 
                             ],
                           )
-
 
                         ],
                       ),
