@@ -16,6 +16,7 @@ class AppColors{
   static const Color fontLightBlack = Color(0xFF414651);
   static const Color borderColor = Color(0xFFE9EAEB);
   static const Color selectColor = Color(0xFFE5FDFF);
+  static const Color neonBorder = Color(0xFF16ECFF);
   static const Color selectIconColor = Color(0xFF414651);
   static const Color unselectIconColor = Color(0xFF717680);
   static const Color lightBg = Color(0xFFF9F9F9);

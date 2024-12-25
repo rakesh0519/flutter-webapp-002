@@ -6,6 +6,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../Providers/ui_providers.dart';
 import '../../Values/Constants.dart';
+import 'Sub_Page/00_Projects/Project_details/add_system.dart';
 import 'Sub_Page/01_Products/products_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -274,6 +275,78 @@ class _DashboardState extends State<Dashboard> {
                                 ],
                               )
                                   :
+                              uiProvider.dashboardPage == "Add_Systems"
+                                  ?
+                              Row(
+                                children: [
+
+                                  InkWell(
+                                    hoverColor: AppColors.white_00,
+                                    onTap: () {
+
+                                      uiProvider.changeDashboardPage("Projects");
+
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: 10,right: 10,top: 3,bottom: 5),
+                                      child: Text(
+                                        "Projects",
+                                        style: textStyle.SegoeUISemiBold.copyWith(
+                                            fontSize: 14.px,
+                                            color: AppColors.selectIconColor
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                  SizedBox(width: 0.7.w),
+
+                                  Icon(Icons.keyboard_arrow_right_rounded,color: AppColors.fontGrey.withOpacity(0.3)),
+
+                                  SizedBox(width: 0.7.w),
+
+                                  InkWell(
+                                    hoverColor: AppColors.white_00,
+                                    onTap: () {
+
+                                      uiProvider.changeDashboardPage("Projects_Details");
+
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: 10,right: 10,top: 3,bottom: 5),
+                                      child: Text(
+                                        "Project Name",
+                                        style: textStyle.SegoeUISemiBold.copyWith(
+                                            fontSize: 14.px,
+                                            color: AppColors.selectIconColor
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                  SizedBox(width: 0.7.w),
+
+                                  Icon(Icons.keyboard_arrow_right_rounded,color: AppColors.fontGrey.withOpacity(0.3)),
+
+                                  SizedBox(width: 0.7.w),
+
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: AppColors.lightBg,
+                                        borderRadius: BorderRadius.circular(3)
+                                    ),
+                                    padding: EdgeInsets.only(left: 10,right: 10,top: 3,bottom: 5),
+                                    child: Text(
+                                      "Add Systems",
+                                      style: textStyle.SegoeUISemiBold.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.selectIconColor
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                                  :
                               uiProvider.dashboardPage == "Products"
                                   ?
                               Container(
@@ -310,6 +383,10 @@ class _DashboardState extends State<Dashboard> {
                               uiProvider.dashboardPage == "Products"
                                   ?
                               Products()
+                                  :
+                              uiProvider.dashboardPage == "Add_Systems"
+                                  ?
+                              AddSystem()
                                   :
                               SizedBox()
                           ),

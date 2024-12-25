@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../../../Providers/ui_providers.dart';
 import '../../../../../Values/AppColors.dart';
 import '../../../../../Values/Constants.dart';
 
@@ -13,8 +15,23 @@ class Systems extends StatefulWidget {
 }
 
 class _SystemsState extends State<Systems> {
+
+  UiProvider uiProvider = UiProvider();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    uiProvider = Provider.of<UiProvider>(context, listen: false);
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
+    uiProvider = Provider.of<UiProvider>(context, listen: true);
+
     return Expanded(
         child:
         isZoneAdded == false
@@ -255,6 +272,7 @@ class _SystemsState extends State<Systems> {
                     InkWell(
                       onTap: () {
 
+                        uiProvider.changeDashboardPage("Add_Systems");
 
                       },
                       child: Container(
@@ -427,66 +445,451 @@ class _SystemsState extends State<Systems> {
 
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height/2 - 100,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
 
-                    Text(
-                      "No systems added found",
-                      style: textStyle.SegoeUISemiBold.copyWith(
-                          fontSize: 14.px,
-                          color: AppColors.fontBlack
-                      ),
-                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
 
-                    SizedBox(height: 0.4.h),
+                        Expanded(
+                          child: Stack(
+                            children: [
 
-                    Text(
-                      "you are yet to add system to this zone of your project.",
-                      style: textStyle.SegoeUI.copyWith(
-                          fontSize: 13.px,
-                          color: AppColors.fontBlack
-                      ),
-                    ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: AppColors.borderColor),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                margin: EdgeInsets.only(top: 60),
+                                padding: EdgeInsets.only(top: 60,left: 20,right: 20,bottom: 25),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
 
-                    SizedBox(height: 3.h),
+                                    Text(
+                                      "Airstage U-Series",
+                                      style: textStyle.SegoeUISemiBold.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.darkGreen
+                                      ),
+                                    ),
 
-                    InkWell(
-                      onTap: () {
+                                    Text(
+                                      "FusionWave 2",
+                                      style: textStyle.SegoeUISemiBold.copyWith(
+                                          fontSize: 24.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 10),
+
+                                    Text(
+                                      "25000 BTU Ceiling-Mounted Air Setup "
+                                          "\n R-290 High-Efficiency Cooling Technology "
+                                          "\nPremier Air Quality Management System",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 12.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 20),
+
+                                    InkWell(
+                                      onTap: () {
 
 
-                      },
-                      child: Container(
-                        height: 38,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: AppColors.mainGreen,
-                        ),
-                        padding: EdgeInsets.symmetric(horizontal: 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
 
-                            Image.asset(
-                                "Assets/icons/ic_add.png", width: 38, height: 38
-                            ),
+                                      },
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        height: 36,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(6),
+                                            border: Border.all(color: AppColors.neonBorder)
+                                        ),
+                                        child: Row(
+                                          children: [
 
-                            Text(
-                              "New System",
-                              style: textStyle.SegoeUI.copyWith(
-                                  fontSize: 14.px,
-                                  color: AppColors.white_00
+                                            SizedBox(width: 5),
+
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Icon(
+                                                Icons.remove,
+                                                color: AppColors.mainGreen,
+                                                size: 20,
+                                              ),
+                                            ),
+
+                                            Expanded(
+                                              child: Center(
+                                                child: Text(
+                                                  "Add to Zone",
+                                                  style: textStyle.SegoeUISemiBold.copyWith(
+                                                      fontSize: 14.px,
+                                                      color: AppColors.mainGreen
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Icon(
+                                                Icons.add,
+                                                color: AppColors.mainGreen,
+                                                size: 20,
+                                              ),
+                                            ),
+
+                                            SizedBox(width: 5),
+
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 10),
+
+                                    InkWell(
+                                      onTap: () {
+
+
+
+                                      },
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        height: 36,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(6),
+                                            border: Border.all(color: AppColors.borderColor)
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "View Details",
+                                            style: textStyle.SegoeUISemiBold.copyWith(
+                                                fontSize: 14.px,
+                                                color: AppColors.fontLightBlack
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
                               ),
-                            ),
 
-                            SizedBox(width: 1.w)
+                              Center(
+                                  child: Image.asset(
+                                      "Assets/images/image_1.png"
+                                  )
+                              ),
 
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ),
+
+                        SizedBox(width: 20),
+
+                        Expanded(
+                          child: Stack(
+                            children: [
+
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: AppColors.borderColor),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                margin: EdgeInsets.only(top: 60),
+                                padding: EdgeInsets.only(top: 60,left: 20,right: 20,bottom: 25),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+
+                                    Text(
+                                      "Airstage U-Series",
+                                      style: textStyle.SegoeUISemiBold.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.darkGreen
+                                      ),
+                                    ),
+
+                                    Text(
+                                      "AeroMax Pro",
+                                      style: textStyle.SegoeUISemiBold.copyWith(
+                                          fontSize: 24.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 10),
+
+                                    Text(
+                                      "20000 BTU Ceiling-Mounted Air Conditioning System "
+                                          "\nR-410A Sustainable Heating Solution"
+                                          "\nEnhanced Air Quality Control",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 12.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 20),
+
+                                    InkWell(
+                                      onTap: () {
+
+
+
+                                      },
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        height: 36,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(6),
+                                            border: Border.all(color: AppColors.neonBorder)
+                                        ),
+                                        child: Row(
+                                          children: [
+
+                                            SizedBox(width: 5),
+
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Icon(
+                                                Icons.remove,
+                                                color: AppColors.mainGreen,
+                                                size: 20,
+                                              ),
+                                            ),
+
+                                            Expanded(
+                                              child: Center(
+                                                child: Text(
+                                                  "Add to Zone",
+                                                  style: textStyle.SegoeUISemiBold.copyWith(
+                                                      fontSize: 14.px,
+                                                      color: AppColors.mainGreen
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Icon(
+                                                Icons.add,
+                                                color: AppColors.mainGreen,
+                                                size: 20,
+                                              ),
+                                            ),
+
+                                            SizedBox(width: 5),
+
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 10),
+
+                                    InkWell(
+                                      onTap: () {
+
+
+
+                                      },
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        height: 36,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(6),
+                                            border: Border.all(color: AppColors.borderColor)
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "View Details",
+                                            style: textStyle.SegoeUISemiBold.copyWith(
+                                                fontSize: 14.px,
+                                                color: AppColors.fontLightBlack
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+
+                              Center(
+                                  child: Image.asset(
+                                      "Assets/images/image_2.png"
+                                  )
+                              ),
+
+                            ],
+                          ),
+                        ),
+
+                        SizedBox(width: 20),
+
+                        Expanded(
+                          child: Stack(
+                            children: [
+
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: AppColors.borderColor),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                margin: EdgeInsets.only(top: 60),
+                                padding: EdgeInsets.only(top: 60,left: 20,right: 20,bottom: 25),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+
+                                    Text(
+                                      "Airstage U-Series",
+                                      style: textStyle.SegoeUISemiBold.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.darkGreen
+                                      ),
+                                    ),
+
+                                    Text(
+                                      "TerraForce 5",
+                                      style: textStyle.SegoeUISemiBold.copyWith(
+                                          fontSize: 24.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 10),
+
+                                    Text(
+                                      "23500 BTU Ceiling-Mounted Air Configuration "
+                                          "\nR-32 Multi-Functional Heating Pump "
+                                          "\nComprehensive Air Quality Control System",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 12.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 20),
+
+                                    InkWell(
+                                      onTap: () {
+
+
+
+                                      },
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        height: 36,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(6),
+                                            border: Border.all(color: AppColors.neonBorder)
+                                        ),
+                                        child: Row(
+                                          children: [
+
+                                            SizedBox(width: 5),
+
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Icon(
+                                                Icons.remove,
+                                                color: AppColors.mainGreen,
+                                                size: 20,
+                                              ),
+                                            ),
+
+                                            Expanded(
+                                              child: Center(
+                                                child: Text(
+                                                  "Add to Zone",
+                                                  style: textStyle.SegoeUISemiBold.copyWith(
+                                                      fontSize: 14.px,
+                                                      color: AppColors.mainGreen
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Icon(
+                                                Icons.add,
+                                                color: AppColors.mainGreen,
+                                                size: 20,
+                                              ),
+                                            ),
+
+                                            SizedBox(width: 5),
+
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 10),
+
+                                    InkWell(
+                                      onTap: () {
+
+
+
+                                      },
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        height: 36,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(6),
+                                            border: Border.all(color: AppColors.borderColor)
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "View Details",
+                                            style: textStyle.SegoeUISemiBold.copyWith(
+                                                fontSize: 14.px,
+                                                color: AppColors.fontLightBlack
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+
+                              Center(
+                                  child: Image.asset(
+                                      "Assets/images/image_3.png"
+                                  )
+                              ),
+
+                            ],
+                          ),
+                        ),
+
+                        SizedBox(width: 20),
+
+                        Expanded(
+                          child: SizedBox()
+                        ),
+
+                      ],
+                    )
 
                   ],
                 ),
@@ -498,7 +901,7 @@ class _SystemsState extends State<Systems> {
     );
   }
 
-  bool isZoneAdded = false;
+  bool isZoneAdded = true;
   List<String> stateNames = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
 
   addZoneDialog() {
