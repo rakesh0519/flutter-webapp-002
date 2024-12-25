@@ -37,6 +37,364 @@ class _DashboardState extends State<Dashboard> {
 
     return Scaffold(
       backgroundColor: AppColors.white_00,
+      endDrawer: Drawer(
+        backgroundColor: AppColors.white_00,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(0)
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+
+              Row(
+                children: [
+
+                  Expanded(
+                    child: Text(
+                      "Filters",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 20.px,
+                          color: AppColors.selectIconColor
+                      ),
+                    ),
+                  ),
+
+                  Icon(Icons.close,color: AppColors.fontGrey,size: 20,)
+
+                ],
+              ),
+
+              Text(
+                "Apply filters to table data.",
+                style: textStyle.SegoeUI.copyWith(
+                    fontSize: 14.px,
+                    color: AppColors.selectIconColor
+                ),
+              ),
+
+              SizedBox(height: 20),
+
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: AppColors.borderColor)
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 15,vertical: 8),
+                child: Row(
+                  children: [
+
+                    Expanded(
+                      child: Text(
+                        "Select saved filter",
+                        style: textStyle.SegoeUI.copyWith(
+                            fontSize: 14.px,
+                            color: AppColors.selectIconColor
+                        ),
+                      ),
+                    ),
+
+                    Icon(Icons.keyboard_arrow_down_rounded,color: AppColors.fontGrey,size: 15,)
+
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 20),
+
+              Row(
+                children: [
+
+                  Expanded(
+                    child: Text(
+                      "Sort by",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 14.px,
+                          color: AppColors.fontLightBlack
+                      ),
+                    ),
+                  ),
+
+                  Icon(Icons.keyboard_arrow_up_rounded,color: AppColors.fontGrey,size: 15,)
+
+                ],
+              ),
+
+              SizedBox(height: 10),
+
+              Row(
+                children: [
+
+                  InkWell(
+                    onTap: () {
+
+
+                    },
+                    child: Image.asset(
+                        "Assets/icons/ic_checkbox.png",
+                        width: 18,height: 18),
+                  ),
+
+                  SizedBox(width: 10),
+
+                  Text(
+                    "Type",
+                    style: textStyle.SegoeUI.copyWith(
+                        fontSize: 14.px,
+                        color: AppColors.fontLightBlack
+                    ),
+                  ),
+
+
+                ],
+              ),
+
+              SizedBox(height: 10),
+
+              Row(
+                children: [
+
+                  InkWell(
+                    onTap: () {
+
+
+                    },
+                    child: Image.asset(
+                        "Assets/icons/ic_checkbox.png",
+                        width: 18,height: 18),
+                  ),
+
+                  SizedBox(width: 10),
+
+                  Text(
+                    "Newest First",
+                    style: textStyle.SegoeUI.copyWith(
+                        fontSize: 14.px,
+                        color: AppColors.fontLightBlack
+                    ),
+                  ),
+
+
+                ],
+              ),
+
+              SizedBox(height: 20),
+
+              Row(
+                children: [
+
+                  Expanded(
+                    child: Text(
+                      "Type",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 14.px,
+                          color: AppColors.fontLightBlack
+                      ),
+                    ),
+                  ),
+
+                  Icon(Icons.keyboard_arrow_up_rounded,color: AppColors.fontGrey,size: 15,)
+
+                ],
+              ),
+
+              SizedBox(height: 10),
+
+              Row(
+                children: [
+
+                  InkWell(
+                    onTap: () {
+
+
+                    },
+                    child: Image.asset(
+                        "Assets/icons/ic_checkbox.png",
+                        width: 18,height: 18),
+                  ),
+
+                  SizedBox(width: 10),
+
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.neonBorder),
+                      borderRadius: BorderRadius.circular(30),
+                      color: AppColors.neonBack
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 2),
+                    child: Text(
+                      "Single Zone",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 14.px,
+                          color: AppColors.mainGreen
+                      ),
+                    ),
+                  ),
+
+
+                ],
+              ),
+
+              SizedBox(height: 10),
+
+              Row(
+                children: [
+
+                  InkWell(
+                    onTap: () {
+
+
+                    },
+                    child: Image.asset(
+                        "Assets/icons/ic_checkbox.png",
+                        width: 18,height: 18),
+                  ),
+
+                  SizedBox(width: 10),
+
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.borderPink),
+                        borderRadius: BorderRadius.circular(30),
+                        color: AppColors.backPink
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 2),
+                    child: Text(
+                      "Multi Zone",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 14.px,
+                          color: AppColors.fontPink
+                      ),
+                    ),
+                  ),
+
+
+                ],
+              ),
+
+              SizedBox(height: 10),
+
+              Row(
+                children: [
+
+                  InkWell(
+                    onTap: () {
+
+
+                    },
+                    child: Image.asset(
+                        "Assets/icons/ic_checkbox.png",
+                        width: 18,height: 18),
+                  ),
+
+                  SizedBox(width: 10),
+
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.borderPurple),
+                        borderRadius: BorderRadius.circular(30),
+                        color: AppColors.backPurple
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 2),
+                    child: Text(
+                      "Single Zone",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 14.px,
+                          color: AppColors.fontPurple
+                      ),
+                    ),
+                  ),
+
+
+                ],
+              ),
+
+              SizedBox(height: 20),
+
+              Row(
+                children: [
+
+                  Expanded(
+                    child: Text(
+                      "BTU",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 14.px,
+                          color: AppColors.fontLightBlack
+                      ),
+                    ),
+                  ),
+
+                  Icon(Icons.keyboard_arrow_down_rounded,color: AppColors.fontGrey,size: 15,)
+
+                ],
+              ),
+
+              SizedBox(height: 20),
+
+              Row(
+                children: [
+
+                  Expanded(
+                    child: Text(
+                      "Unit Type",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 14.px,
+                          color: AppColors.fontLightBlack
+                      ),
+                    ),
+                  ),
+
+                  Icon(Icons.keyboard_arrow_down_rounded,color: AppColors.fontGrey,size: 15,)
+
+                ],
+              ),
+
+              SizedBox(height: 20),
+
+              Row(
+                children: [
+
+                  Expanded(
+                    child: Text(
+                      "SEER 2",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 14.px,
+                          color: AppColors.fontLightBlack
+                      ),
+                    ),
+                  ),
+
+                  Icon(Icons.keyboard_arrow_down_rounded,color: AppColors.fontGrey,size: 15,)
+
+                ],
+              ),
+
+              SizedBox(height: 20),
+
+              Row(
+                children: [
+
+                  Expanded(
+                    child: Text(
+                      "Lineset Length",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 14.px,
+                          color: AppColors.fontLightBlack
+                      ),
+                    ),
+                  ),
+
+                  Icon(Icons.keyboard_arrow_down_rounded,color: AppColors.fontGrey,size: 15,)
+
+                ],
+              ),
+
+
+            ],
+          ),
+        )
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SizedBox(

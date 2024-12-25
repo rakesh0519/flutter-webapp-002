@@ -17,10 +17,17 @@ class AppColors{
   static const Color borderColor = Color(0xFFE9EAEB);
   static const Color selectColor = Color(0xFFE5FDFF);
   static const Color neonBorder = Color(0xFF16ECFF);
+  static const Color neonBack = Color(0xFFCBFBFF);
   static const Color selectIconColor = Color(0xFF414651);
   static const Color unselectIconColor = Color(0xFF717680);
   static const Color lightBg = Color(0xFFF9F9F9);
   static const Color darkBorderColor = Color(0xFF717680);
+  static const Color fontPink = Color(0xFFC11574);
+  static const Color backPink = Color(0xFFFDF2FA);
+  static const Color borderPink = Color(0xFFFCCEEE);
+  static const Color fontPurple = Color(0xFF5925DC);
+  static const Color borderPurple = Color(0xFFD9D6FE);
+  static const Color backPurple = Color(0xFFF4F3FF);
 
   //white colors shades
   static const Color white_00 = Color(0xFFFFFFFF);
