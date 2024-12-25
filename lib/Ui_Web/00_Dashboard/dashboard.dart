@@ -61,7 +61,13 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
 
-                  Icon(Icons.close,color: AppColors.fontGrey,size: 20,)
+                  InkWell(
+                      onTap: () {
+
+                        Navigator.pop(context);
+
+                      },
+                      child: Icon(Icons.close,color: AppColors.fontGrey,size: 20,))
 
                 ],
               ),
@@ -389,6 +395,83 @@ class _DashboardState extends State<Dashboard> {
 
                 ],
               ),
+
+              Spacer(),
+
+              Divider(
+                color: AppColors.borderColor,
+              ),
+
+              SizedBox(height: 5),
+
+              Row(
+                children: [
+
+                  Expanded(
+                    child: Text(
+                      "Save filter",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 14.px,
+                          color: AppColors.mainGreen
+                      ),
+                    ),
+                  ),
+
+                  InkWell(
+                    onTap: () {
+
+
+
+                    },
+                    child: Container(
+                      height: 36,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          border: Border.all(color: AppColors.borderColor)
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Center(
+                        child: Text(
+                          "Cancel",
+                          style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 14.px,
+                              color: AppColors.fontLightBlack
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(width: 10),
+
+                  InkWell(
+                    onTap: () {
+
+
+
+                    },
+                    child: Container(
+                      height: 36,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          border: Border.all(color: AppColors.borderColor),
+                        color: AppColors.mainGreen
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Center(
+                        child: Text(
+                          "Apply",
+                          style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 14.px,
+                              color: AppColors.white_00
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                ],
+              )
 
 
             ],
