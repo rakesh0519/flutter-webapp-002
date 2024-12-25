@@ -152,6 +152,9 @@ class _ProjectsState extends State<Projects> {
     uiProvider = Provider.of<UiProvider>(context, listen: false);
 
   }
+
+  String selectedDays = "12";
+
   @override
   Widget build(BuildContext context) {
     uiProvider = Provider.of<UiProvider>(context, listen: true);
@@ -686,6 +689,146 @@ class _ProjectsState extends State<Projects> {
 
             ],
           ),
+        ),
+
+        Divider(
+          color: AppColors.borderColor,
+        ),
+
+        SizedBox(height: 1.h),
+
+        Row(
+          children: [
+
+            Expanded(child: SizedBox()),
+
+            Row(
+              children: [
+
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedDays = "12";
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(8),
+                        bottomLeft: Radius.circular(8),
+                      ),
+                      border: Border.all(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                      color: selectedDays == "12" ? AppColors.selectColor : AppColors.white_00,
+                    ),
+                    height: 35,
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Center(
+                      child: Text(
+                        "12 Months",
+                        style: textStyle.SegoeUISemiBold.copyWith(
+                            fontSize: 12.px,
+                            color: AppColors.fontBlack
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedDays = "30";
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                          top: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                          bottom: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                          right: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3))
+                      ),
+                      color: selectedDays == "30" ? AppColors.selectColor : AppColors.white_00,
+                    ),
+                    height: 35,
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Center(
+                      child: Text(
+                        "30 Days",
+                        style: textStyle.SegoeUISemiBold.copyWith(
+                            fontSize: 12.px,
+                            color: AppColors.fontBlack
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedDays = "7";
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                          top: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                          bottom: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                          right: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3))
+                      ),
+                      color: selectedDays == "7" ? AppColors.selectColor : AppColors.white_00,
+                    ),
+                    height: 35,
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Center(
+                      child: Text(
+                        "7 Days",
+                        style: textStyle.SegoeUISemiBold.copyWith(
+                            fontSize: 12.px,
+                            color: AppColors.fontBlack
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedDays = "custom";
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(8),
+                        bottomRight: Radius.circular(8),
+                      ),
+                      border: Border(
+                          top: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                          bottom: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3)),
+                          right: BorderSide(color: AppColors.darkBorderColor.withOpacity(0.3))
+                      ),
+                      color: selectedDays == "custom" ? AppColors.selectColor : AppColors.white_00,
+                    ),
+                    height: 35,
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Center(
+                      child: Text(
+                        "Custom",
+                        style: textStyle.SegoeUISemiBold.copyWith(
+                            fontSize: 12.px,
+                            color: AppColors.fontBlack
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+              ],
+            )
+
+          ],
         )
 
       ],

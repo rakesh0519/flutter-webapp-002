@@ -6,6 +6,11 @@ class AppColors{
   static const Color black_00 = Colors.black;
 
   static const Color mainGreen = Color(0xFF007E89);
+  static const Color darkGreen = Color(0xFF00616A);
+  static const Color borderGreen = Color(0xFFABEFC6);
+  static const Color backGreen = Color(0xFFECFDF3);
+  static const Color borderRed = Color(0xFFFECDCA);
+  static const Color backRed = Color(0xFFFEF3F2);
   static const Color fontGrey = Color(0xFF535862);
   static const Color fontBlack = Color(0xFF181D27);
   static const Color fontLightBlack = Color(0xFF414651);
