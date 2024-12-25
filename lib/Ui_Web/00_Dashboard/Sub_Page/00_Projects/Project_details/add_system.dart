@@ -115,6 +115,7 @@ class _AddSystemState extends State<AddSystem> {
                     thumbColor: WidgetStateProperty.all(Colors.transparent),
                   )),
               child: SingleChildScrollView(
+                controller: scrollController,
                 child: Column(
                   children: [
 
@@ -131,6 +132,7 @@ class _AddSystemState extends State<AddSystem> {
                                 decoration: BoxDecoration(
                                   border: Border.all(color: AppColors.borderColor),
                                   borderRadius: BorderRadius.circular(12),
+                                    color: AppColors.white_00
                                 ),
                                 margin: EdgeInsets.only(top: 70),
                                 padding: EdgeInsets.only(top: 60,left: 20,right: 20,bottom: 25),
@@ -170,7 +172,6 @@ class _AddSystemState extends State<AddSystem> {
 
                                     InkWell(
                                       onTap: () {
-
 
 
                                       },
@@ -228,7 +229,7 @@ class _AddSystemState extends State<AddSystem> {
                                     InkWell(
                                       onTap: () {
 
-
+                                        viewProduct();
 
                                       },
                                       child: Container(
@@ -277,6 +278,7 @@ class _AddSystemState extends State<AddSystem> {
                                 decoration: BoxDecoration(
                                   border: Border.all(color: AppColors.borderColor),
                                   borderRadius: BorderRadius.circular(12),
+                                    color: AppColors.white_00
                                 ),
                                 margin: EdgeInsets.only(top: 70),
                                 padding: EdgeInsets.only(top: 60,left: 20,right: 20,bottom: 25),
@@ -374,7 +376,7 @@ class _AddSystemState extends State<AddSystem> {
                                     InkWell(
                                       onTap: () {
 
-
+                                        viewProduct();
 
                                       },
                                       child: Container(
@@ -423,6 +425,7 @@ class _AddSystemState extends State<AddSystem> {
                                 decoration: BoxDecoration(
                                   border: Border.all(color: AppColors.borderColor),
                                   borderRadius: BorderRadius.circular(12),
+                                    color: AppColors.white_00
                                 ),
                                 margin: EdgeInsets.only(top: 70),
                                 padding: EdgeInsets.only(top: 60,left: 20,right: 20,bottom: 25),
@@ -569,6 +572,7 @@ class _AddSystemState extends State<AddSystem> {
                                 decoration: BoxDecoration(
                                   border: Border.all(color: AppColors.borderColor),
                                   borderRadius: BorderRadius.circular(12),
+                                    color: AppColors.white_00
                                 ),
                                 margin: EdgeInsets.only(top: 70),
                                 padding: EdgeInsets.only(top: 60,left: 20,right: 20,bottom: 25),
@@ -1310,4 +1314,695 @@ class _AddSystemState extends State<AddSystem> {
       ],
     );
   }
+
+  viewProduct() {
+
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+                return Dialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius:
+                      BorderRadius.circular(12.0)), //this right here
+                  child: Container(
+                    width: 400,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      color: AppColors.white_00,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Theme(
+                        data: Theme.of(context).copyWith(
+                            scrollbarTheme: ScrollbarThemeData(
+                              thumbColor: WidgetStateProperty.all(Colors.transparent),
+                            )
+                        ),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+
+                              Image.asset(
+                                  "Assets/images/image_4.png"
+                              ),
+
+                              SizedBox(height: 20),
+
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "ASUH09KMAS",
+                                      style: textStyle.SegoeUISemiBold.copyWith(
+                                          fontSize: 20.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  InkWell(
+                                    onTap: (){
+
+                                      Navigator.pop(context);
+
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: Icon(Icons.close,color: AppColors.fontLightBlack,size: 20,),
+                                    ),
+                                  )
+
+                                ],
+                              ),
+
+                              Text(
+                                "System 09LEAS1"
+                                    "\nIndoor Model ASUHO9LMAS"
+                                    "\nOutdoor Model AOUHO9LEAS1",
+                                style: textStyle.SegoeUI.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.fontLightBlack
+                                ),
+                              ),
+
+                              SizedBox(height: 15),
+
+                              Text(
+                                "Performance",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.mainGreen
+                                ),
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "SEER",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "21.30",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "SEER2",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "21.30",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "EER",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "12.50",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "EER2",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "12.50",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              Divider(
+                                color: AppColors.borderColor,
+                                height: 30,
+                              ),
+
+                              Text(
+                                "Dimensions & Weights",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.mainGreen
+                                ),
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Indoor Unit Length (in)",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "10-5/8",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Indoor Unit Width (in)",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "32-13/16",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Indoor Unit Height (in)",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "8-3/4",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Outdoor Unit Length (in)",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "14-5/16",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Outdoor Unit Width (in)",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "19-11/16",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Outdoor Unit Height (in)",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "19-5/16",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              Divider(
+                                color: AppColors.borderColor,
+                                height: 30,
+                              ),
+
+                              Text(
+                                "Lineset Specs",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.mainGreen
+                                ),
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Min Pipe Length (ft)",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "25",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Liquid Lineset Size (in)",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "1/4",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Gas Lineset Size (in)",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "3/8",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Precharge Length",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "25",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Max Height Difference (ft)",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "10",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Lineset Connection Method Liquid",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "Flare",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Lineset Connection Method Gas",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "Flare",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              SizedBox(height: 2),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: Text(
+                                      "Additional Refrigerant oz/ft",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.fontLightBlack
+                                      ),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "N/A",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.fontLightBlack
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              Divider(
+                                color: AppColors.borderColor,
+                                height: 30,
+                              ),
+
+                              Row(
+                                children: [
+
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+
+
+                                      },
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        height: 36,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(6),
+                                            border: Border.all(color: AppColors.neonBorder)
+                                        ),
+                                        child: Row(
+                                          children: [
+
+                                            SizedBox(width: 5),
+
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Icon(
+                                                Icons.remove,
+                                                color: AppColors.mainGreen,
+                                                size: 20,
+                                              ),
+                                            ),
+
+                                            Expanded(
+                                              child: Center(
+                                                child: Text(
+                                                  "Add to Zone",
+                                                  style: textStyle.SegoeUISemiBold.copyWith(
+                                                      fontSize: 14.px,
+                                                      color: AppColors.mainGreen
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Icon(
+                                                Icons.add,
+                                                color: AppColors.mainGreen,
+                                                size: 20,
+                                              ),
+                                            ),
+
+                                            SizedBox(width: 5),
+
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                  SizedBox(width: 10),
+
+                                  InkWell(
+                                    onTap: () {
+
+
+
+                                    },
+                                    child: Container(
+                                      height: 36,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(6),
+                                          border: Border.all(color: AppColors.borderColor)
+                                      ),
+                                      padding: EdgeInsets.symmetric(horizontal: 10),
+                                      child: Center(
+                                        child: Text(
+                                          "Cancel",
+                                          style: textStyle.SegoeUISemiBold.copyWith(
+                                              fontSize: 14.px,
+                                              color: AppColors.fontLightBlack
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              }
+          );
+        }).whenComplete(() {
+      setState(() {
+
+      });
+    });
+  }
+
 }
