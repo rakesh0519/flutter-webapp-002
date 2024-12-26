@@ -171,6 +171,7 @@ class _ProductsState extends State<Products> {
                                     InkWell(
                                       onTap: () {
 
+                                        addToProjectDialog();
 
                                       },
                                       child: Container(
@@ -2007,4 +2008,507 @@ class _ProductsState extends State<Products> {
     });
   }
 
+  addToProjectDialog() {
+
+    int productCount = 32;
+
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+              return Dialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius:
+                    BorderRadius.circular(12.0)), //this right here
+                child: Container(
+                  width: 400,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(6),
+                    color: AppColors.white_00,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+
+                        Row(
+                          children: [
+
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+
+                                  Text(
+                                    "Airstage H-Series",
+                                    style: textStyle.SegoeUISemiBold.copyWith(
+                                        fontSize: 20.px,
+                                        color: AppColors.fontBlack
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "ASUH09KMAS",
+                                    style: textStyle.SegoeUISemiBold.copyWith(
+                                        fontSize: 20.px,
+                                        color: AppColors.mainGreen
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+
+                            InkWell(
+                                onTap: () {
+
+                                  Navigator.pop(context);
+
+                                },
+                                child: Icon(Icons.close, color: AppColors.fontLightBlack)
+                            )
+
+                          ],
+                        ),
+
+                        SizedBox(height: 2.h),
+
+                        Text(
+                          "Select how many you need.",
+                          style: textStyle.SegoeUI.copyWith(
+                              fontSize: 14.px,
+                              color: AppColors.fontGrey
+                          ),
+                        ),
+
+                        Divider(
+                          color: AppColors.borderColor,
+                          height: 40,
+                        ),
+
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+
+                            InkWell(
+                              onTap: () {
+
+                                if(productCount != 1) {
+                                  setState(() {
+                                    productCount = productCount-1;
+                                  });
+                                }
+
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: AppColors.borderColor)
+                                ),
+                                height: 35,
+                                width: 35,
+                                child: Center(
+                                  child: Icon(
+                                    Icons.remove,
+                                    color: AppColors.mainGreen,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            SizedBox(width: 15),
+
+                            Text(
+                              "$productCount",
+                              style: textStyle.SegoeUISemiBold.copyWith(
+                                  fontSize: 30.px,
+                                  color: AppColors.fontBlack
+                              ),
+                            ),
+
+                            SizedBox(width: 15),
+
+                            InkWell(
+                              onTap: () {
+
+                                setState(() {
+                                  productCount = productCount+1;
+                                });
+
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: AppColors.borderColor)
+                                ),
+                                height: 35,
+                                width: 35,
+                                child: Center(
+                                  child: Icon(
+                                    Icons.add,
+                                    color: AppColors.mainGreen,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                          ],
+                        ),
+
+                        Divider(
+                          color: AppColors.borderColor,
+                          height: 30,
+                        ),
+
+                        Row(
+                          children: [
+
+                            Expanded(
+                              child: Text(
+                                "Price per product",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.fontLightBlack
+                                ),
+                              ),
+                            ),
+
+                            Text(
+                              "\$10",
+                              style: textStyle.SegoeUI.copyWith(
+                                  fontSize: 14.px,
+                                  color: AppColors.fontGrey
+                              ),
+                            ),
+
+                          ],
+                        ),
+
+                        SizedBox(height: 10),
+
+                        Row(
+                          children: [
+
+                            Expanded(
+                              child: Text(
+                                "Total",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.fontLightBlack
+                                ),
+                              ),
+                            ),
+
+                            Text(
+                              "\$320",
+                              style: textStyle.SegoeUI.copyWith(
+                                  fontSize: 14.px,
+                                  color: AppColors.fontGrey
+                              ),
+                            ),
+
+                          ],
+                        ),
+
+                        SizedBox(height: 3.h),
+
+                        Row(
+                          children: [
+
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+
+                                  Navigator.pop(context);
+
+                                },
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 36,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: AppColors.white_00,
+                                      border: Border.all(color: AppColors.darkBorderColor.withOpacity(0.3))
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Cancel",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.selectIconColor
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            SizedBox(width: 0.5.w),
+
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+
+                                  Navigator.pop(context);
+                                  selectProjectZone();
+
+                                },
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 36,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: AppColors.mainGreen
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Add to project",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.white_00
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                          ],
+                        )
+
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            }
+          );
+        }).whenComplete(() {
+
+    });
+  }
+
+  selectProjectZone() {
+
+    List<String> options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
+    String? _selectedProject,_selectedZone;
+
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+              return Dialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius:
+                    BorderRadius.circular(12.0)), //this right here
+                child: Container(
+                  width: 450,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(6),
+                    color: AppColors.white_00,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+
+                        Row(
+                          children: [
+
+                            Text(
+                              "Airstage H-Series",
+                              style: textStyle.SegoeUISemiBold.copyWith(
+                                  fontSize: 20.px,
+                                  color: AppColors.fontBlack
+                              ),
+                            ),
+
+                            Expanded(
+                              child: Text(
+                                "ASUH09KMAS",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 20.px,
+                                    color: AppColors.mainGreen
+                                ),
+                              ),
+                            ),
+
+                            InkWell(
+                                onTap: () {
+
+                                  Navigator.pop(context);
+
+                                },
+                                child: Icon(Icons.close, color: AppColors.fontLightBlack)
+                            )
+
+                          ],
+                        ),
+
+                        SizedBox(height: 10),
+
+                        Text(
+                          "Choose the project to which you want to add this\nproduct and make any necessary updates.",
+                          style: textStyle.SegoeUI.copyWith(
+                              fontSize: 14.px,
+                              color: AppColors.fontGrey
+                          ),
+                        ),
+
+                        Divider(
+                          color: AppColors.borderColor,
+                          height: 40,
+                        ),
+
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: AppColors.white_00,
+                              border: Border.all(color: AppColors.fontGrey.withOpacity(.4))
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 8),
+                          child: DropdownButton<String>(
+                            isDense: true,
+                            style: textStyle.SegoeUI.copyWith(
+                                fontSize: 14.px,
+                                color: AppColors.fontBlack
+                            ),
+                            underline: SizedBox(),
+                            value: _selectedProject,
+                            hint: Text("Project Name"),
+                            isExpanded: true,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                _selectedProject = newValue;  // Update the selected value
+                              });
+                            },
+                            items: options.map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+
+                        SizedBox(height: 10),
+
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: AppColors.white_00,
+                              border: Border.all(color: AppColors.fontGrey.withOpacity(.4))
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 8),
+                          child: DropdownButton<String>(
+                            isDense: true,
+                            style: textStyle.SegoeUI.copyWith(
+                                fontSize: 14.px,
+                                color: AppColors.fontBlack
+                            ),
+                            underline: SizedBox(),
+                            value: _selectedZone,
+                            hint: Text("Select zone"),
+                            isExpanded: true,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                _selectedZone = newValue;  // Update the selected value
+                              });
+                            },
+                            items: options.map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+
+                        SizedBox(height: 3.h),
+
+                        Row(
+                          children: [
+
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+
+                                  Navigator.pop(context);
+
+                                },
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 36,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: AppColors.white_00,
+                                      border: Border.all(color: AppColors.darkBorderColor.withOpacity(0.3))
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Cancel",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.selectIconColor
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            SizedBox(width: 0.5.w),
+
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+
+                                  Navigator.pop(context);
+
+                                },
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 36,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: AppColors.mainGreen
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Add to project",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.white_00
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                          ],
+                        )
+
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            }
+          );
+        }).whenComplete(() {
+
+    });
+  }
 }
