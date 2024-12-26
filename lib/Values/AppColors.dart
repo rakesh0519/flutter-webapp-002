@@ -28,6 +28,7 @@ class AppColors{
   static const Color fontPurple = Color(0xFF5925DC);
   static const Color borderPurple = Color(0xFFD9D6FE);
   static const Color backPurple = Color(0xFFF4F3FF);
+  static const Color fontRed = Color(0xFFB42318);
 
   //white colors shades
   static const Color white_00 = Color(0xFFFFFFFF);

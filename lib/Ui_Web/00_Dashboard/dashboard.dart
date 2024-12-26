@@ -10,6 +10,8 @@ import 'Sub_Page/00_Projects/Project_details/add_system.dart';
 import 'Sub_Page/01_Products/products_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'Sub_Page/03_Settings/setting_screen.dart';
+
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
 
@@ -803,8 +805,26 @@ class _DashboardState extends State<Dashboard> {
                                       color: AppColors.selectIconColor
                                   ),
                                 ),
-                              ) :
-                                  SizedBox()
+                              )
+                                  :
+                              uiProvider.dashboardPage == "Setting"
+                                  ?
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: AppColors.lightBg,
+                                    borderRadius: BorderRadius.circular(3)
+                                ),
+                                padding: EdgeInsets.only(left: 10,right: 10,top: 3,bottom: 5),
+                                child: Text(
+                                  "Settings",
+                                  style: textStyle.SegoeUISemiBold.copyWith(
+                                      fontSize: 14.px,
+                                      color: AppColors.selectIconColor
+                                  ),
+                                ),
+                              )
+                                  :
+                              SizedBox()
 
                             ],
                           ),
@@ -828,6 +848,10 @@ class _DashboardState extends State<Dashboard> {
                               uiProvider.dashboardPage == "Add_Systems"
                                   ?
                               AddSystem()
+                                  :
+                              uiProvider.dashboardPage == "Setting"
+                                  ?
+                              SettingScreen()
                                   :
                               SizedBox()
                           ),
