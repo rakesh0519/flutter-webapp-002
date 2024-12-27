@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:fujitsuweb/Routes/routes_generator.dart';
-import 'package:fujitsuweb/Ui_web/splash_screen.dart';
+ import 'package:fujitsuweb/Ui_web/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import 'Providers/ui_providers.dart';
-import 'Ui_Web/00_Dashboard/Sub_Page/00_Projects/projects_screen.dart';
-import 'Ui_Web/00_Dashboard/dashboard.dart';
 
 void main() {
   usePathUrlStrategy();

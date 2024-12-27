@@ -22,25 +22,32 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/splash_bg.png"),
-              fit: BoxFit.cover,
+      body: Stack(
+        children: [
+
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/splash_bg.png"),
+                fit: BoxFit.fill,
+              ),
             ),
           ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
 
-            Image.asset("assets/images/fujitsu_logo.png",width: 300),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            child: Center(
+                child: Image.asset("assets/images/fujitsu_logo.png",width: 300)
+            ),
+          ),
 
-          ],
-        )
-      ),
+        ],
+      )
     );
   }
 }
