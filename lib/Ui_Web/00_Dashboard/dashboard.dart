@@ -569,7 +569,7 @@ class _DashboardState extends State<Dashboard> {
                       highlightColor: Colors.transparent,
                       onTap: () {
 
-                        uiProvider.changeDashboardPage("wheel");
+                        //uiProvider.changeDashboardPage("wheel");
 
                       },
                       child: Container(
@@ -646,7 +646,13 @@ class _DashboardState extends State<Dashboard> {
                           Row(
                             children: [
 
-                              Image.asset("Assets/icons/ic_home.png",width: 20,height: 20),
+                              InkWell(
+                                  onTap: () {
+
+                                    uiProvider.changeDashboardPage("Projects");
+
+                                  },
+                                  child: Image.asset("Assets/icons/ic_home.png",width: 20,height: 20)),
 
                               SizedBox(width: 0.7.w),
 
