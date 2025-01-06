@@ -35,18 +35,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Container(
                   color: AppColors.white_30,
                   height: MediaQuery.of(context).size.height,
-                  child: SizedBox())
+                  child: Image.asset("Assets/icons/register_bg.png",fit: BoxFit.fill,))
           ),
 
           Expanded(
-            flex: 2,
+            flex: 3,
               child: Padding(
-                padding: EdgeInsets.only(left: 7.w,right: 7.w),
+                padding: EdgeInsets.only(left: 12.w,right: 12.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
-                    SizedBox(height: 15.h),
+                    SizedBox(height: 10.h),
+
+                    Image.asset(
+                      "Assets/icons/logo.png",
+                      fit: BoxFit.fill,
+                      width: 50,
+                      height: 50,
+                    ),
+
+                    SizedBox(height: 3.h),
 
                     Text(
                       "Sign up",

@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
 
           Expanded(
-            flex: 1,
+            flex: 3,
             child: Stack(
               children: [
 
@@ -46,14 +46,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         SizedBox(height: 19.h),
 
-                        Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: AppColors.white_00,
-                                border: Border.all(color: AppColors.borderColor)
-                            ),
-                            padding: EdgeInsets.all(11),
-                            child: SizedBox(width: 25,height: 25)
+                        Image.asset(
+                            "Assets/icons/logo.png",
+                            fit: BoxFit.fill,
+                          width: 50,
+                          height: 50,
                         ),
 
                         SizedBox(height: 3.h),
@@ -176,14 +173,24 @@ class _LoginScreenState extends State<LoginScreen> {
                         Row(
                           children: [
 
-                            Checkbox(
-                                value: isRememberMe,
-                                activeColor: AppColors.mainGreen,
-                                onChanged: (value){
-                                  setState(() {
-                                    isRememberMe = !isRememberMe;
-                                  });
-                                }),
+                            InkWell(
+                              onTap: () {
+
+                                setState(() {
+                                  isRememberMe = !isRememberMe;
+                                });
+
+                              },
+                              child: Image.asset(
+                                  isRememberMe == true
+                                      ?
+                                  "Assets/icons/ic_checkbox_fill.png"
+                                      :
+                                  "Assets/icons/ic_checkbox.png",
+                                  width: 18,height: 18),
+                            ),
+
+                            SizedBox(width: 10),
 
                             Text(
                               "Remember me",
@@ -284,11 +291,12 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
 
           Expanded(
-              flex: MediaQuery.of(context).size.width < 800 ? 0 : 1,
+              flex: MediaQuery.of(context).size.width < 800 ? 1 : 2,
               child: Container(
                   color: AppColors.white_30,
                   height: MediaQuery.of(context).size.height,
-                  child: SizedBox())
+                  child: Image.asset("Assets/icons/login_bg.png",fit: BoxFit.fill,)
+              )
           )
 
         ],
