@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/Project_details/invoices.dart';
+import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/Project_details/notification.dart';
+import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/Project_details/systems.dart';
+import 'package:fujitsuweb/Values/AppColors.dart';
+import 'package:fujitsuweb/Values/Constants.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../Values/AppColors.dart';
-import '../../../../Values/Constants.dart';
-import 'Project_details/notification.dart';
-import 'Project_details/systems.dart';
-
-class ProjectDetails extends StatefulWidget {
-  const ProjectDetails({super.key});
+class UserProjectsDetails extends StatefulWidget {
+  const UserProjectsDetails({super.key});
 
   @override
-  State<ProjectDetails> createState() => _ProjectDetailsState();
+  State<UserProjectsDetails> createState() => _UserProjectsDetailsState();
 }
 
-class _ProjectDetailsState extends State<ProjectDetails> {
+class _UserProjectsDetailsState extends State<UserProjectsDetails> {
   String selected = "Project Details";
 
   TextEditingController projectNameController =
