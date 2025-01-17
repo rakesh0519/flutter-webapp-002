@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fujitsuweb/Providers/ui_providers.dart';
-import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/user_projects/user_projects_details.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class UsersDetails extends StatefulWidget {
@@ -140,9 +140,17 @@ class _UsersDetailsState extends State<UsersDetails> {
 
   UiProvider uiProvider = UiProvider();
   ScrollController scrollController = ScrollController();
+  @override
+  void initState() {
+    super.initState();
+
+    uiProvider = Provider.of<UiProvider>(context, listen: false);
+  }
 
   @override
   Widget build(BuildContext context) {
+    uiProvider = Provider.of<UiProvider>(context, listen: true);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -465,7 +473,7 @@ class _UsersDetailsState extends State<UsersDetails> {
                             hoverColor: AppColors.white_00,
                             onTap: () {
                               uiProvider
-                                  .changeDashboardPage("User_Projects_Details");
+                                  .changeAdminPage("User_Projects_Details");
                             },
                             child: Container(
                               decoration: BoxDecoration(

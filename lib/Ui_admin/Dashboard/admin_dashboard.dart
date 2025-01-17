@@ -3,6 +3,9 @@ import 'package:fujitsuweb/Providers/ui_providers.dart';
 import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/Project_details/add_system.dart';
 import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/01_Products/products_screen.dart';
 import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/03_Settings/setting_screen.dart';
+import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/products/products_catalog.dart';
+import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/products/products_details/products_details.dart';
+import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/user_projects/user_projects_details.dart';
 import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/users/users_details.dart';
 import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/users/users_screen.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
@@ -384,16 +387,16 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () {
-                        uiProvider.changeDashboardPage("Users");
+                        uiProvider.changeAdminPage("Users");
                       },
                       child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: uiProvider.dashboardPage == "Projects"
+                              color: uiProvider.adminDashPage == "Projects"
                                   ? AppColors.selectColor
                                   : AppColors.white_00,
                               border: Border.all(
-                                color: uiProvider.dashboardPage == "Projects"
+                                color: uiProvider.adminDashPage == "Projects"
                                     ? AppColors.selectColor
                                     : AppColors.white_00,
                               )),
@@ -402,7 +405,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                             "Assets/icons/ic_user_person.png",
                             width: 20,
                             height: 20,
-                            color: uiProvider.dashboardPage == "Projects"
+                            color: uiProvider.adminDashPage == "Projects"
                                 ? AppColors.selectIconColor
                                 : AppColors.unselectIconColor,
                           )),
@@ -414,16 +417,16 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () {
-                        uiProvider.changeDashboardPage("Products");
+                        uiProvider.changeAdminPage("Products");
                       },
                       child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: uiProvider.dashboardPage == "Products"
+                              color: uiProvider.adminDashPage == "Products"
                                   ? AppColors.selectColor
                                   : AppColors.white_00,
                               border: Border.all(
-                                color: uiProvider.dashboardPage == "Products"
+                                color: uiProvider.adminDashPage == "Products"
                                     ? AppColors.selectColor
                                     : AppColors.white_00,
                               )),
@@ -432,7 +435,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                             "Assets/icons/ic_products.png",
                             width: 20,
                             height: 20,
-                            color: uiProvider.dashboardPage == "Products"
+                            color: uiProvider.adminDashPage == "Products"
                                 ? AppColors.selectIconColor
                                 : AppColors.unselectIconColor,
                           )),
@@ -444,16 +447,16 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () {
-                        //uiProvider.changeDashboardPage("wheel");
+                        //uiProvider.changeAdminPage("wheel");
                       },
                       child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: uiProvider.dashboardPage == "wheel"
+                              color: uiProvider.adminDashPage == "wheel"
                                   ? AppColors.selectColor
                                   : AppColors.white_00,
                               border: Border.all(
-                                color: uiProvider.dashboardPage == "wheel"
+                                color: uiProvider.adminDashPage == "wheel"
                                     ? AppColors.selectColor
                                     : AppColors.white_00,
                               )),
@@ -462,7 +465,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                             "Assets/icons/ic_wheel.png",
                             width: 20,
                             height: 20,
-                            color: uiProvider.dashboardPage == "wheel"
+                            color: uiProvider.adminDashPage == "wheel"
                                 ? AppColors.selectIconColor
                                 : AppColors.unselectIconColor,
                           )),
@@ -474,16 +477,16 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () {
-                        uiProvider.changeDashboardPage("Setting");
+                        uiProvider.changeAdminPage("Setting");
                       },
                       child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: uiProvider.dashboardPage == "Setting"
+                              color: uiProvider.adminDashPage == "Setting"
                                   ? AppColors.selectColor
                                   : AppColors.white_00,
                               border: Border.all(
-                                color: uiProvider.dashboardPage == "Setting"
+                                color: uiProvider.adminDashPage == "Setting"
                                     ? AppColors.selectColor
                                     : AppColors.white_00,
                               )),
@@ -492,7 +495,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                             "Assets/icons/ic_setting.png",
                             width: 20,
                             height: 20,
-                            color: uiProvider.dashboardPage == "Setting"
+                            color: uiProvider.adminDashPage == "Setting"
                                 ? AppColors.selectIconColor
                                 : AppColors.unselectIconColor,
                           )),
@@ -526,7 +529,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                             children: [
                               InkWell(
                                   onTap: () {
-                                    uiProvider.changeDashboardPage("Projects");
+                                    uiProvider.changeAdminPage("Users");
                                   },
                                   child: Image.asset("Assets/icons/ic_home.png",
                                       width: 20, height: 20)),
@@ -534,7 +537,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                               Icon(Icons.keyboard_arrow_right_rounded,
                                   color: AppColors.fontGrey.withOpacity(0.3)),
                               SizedBox(width: 0.7.w),
-                              uiProvider.dashboardPage == "Users"
+                              uiProvider.adminDashPage == "Users"
                                   ? Container(
                                       decoration: BoxDecoration(
                                           color: AppColors.lightBg,
@@ -554,15 +557,14 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                     AppColors.selectIconColor),
                                       ),
                                     )
-                                  : uiProvider.dashboardPage ==
-                                          "Projects_Details"
+                                  : uiProvider.adminDashPage == "Users_Details"
                                       ? Row(
                                           children: [
                                             InkWell(
                                               hoverColor: AppColors.white_00,
                                               onTap: () {
-                                                uiProvider.changeDashboardPage(
-                                                    "Projects");
+                                                uiProvider
+                                                    .changeAdminPage("Users");
                                               },
                                               child: Padding(
                                                 padding: EdgeInsets.only(
@@ -571,7 +573,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                     top: 3,
                                                     bottom: 5),
                                                 child: Text(
-                                                  "Projects",
+                                                  "Users",
                                                   style: textStyle
                                                           .SegoeUISemiBold
                                                       .copyWith(
@@ -599,7 +601,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                   top: 3,
                                                   bottom: 5),
                                               child: Text(
-                                                "Project Name",
+                                                "Users Name",
                                                 style: textStyle.SegoeUISemiBold
                                                     .copyWith(
                                                         fontSize: 14.px,
@@ -609,7 +611,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                             ),
                                           ],
                                         )
-                                      : uiProvider.dashboardPage ==
+                                      : uiProvider.adminDashPage ==
                                               "Add_Systems"
                                           ? Row(
                                               children: [
@@ -617,9 +619,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                   hoverColor:
                                                       AppColors.white_00,
                                                   onTap: () {
-                                                    uiProvider
-                                                        .changeDashboardPage(
-                                                            "Projects");
+                                                    uiProvider.changeAdminPage(
+                                                        "Projects");
                                                   },
                                                   child: Padding(
                                                     padding: EdgeInsets.only(
@@ -649,9 +650,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                   hoverColor:
                                                       AppColors.white_00,
                                                   onTap: () {
-                                                    uiProvider
-                                                        .changeDashboardPage(
-                                                            "Projects_Details");
+                                                    uiProvider.changeAdminPage(
+                                                        "Projects_Details");
                                                   },
                                                   child: Padding(
                                                     padding: EdgeInsets.only(
@@ -700,7 +700,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                 ),
                                               ],
                                             )
-                                          : uiProvider.dashboardPage ==
+                                          : uiProvider.adminDashPage ==
                                                   "Products"
                                               ? Container(
                                                   decoration: BoxDecoration(
@@ -723,7 +723,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                                 .selectIconColor),
                                                   ),
                                                 )
-                                              : uiProvider.dashboardPage ==
+                                              : uiProvider.adminDashPage ==
                                                       "Setting"
                                                   ? Container(
                                                       decoration: BoxDecoration(
@@ -752,19 +752,26 @@ class _AdminDashboardState extends State<AdminDashboard> {
                           ),
                           SizedBox(height: 2.h),
                           Expanded(
-                            child: uiProvider.dashboardPage == "Users"
+                            child: uiProvider.adminDashPage == "Users"
                                 ? UsersScreen()
-                                : uiProvider.dashboardPage == "Projects_Details"
+                                : uiProvider.adminDashPage == "Users_Details"
                                     ? UsersDetails()
-                                    : uiProvider.dashboardPage == "Products"
-                                        ? Products()
-                                        : uiProvider.dashboardPage ==
-                                                "Add_Systems"
-                                            ? AddSystem()
-                                            : uiProvider.dashboardPage ==
-                                                    "Setting"
-                                                ? SettingScreen()
-                                                : SizedBox(),
+                                    : uiProvider.adminDashPage ==
+                                            "User_Projects_Details"
+                                        ? UserProjectsDetails()
+                                        : uiProvider.adminDashPage ==
+                                                "Product_Details_page"
+                                            ? ProductsDetailsScreen()
+                                            : uiProvider.adminDashPage ==
+                                                    "Products"
+                                                ? ProductsCatalogScreen()
+                                                : uiProvider.adminDashPage ==
+                                                        "Add_Systems"
+                                                    ? AddSystem()
+                                                    : uiProvider.adminDashPage ==
+                                                            "Setting"
+                                                        ? SettingScreen()
+                                                        : SizedBox(),
                           ),
                         ],
                       ),

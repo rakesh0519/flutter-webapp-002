@@ -289,8 +289,8 @@ class _UsersScreenState extends State<UsersScreen> {
                         controller: scrollController,
                         itemCount: projects.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
-                            childAspectRatio: 1.13,
+                            crossAxisCount: 5,
+                            childAspectRatio: 1.2,
                             mainAxisSpacing: 10,
                             crossAxisSpacing: 10),
                         itemBuilder: (context, index) {
@@ -304,8 +304,7 @@ class _UsersScreenState extends State<UsersScreen> {
                               child: InkWell(
                                 hoverColor: AppColors.white_00,
                                 onTap: () {
-                                  uiProvider
-                                      .changeDashboardPage("Projects_Details");
+                                  uiProvider.changeAdminPage("Users_Details");
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -521,7 +520,7 @@ class _UsersScreenState extends State<UsersScreen> {
                                               child: Center(
                                                   child: Image.asset(
                                                       "Assets/icons/ic_delete.png",
-                                                      width: 30)),
+                                                      width: 20)),
                                             ),
                                           ),
                                         ],
