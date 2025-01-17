@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/Project_details/invoices.dart';
 import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/Project_details/notification.dart';
 import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/Project_details/systems.dart';
+import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/user_projects/admin_notifications.dart';
+import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/user_projects/admin_systems.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
 import 'package:sizer/sizer.dart';
@@ -64,28 +66,28 @@ class _UserProjectsDetailsState extends State<UserProjectsDetails> {
                 ],
               ),
             ),
-            InkWell(
-              onTap: () {
-                addDocument();
-              },
-              child: Image.asset("Assets/icons/ic_green_add.png",
-                  width: 38, height: 38),
-            ),
-            SizedBox(width: 0.6.w),
-            InkWell(
-              onTap: () {
-                requestDialog();
-              },
-              child: Image.asset("Assets/icons/ic_notes.png",
-                  width: 38, height: 38),
-            ),
-            SizedBox(width: 0.6.w),
-            InkWell(
-              onTap: () {},
-              child: Image.asset("Assets/icons/ic_save.png",
-                  width: 38, height: 38),
-            ),
-            SizedBox(width: 0.6.w),
+            // InkWell(
+            //   onTap: () {
+            //     addDocument();
+            //   },
+            //   child: Image.asset("Assets/icons/ic_green_add.png",
+            //       width: 38, height: 38),
+            // ),
+            // SizedBox(width: 0.6.w),
+            // InkWell(
+            //   onTap: () {
+            //     requestDialog();
+            //   },
+            //   child: Image.asset("Assets/icons/ic_notes.png",
+            //       width: 38, height: 38),
+            // ),
+            // SizedBox(width: 0.6.w),
+            // InkWell(
+            //   onTap: () {},
+            //   child: Image.asset("Assets/icons/ic_save.png",
+            //       width: 38, height: 38),
+            // ),
+            // SizedBox(width: 0.6.w),
             InkWell(
               onTap: () {
                 shareDialog();
@@ -122,7 +124,7 @@ class _UserProjectsDetailsState extends State<UserProjectsDetails> {
                 padding:
                     EdgeInsets.only(left: 15, right: 15, top: 6, bottom: 10),
                 child: Text(
-                  "Project Info",
+                  "Project Details",
                   style: textStyle.SegoeUISemiBold.copyWith(
                       fontSize: 12.px, color: AppColors.selectIconColor),
                 ),
@@ -158,30 +160,6 @@ class _UserProjectsDetailsState extends State<UserProjectsDetails> {
               splashColor: AppColors.white_00,
               onTap: () {
                 setState(() {
-                  selected = "Invoices";
-                });
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: selected == "Invoices"
-                        ? AppColors.selectColor
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(6)),
-                padding:
-                    EdgeInsets.only(left: 15, right: 15, top: 6, bottom: 10),
-                child: Text(
-                  "Invoices",
-                  style: textStyle.SegoeUISemiBold.copyWith(
-                      fontSize: 12.px, color: AppColors.selectIconColor),
-                ),
-              ),
-            ),
-            SizedBox(width: 10),
-            InkWell(
-              hoverColor: AppColors.white_00,
-              splashColor: AppColors.white_00,
-              onTap: () {
-                setState(() {
                   selected = "Notifications";
                 });
               },
@@ -202,1048 +180,78 @@ class _UserProjectsDetailsState extends State<UserProjectsDetails> {
             ),
           ],
         ),
-        SizedBox(height: 2.h),
+        SizedBox(height: 4.h),
         selected == "Project Details"
             ? Expanded(
                 child: Scrollbar(
                   controller: scrollController,
                   thumbVisibility: true,
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: 45.w,
-                        child: Theme(
-                          data: Theme.of(context).copyWith(
-                              scrollbarTheme: ScrollbarThemeData(
-                            thumbColor:
-                                WidgetStateProperty.all(Colors.transparent),
-                          )),
-                          child: SingleChildScrollView(
-                            controller: scrollController,
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 200,
-                                      child: Text(
-                                        "Project Name *",
-                                        style:
-                                            textStyle.SegoeUISemiBold.copyWith(
-                                                fontSize: 12.px,
-                                                color: AppColors.fontBlack),
-                                      ),
-                                    ),
-                                    SizedBox(height: 0.6.h),
-                                    Expanded(
-                                      child: TextFormField(
-                                          controller: projectNameController,
-                                          style: textStyle.SegoeUI.copyWith(
-                                              color: AppColors.fontBlack,
-                                              fontSize: 14.px),
-                                          cursorHeight: 15,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            fillColor: AppColors.white_00,
-                                            filled: true,
-                                            hintText: "",
-                                            hintStyle:
-                                                textStyle.SegoeUI.copyWith(
-                                                    color: AppColors.fontGrey,
-                                                    fontSize: 14.px),
-                                            enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.fontGrey
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.fontGrey
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: AppColors
-                                                            .fontGrey
-                                                            .withOpacity(.4)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            6)),
-                                            errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.red_00
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                                Divider(
-                                  color: AppColors.borderColor,
-                                  height: 40,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: 200,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Project Description *",
-                                            style: textStyle.SegoeUISemiBold
-                                                .copyWith(
-                                                    fontSize: 12.px,
-                                                    color: AppColors.fontBlack),
-                                          ),
-                                          Text(
-                                            "White a short introduction",
-                                            style: textStyle.SegoeUI.copyWith(
-                                                fontSize: 12.px,
-                                                color: AppColors.fontGrey),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(height: 0.6.h),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          TextFormField(
-                                              controller:
-                                                  projectDetailsController,
-                                              style: textStyle.SegoeUI.copyWith(
-                                                  color: AppColors.fontBlack,
-                                                  fontSize: 14.px),
-                                              maxLines: 6,
-                                              cursorHeight: 15,
-                                              decoration: InputDecoration(
-                                                isDense: true,
-                                                fillColor: AppColors.white_00,
-                                                filled: true,
-                                                hintText: "",
-                                                hintStyle:
-                                                    textStyle.SegoeUI.copyWith(
-                                                        color:
-                                                            AppColors.fontGrey,
-                                                        fontSize: 14.px),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color: AppColors
-                                                                .fontGrey
-                                                                .withOpacity(
-                                                                    .4)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(6)),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color: AppColors
-                                                                .fontGrey
-                                                                .withOpacity(
-                                                                    .4)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(6)),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color: AppColors
-                                                                .fontGrey
-                                                                .withOpacity(
-                                                                    .4)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(6)),
-                                                errorBorder: OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: AppColors.red_00
-                                                            .withOpacity(.4)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            6)),
-                                              )),
-                                          Text(
-                                            "275 characters left",
-                                            style: textStyle.SegoeUI.copyWith(
-                                                fontSize: 12.px,
-                                                color: AppColors.fontGrey),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Divider(
-                                  color: AppColors.borderColor,
-                                  height: 40,
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 200,
-                                      child: Text(
-                                        "Client Name *",
-                                        style:
-                                            textStyle.SegoeUISemiBold.copyWith(
-                                                fontSize: 12.px,
-                                                color: AppColors.fontBlack),
-                                      ),
-                                    ),
-                                    SizedBox(height: 0.6.h),
-                                    Expanded(
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: TextFormField(
-                                                controller:
-                                                    clientFirstController,
-                                                style:
-                                                    textStyle.SegoeUI.copyWith(
-                                                        color:
-                                                            AppColors.fontBlack,
-                                                        fontSize: 14.px),
-                                                cursorHeight: 15,
-                                                decoration: InputDecoration(
-                                                  isDense: true,
-                                                  fillColor: AppColors.white_00,
-                                                  filled: true,
-                                                  hintText: "",
-                                                  hintStyle: textStyle.SegoeUI
-                                                      .copyWith(
-                                                          color: AppColors
-                                                              .fontGrey,
-                                                          fontSize: 14.px),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: AppColors
-                                                                  .fontGrey
-                                                                  .withOpacity(
-                                                                      .4)),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6)),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: AppColors
-                                                                  .fontGrey
-                                                                  .withOpacity(
-                                                                      .4)),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6)),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: AppColors
-                                                                  .fontGrey
-                                                                  .withOpacity(
-                                                                      .4)),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6)),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: AppColors
-                                                                  .red_00
-                                                                  .withOpacity(
-                                                                      .4)),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6)),
-                                                )),
-                                          ),
-                                          SizedBox(width: 10),
-                                          Expanded(
-                                            child: TextFormField(
-                                                controller:
-                                                    clientLastController,
-                                                style:
-                                                    textStyle.SegoeUI.copyWith(
-                                                        color:
-                                                            AppColors.fontBlack,
-                                                        fontSize: 14.px),
-                                                cursorHeight: 15,
-                                                decoration: InputDecoration(
-                                                  isDense: true,
-                                                  fillColor: AppColors.white_00,
-                                                  filled: true,
-                                                  hintText: "",
-                                                  hintStyle: textStyle.SegoeUI
-                                                      .copyWith(
-                                                          color: AppColors
-                                                              .fontGrey,
-                                                          fontSize: 14.px),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: AppColors
-                                                                  .fontGrey
-                                                                  .withOpacity(
-                                                                      .4)),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6)),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: AppColors
-                                                                  .fontGrey
-                                                                  .withOpacity(
-                                                                      .4)),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6)),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: AppColors
-                                                                  .fontGrey
-                                                                  .withOpacity(
-                                                                      .4)),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6)),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: AppColors
-                                                                  .red_00
-                                                                  .withOpacity(
-                                                                      .4)),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6)),
-                                                )),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Divider(
-                                  color: AppColors.borderColor,
-                                  height: 40,
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 200,
-                                      child: Text(
-                                        "Board Name *",
-                                        style:
-                                            textStyle.SegoeUISemiBold.copyWith(
-                                                fontSize: 12.px,
-                                                color: AppColors.fontBlack),
-                                      ),
-                                    ),
-                                    SizedBox(height: 0.6.h),
-                                    Expanded(
-                                      child: TextFormField(
-                                          controller: boardNameController,
-                                          style: textStyle.SegoeUI.copyWith(
-                                              color: AppColors.fontBlack,
-                                              fontSize: 14.px),
-                                          cursorHeight: 15,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            fillColor: AppColors.white_00,
-                                            filled: true,
-                                            hintText: "",
-                                            hintStyle:
-                                                textStyle.SegoeUI.copyWith(
-                                                    color: AppColors.fontGrey,
-                                                    fontSize: 14.px),
-                                            enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.fontGrey
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.fontGrey
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: AppColors
-                                                            .fontGrey
-                                                            .withOpacity(.4)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            6)),
-                                            errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.red_00
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                                Divider(
-                                  color: AppColors.borderColor,
-                                  height: 40,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: 200,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Client photo",
-                                            style: textStyle.SegoeUISemiBold
-                                                .copyWith(
-                                                    fontSize: 12.px,
-                                                    color: AppColors.fontBlack),
-                                          ),
-                                          Text(
-                                            "This will be displayed on the\nproject profile",
-                                            style: textStyle.SegoeUI.copyWith(
-                                                fontSize: 12.px,
-                                                color: AppColors.fontGrey),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(height: 0.6.h),
-                                    Expanded(
-                                        child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(30),
-                                                color: AppColors.white_00,
-                                                border: Border.all(
-                                                    color:
-                                                        AppColors.borderColor)),
-                                            padding: EdgeInsets.all(8),
-                                            child: SizedBox(
-                                              height: 35,
-                                              width: 35,
-                                            )),
-                                        SizedBox(width: 10),
-                                        Expanded(
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                border: Border.all(
-                                                    color: AppColors.fontGrey
-                                                        .withOpacity(.4))),
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 10),
-                                            child: Column(
-                                              children: [
-                                                Container(
-                                                    decoration: BoxDecoration(
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            color: Colors.black
-                                                                .withOpacity(
-                                                                    0.05), // Shadow color
-                                                            blurRadius:
-                                                                10, // Softness of the shadow
-                                                            spreadRadius:
-                                                                1, // Size of the shadow
-                                                            offset: Offset(0,
-                                                                4), // Position of the shadow
-                                                          ),
-                                                        ],
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        color:
-                                                            AppColors.white_00,
-                                                        border: Border.all(
-                                                            color: AppColors
-                                                                .borderColor
-                                                                .withOpacity(
-                                                                    0.5))),
-                                                    padding: EdgeInsets.all(11),
-                                                    child: Image.asset(
-                                                        "Assets/icons/ic_upload.png",
-                                                        width: 25,
-                                                        height: 25)),
-                                                SizedBox(height: 6),
-                                                Text.rich(
-                                                  TextSpan(
-                                                    children: [
-                                                      TextSpan(
-                                                        text:
-                                                            'Click to upload ',
-                                                        style: textStyle
-                                                                .SegoeUISemiBold
-                                                            .copyWith(
-                                                                fontSize: 14.px,
-                                                                color: AppColors
-                                                                    .mainGreen),
-                                                      ),
-                                                      TextSpan(
-                                                        text:
-                                                            'or drag and drop',
-                                                        style: textStyle.SegoeUI
-                                                            .copyWith(
-                                                                fontSize: 14.px,
-                                                                color: AppColors
-                                                                    .fontGrey),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "SVG, PNG, JPG or GIF (max. 800x400px)",
-                                                  style: textStyle.SegoeUI
-                                                      .copyWith(
-                                                          fontSize: 12.px,
-                                                          color: AppColors
-                                                              .fontBlack),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )),
-                                  ],
-                                ),
-                                Divider(
-                                  color: AppColors.borderColor,
-                                  height: 40,
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 200,
-                                      child: Text(
-                                        "Email address *",
-                                        style:
-                                            textStyle.SegoeUISemiBold.copyWith(
-                                                fontSize: 12.px,
-                                                color: AppColors.fontBlack),
-                                      ),
-                                    ),
-                                    SizedBox(height: 0.6.h),
-                                    Expanded(
-                                      child: TextFormField(
-                                          controller: emailController,
-                                          style: textStyle.SegoeUI.copyWith(
-                                              color: AppColors.fontBlack,
-                                              fontSize: 14.px),
-                                          cursorHeight: 15,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            fillColor: AppColors.white_00,
-                                            filled: true,
-                                            hintText: "Enter email address",
-                                            hintStyle:
-                                                textStyle.SegoeUI.copyWith(
-                                                    color: AppColors.fontGrey,
-                                                    fontSize: 14.px),
-                                            prefixIcon: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(10.0),
-                                              child: Image.asset(
-                                                  "Assets/icons/ic_mail.png",
-                                                  width: 15,
-                                                  height: 15,
-                                                  color: AppColors.fontGrey),
-                                            ),
-                                            enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.fontGrey
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.fontGrey
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: AppColors
-                                                            .fontGrey
-                                                            .withOpacity(.4)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            6)),
-                                            errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.red_00
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                                Divider(
-                                  color: AppColors.borderColor,
-                                  height: 40,
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 200,
-                                      child: Text(
-                                        "Phone no *",
-                                        style:
-                                            textStyle.SegoeUISemiBold.copyWith(
-                                                fontSize: 12.px,
-                                                color: AppColors.fontBlack),
-                                      ),
-                                    ),
-                                    SizedBox(height: 0.6.h),
-                                    Expanded(
-                                      child: TextFormField(
-                                          controller: phoneController,
-                                          style: textStyle.SegoeUI.copyWith(
-                                              color: AppColors.fontBlack,
-                                              fontSize: 14.px),
-                                          cursorHeight: 15,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            fillColor: AppColors.white_00,
-                                            filled: true,
-                                            hintText: "Enter phone number",
-                                            hintStyle:
-                                                textStyle.SegoeUI.copyWith(
-                                                    color: AppColors.fontGrey,
-                                                    fontSize: 14.px),
-                                            prefixIcon: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(10.0),
-                                              child: Image.asset(
-                                                  "Assets/icons/ic_call.png",
-                                                  width: 15,
-                                                  height: 15,
-                                                  color: AppColors.fontGrey),
-                                            ),
-                                            enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.fontGrey
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.fontGrey
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: AppColors
-                                                            .fontGrey
-                                                            .withOpacity(.4)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            6)),
-                                            errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: AppColors.red_00
-                                                        .withOpacity(.4)),
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                                Divider(
-                                  color: AppColors.borderColor,
-                                  height: 40,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: 200,
-                                      child: Text(
-                                        "Address",
-                                        style:
-                                            textStyle.SegoeUISemiBold.copyWith(
-                                                fontSize: 12.px,
-                                                color: AppColors.fontBlack),
-                                      ),
-                                    ),
-                                    SizedBox(height: 0.6.h),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          TextFormField(
-                                              controller: addressController,
-                                              style: textStyle.SegoeUI.copyWith(
-                                                  color: AppColors.fontBlack,
-                                                  fontSize: 14.px),
-                                              maxLines: 6,
-                                              cursorHeight: 15,
-                                              decoration: InputDecoration(
-                                                isDense: true,
-                                                fillColor: AppColors.white_00,
-                                                filled: true,
-                                                hintText: "Enter address",
-                                                hintStyle:
-                                                    textStyle.SegoeUI.copyWith(
-                                                        color:
-                                                            AppColors.fontGrey,
-                                                        fontSize: 14.px),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color: AppColors
-                                                                .fontGrey
-                                                                .withOpacity(
-                                                                    .4)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(6)),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color: AppColors
-                                                                .fontGrey
-                                                                .withOpacity(
-                                                                    .4)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(6)),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color: AppColors
-                                                                .fontGrey
-                                                                .withOpacity(
-                                                                    .4)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(6)),
-                                                errorBorder: OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: AppColors.red_00
-                                                            .withOpacity(.4)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            6)),
-                                              )),
-                                          Text(
-                                            "275 characters left",
-                                            style: textStyle.SegoeUI.copyWith(
-                                                fontSize: 12.px,
-                                                color: AppColors.fontGrey),
-                                          ),
-                                          SizedBox(height: 15),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(6),
-                                                color: AppColors.white_00,
-                                                border: Border.all(
-                                                    color: AppColors.fontGrey
-                                                        .withOpacity(.4))),
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 10, vertical: 5),
-                                            child: DropdownButton<String>(
-                                              isDense: true,
-                                              style: textStyle.SegoeUI.copyWith(
-                                                  fontSize: 14.px,
-                                                  color: AppColors.fontBlack),
-                                              underline: SizedBox(),
-                                              value: _selectedState,
-                                              hint: Text("Select State"),
-                                              isExpanded: true,
-                                              onChanged: (String? newValue) {
-                                                setState(() {
-                                                  _selectedState =
-                                                      newValue; // Update the selected value
-                                                });
-                                              },
-                                              items: stateNames.map<
-                                                      DropdownMenuItem<String>>(
-                                                  (String value) {
-                                                return DropdownMenuItem<String>(
-                                                  value: value,
-                                                  child: Text(value),
-                                                );
-                                              }).toList(),
-                                            ),
-                                          ),
-                                          SizedBox(height: 10),
-                                          Row(
-                                            children: [
-                                              Expanded(
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              6),
-                                                      color: AppColors.white_00,
-                                                      border: Border.all(
-                                                          color: AppColors
-                                                              .fontGrey
-                                                              .withOpacity(
-                                                                  .4))),
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 10,
-                                                      vertical: 5),
-                                                  child: DropdownButton<String>(
-                                                    isDense: true,
-                                                    style: textStyle.SegoeUI
-                                                        .copyWith(
-                                                            fontSize: 14.px,
-                                                            color: AppColors
-                                                                .fontBlack),
-                                                    underline: SizedBox(),
-                                                    value: _selectedCity,
-                                                    hint: Text("Select City"),
-                                                    isExpanded: true,
-                                                    onChanged:
-                                                        (String? newValue) {
-                                                      setState(() {
-                                                        _selectedCity =
-                                                            newValue; // Update the selected value
-                                                      });
-                                                    },
-                                                    items: stateNames.map<
-                                                            DropdownMenuItem<
-                                                                String>>(
-                                                        (String value) {
-                                                      return DropdownMenuItem<
-                                                          String>(
-                                                        value: value,
-                                                        child: Text(value),
-                                                      );
-                                                    }).toList(),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(width: 10),
-                                              Expanded(
-                                                child: TextFormField(
-                                                    controller: zipController,
-                                                    style: textStyle.SegoeUI
-                                                        .copyWith(
-                                                            color: AppColors
-                                                                .fontBlack,
-                                                            fontSize: 14.px),
-                                                    cursorHeight: 15,
-                                                    decoration: InputDecoration(
-                                                      isDense: true,
-                                                      fillColor:
-                                                          AppColors.white_00,
-                                                      filled: true,
-                                                      hintText: "Zip",
-                                                      hintStyle: textStyle
-                                                              .SegoeUI
-                                                          .copyWith(
-                                                              color: AppColors
-                                                                  .fontGrey,
-                                                              fontSize: 14.px),
-                                                      enabledBorder: OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: AppColors
-                                                                  .fontGrey
-                                                                  .withOpacity(
-                                                                      .4)),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6)),
-                                                      focusedBorder: OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: AppColors
-                                                                  .fontGrey
-                                                                  .withOpacity(
-                                                                      .4)),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6)),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                              borderSide: BorderSide(
-                                                                  color: AppColors
-                                                                      .fontGrey
-                                                                      .withOpacity(
-                                                                          .4)),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          6)),
-                                                      errorBorder: OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: AppColors
-                                                                  .red_00
-                                                                  .withOpacity(
-                                                                      .4)),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6)),
-                                                    )),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Divider(
-                                  color: AppColors.borderColor,
-                                  height: 40,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: 200,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Project Snaps",
-                                            style: textStyle.SegoeUISemiBold
-                                                .copyWith(
-                                                    fontSize: 12.px,
-                                                    color: AppColors.fontBlack),
-                                          ),
-                                          Text(
-                                            "Share a few snippets of your\nproject.",
-                                            style: textStyle.SegoeUI.copyWith(
-                                                fontSize: 12.px,
-                                                color: AppColors.fontGrey),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(height: 0.6.h),
-                                    Expanded(
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                            border: Border.all(
-                                                color: AppColors.fontGrey
-                                                    .withOpacity(.4))),
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 10),
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                                decoration: BoxDecoration(
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        color: Colors.black
-                                                            .withOpacity(
-                                                                0.05), // Shadow color
-                                                        blurRadius:
-                                                            10, // Softness of the shadow
-                                                        spreadRadius:
-                                                            1, // Size of the shadow
-                                                        offset: Offset(0,
-                                                            4), // Position of the shadow
-                                                      ),
-                                                    ],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    color: AppColors.white_00,
-                                                    border: Border.all(
-                                                        color: AppColors
-                                                            .borderColor
-                                                            .withOpacity(0.5))),
-                                                padding: EdgeInsets.all(11),
-                                                child: Image.asset(
-                                                    "Assets/icons/ic_upload.png",
-                                                    width: 25,
-                                                    height: 25)),
-                                            SizedBox(height: 6),
-                                            Text.rich(
-                                              TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: 'Click to upload ',
-                                                    style: textStyle
-                                                            .SegoeUISemiBold
-                                                        .copyWith(
-                                                            fontSize: 14.px,
-                                                            color: AppColors
-                                                                .mainGreen),
-                                                  ),
-                                                  TextSpan(
-                                                    text: 'or drag and drop',
-                                                    style: textStyle.SegoeUI
-                                                        .copyWith(
-                                                            fontSize: 14.px,
-                                                            color: AppColors
-                                                                .fontGrey),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Text(
-                                              "SVG, PNG, JPG or GIF (max. 800x400px)",
-                                              style: textStyle.SegoeUI.copyWith(
-                                                  fontSize: 12.px,
-                                                  color: AppColors.fontBlack),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 20.h),
-                              ],
+                        width: 500,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'About the project',
+                              style: textStyle.SegoeUISemiBold.copyWith(
+                                  fontSize: 14.px,
+                                  color: AppColors.selectIconColor),
                             ),
+                            SizedBox(height: 1.h),
+                            Text(
+                              'Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla odio nisl vitae. In aliquet pellentesque aenean hac vestibulum turpis mi bibendum diam. Tempor integer aliquam in vitae malesuada fringilla. Elit nisi in eleifend sed nisi. Pulvinar at orci, proin imperdiet commodo consectetur convallis risus. Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim mauris id.Diam elit, orci, tincidunt aenean tempus. Quis velit eget ut tortor tellus. Sed vel, congue felis elit erat nam nibh orci.Non pellentesque congue eget consectetur turpis.Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt aenean tempus. Quis velit eget ut tortor tellus. Sed vel, congue felis elit erat nam nibh orci.',
+                              style: TextStyle(
+                                color: AppColors.fontGrey,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Spacer(),
+                      SizedBox(
+                        width: 500,
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: Image.asset(
+                            'Assets/icons/logo.png',
                           ),
                         ),
                       ),
+                      SizedBox(width: 100.0),
+                      // SizedBox(
+                      //   width: 45.w,
+                      //   child: Theme(
+                      //     data: Theme.of(context).copyWith(
+                      //         scrollbarTheme: ScrollbarThemeData(
+                      //       thumbColor:
+                      //           WidgetStateProperty.all(Colors.transparent),
+                      //     )),
+                      //     child: SingleChildScrollView(
+                      //       controller: scrollController,
+                      //       child: Column(
+                      //         children: [
+                      //           Text(
+                      //             'About the project',
+                      //             style: textStyle.SegoeUISemiBold.copyWith(
+                      //                 fontSize: 14.px,
+                      //                 color: AppColors.selectIconColor),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
               )
             : selected == "Systems"
-                ? Systems()
-                : selected == "Invoices"
-                    ? Invoices()
-                    : Notifications()
+                ? AdminSystemsScreen()
+                : AdminNotificationsScreen()
       ],
     );
   }

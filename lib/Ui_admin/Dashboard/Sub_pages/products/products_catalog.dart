@@ -1583,8 +1583,24 @@ class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
                     children: [
                       Row(
                         children: [
-                          Image.asset("Assets/icons/ic_delete_big.png",
-                              width: 40),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Add Spec Category",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 16.px,
+                                    color: AppColors.fontBlack),
+                              ),
+                              SizedBox(height: 0.4.h),
+                              Text(
+                                "Add a new specification category to your product information.",
+                                style: textStyle.SegoeUI.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.fontBlack),
+                              ),
+                            ],
+                          ),
                           Spacer(),
                           InkWell(
                             onTap: () {
@@ -1600,17 +1616,34 @@ class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
                         ],
                       ),
                       SizedBox(height: 1.5.h),
-                      Text(
-                        "Delete product",
-                        style: textStyle.SegoeUISemiBold.copyWith(
-                            fontSize: 16.px, color: AppColors.fontBlack),
-                      ),
-                      SizedBox(height: 0.4.h),
-                      Text(
-                        "Are you sure you want to delete this client? This action cannot be undone.",
-                        style: textStyle.SegoeUI.copyWith(
-                            fontSize: 14.px, color: AppColors.fontBlack),
-                      ),
+                      TextFormField(
+                          style: textStyle.SegoeUI.copyWith(
+                              color: AppColors.fontBlack, fontSize: 14.px),
+                          cursorHeight: 15,
+                          decoration: InputDecoration(
+                            isDense: true,
+                            fillColor: AppColors.white_00,
+                            filled: true,
+                            hintText: "Category Name",
+                            hintStyle: textStyle.SegoeUI.copyWith(
+                                color: AppColors.fontGrey, fontSize: 14.px),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: AppColors.fontGrey.withOpacity(.4)),
+                                borderRadius: BorderRadius.circular(6)),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: AppColors.fontGrey.withOpacity(.4)),
+                                borderRadius: BorderRadius.circular(6)),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: AppColors.fontGrey.withOpacity(.4)),
+                                borderRadius: BorderRadius.circular(6)),
+                            errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: AppColors.red_00.withOpacity(.4)),
+                                borderRadius: BorderRadius.circular(6)),
+                          )),
                       SizedBox(height: 3.h),
                       Row(
                         children: [
@@ -1648,10 +1681,10 @@ class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
                                 height: 36,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
-                                    color: AppColors.backgroundRed),
+                                    color: AppColors.mainGreen),
                                 child: Center(
                                   child: Text(
-                                    "Delete",
+                                    "Add",
                                     style: textStyle.SegoeUI.copyWith(
                                         fontSize: 14.px,
                                         color: AppColors.white_00),
