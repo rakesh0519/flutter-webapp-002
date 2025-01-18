@@ -167,17 +167,22 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
                             ],
                           ),
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: AppColors.neonBorder),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              "Assets/icons/ic_notes_new.png",
-                              width: 20,
-                              height: 20,
+                        InkWell(
+                          onTap: () {
+                            upLoadFileDialog();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: AppColors.neonBorder),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(
+                                "Assets/icons/ic_notes_new.png",
+                                width: 20,
+                                height: 20,
+                              ),
                             ),
                           ),
                         ),
@@ -1044,6 +1049,250 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
                                 child: Center(
                                   child: Text(
                                     "Save",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.white_00),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        }).whenComplete(() {
+      setState(() {});
+    });
+  }
+
+  upLoadFileDialog() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0)), //this right here
+              child: Container(
+                width: 550,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  color: AppColors.white_00,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Upload and attach files",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 16.px,
+                                    color: AppColors.fontBlack),
+                              ),
+                              SizedBox(height: 6.0),
+                              Text(
+                                'Upload and attach files to this project.',
+                                style: TextStyle(
+                                  color: AppColors.unselectIconColor,
+                                ),
+                              )
+                            ],
+                          ),
+                          Spacer(),
+                          Icon(Icons.close,
+                              color: AppColors.darkBorderColor.withOpacity(0.3))
+                        ],
+                      ),
+                      SizedBox(height: 16.0),
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: AppColors.borderColor)),
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: AppColors.white_00,
+                                  border:
+                                      Border.all(color: AppColors.borderColor)),
+                              padding: EdgeInsets.all(11),
+                              child: Image.asset("Assets/icons/ic_upload.png",
+                                  width: 25, height: 25),
+                            ),
+                            SizedBox(height: 6),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Spacer(),
+                                Column(
+                                  children: [
+                                    Text.rich(
+                                      TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: 'Click to upload ',
+                                            style: textStyle.SegoeUISemiBold
+                                                .copyWith(
+                                                    fontSize: 14.px,
+                                                    color: AppColors.mainGreen),
+                                          ),
+                                          TextSpan(
+                                            text: 'or drag and drop',
+                                            style: textStyle.SegoeUI.copyWith(
+                                                fontSize: 14.px,
+                                                color: AppColors.fontGrey),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Text(
+                                      "SVG, PNG, JPG or GIF (max. 800x400px)",
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 12.px,
+                                          color: AppColors.fontBlack),
+                                    ),
+                                  ],
+                                ),
+                                Spacer(),
+                                Image.asset("Assets/icons/ic_file.png",
+                                    width: 40, height: 40),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 16.0),
+                      Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                              color: AppColors.white_00,
+                              border: Border.all(
+                                color: Color(0xffD5D7DA),
+                              ),
+                              borderRadius: BorderRadius.circular(12.0)),
+                          padding: EdgeInsets.all(12.0),
+                          child: Column(
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    'Assets/icons/ic_pdf.png',
+                                    height: 40.0,
+                                    width: 40.0,
+                                  ),
+                                  SizedBox(width: 12.0),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Tech design requirements.pdf',
+                                        style: TextStyle(
+                                          color: AppColors.fontLightBlack,
+                                        ),
+                                      ),
+                                      Text(
+                                        '200 KB',
+                                        style: TextStyle(
+                                          color: AppColors.unselectIconColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  Image.asset(
+                                    'Assets/icons/ic_checkbox_fill.png',
+                                    height: 16.0,
+                                    width: 16.0,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 8.0),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 40.0,
+                                  ),
+                                  SizedBox(width: 12.0),
+                                  Container(
+                                    width: 370,
+                                    height: 10,
+                                    decoration: BoxDecoration(
+                                      color: AppColors.mainGreen,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                  ),
+                                  SizedBox(width: 12.0),
+                                  Text(
+                                    '100%',
+                                    style: TextStyle(
+                                      color: AppColors.unselectIconColor,
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          )),
+                      SizedBox(height: 30.0),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 36,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: AppColors.white_00,
+                                    border: Border.all(
+                                        color: AppColors.darkBorderColor
+                                            .withOpacity(0.3))),
+                                child: Center(
+                                  child: Text(
+                                    "Cancel",
+                                    style: textStyle.SegoeUI.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.selectIconColor),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 0.5.w),
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {},
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 36,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: AppColors.mainGreen),
+                                child: Center(
+                                  child: Text(
+                                    "Attach files",
                                     style: textStyle.SegoeUI.copyWith(
                                         fontSize: 14.px,
                                         color: AppColors.white_00),

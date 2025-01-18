@@ -737,57 +737,499 @@ class _AdminSettingScreenState extends State<AdminSettingScreen> {
                         ),
                       ],
                     )
-                  : Row(
+                  : Column(
                       children: [
-                        SizedBox(width: 300),
-                        SizedBox(
-                            width: 800,
-                            child: Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(
-                                          color: AppColors.borderColor),
-                                      color: AppColors.white_00),
-                                  padding: EdgeInsets.all(12.0),
-                                  child: Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 200,
-                                        child: Container(
-                                          child:
-                                              Text('Product Registration Form'),
+                        Row(
+                          children: [
+                            SizedBox(width: 300),
+                            SizedBox(
+                              width: 800,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                            color: AppColors.borderColor),
+                                        color: AppColors.white_00),
+                                    padding: EdgeInsets.all(12.0),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width: 200,
+                                          child: SizedBox(
+                                            child: Text(
+                                              'Product Registration Form',
+                                              style: TextStyle(
+                                                  color:
+                                                      AppColors.fontLightBlack),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 500,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                color: AppColors.white_00,
-                                                border: Border.all(
-                                                  color: Color(0xffD5D7DA),
+                                        Spacer(),
+                                        SizedBox(
+                                          width: 500,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                    color: AppColors.white_00,
+                                                    border: Border.all(
+                                                      color: Color(0xffD5D7DA),
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0)),
+                                                padding: EdgeInsets.all(12.0),
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      'Choose the format for this resouce',
+                                                      style: TextStyle(
+                                                          color: AppColors
+                                                              .unselectIconColor),
+                                                    ),
+                                                    Spacer(),
+                                                    Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_outlined,
+                                                        color: AppColors
+                                                            .unselectIconColor)
+                                                  ],
                                                 ),
                                               ),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                      'Choose the format for this resouce'),
-                                                  Icon(Icons
-                                                      .keyboard_arrow_down_outlined)
-                                                ],
+                                              SizedBox(height: 16.0),
+                                              Container(
+                                                width: 500,
+                                                height: 100,
+                                                decoration: BoxDecoration(
+                                                    color: AppColors.white_00,
+                                                    border: Border.all(
+                                                      color: Color(0xffD5D7DA),
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0)),
+                                                padding: EdgeInsets.all(12.0),
+                                                child: Text(
+                                                  'Quickly fill out the product registration form with your photo and details.',
+                                                  style: TextStyle(
+                                                      color:
+                                                          AppColors.fontBlack),
+                                                ),
                                               ),
-                                            )
-                                          ],
+                                              SizedBox(height: 6.0),
+                                              Text(
+                                                '40 characters left',
+                                                style: TextStyle(
+                                                    color: AppColors
+                                                        .unselectIconColor),
+                                              ),
+                                              SizedBox(height: 16.0),
+                                              Container(
+                                                width: 500,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                    border: Border.all(
+                                                        color: AppColors
+                                                            .borderColor)),
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical: 10),
+                                                child: Column(
+                                                  children: [
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          color: AppColors
+                                                              .white_00,
+                                                          border: Border.all(
+                                                              color: AppColors
+                                                                  .borderColor)),
+                                                      padding:
+                                                          EdgeInsets.all(11),
+                                                      child: Image.asset(
+                                                          "Assets/icons/ic_upload.png",
+                                                          width: 25,
+                                                          height: 25),
+                                                    ),
+                                                    SizedBox(height: 6),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Spacer(),
+                                                        Column(
+                                                          children: [
+                                                            Text.rich(
+                                                              TextSpan(
+                                                                children: [
+                                                                  TextSpan(
+                                                                    text:
+                                                                        'Click to upload ',
+                                                                    style: textStyle.SegoeUISemiBold.copyWith(
+                                                                        fontSize: 14
+                                                                            .px,
+                                                                        color: AppColors
+                                                                            .mainGreen),
+                                                                  ),
+                                                                  TextSpan(
+                                                                    text:
+                                                                        'or drag and drop',
+                                                                    style: textStyle.SegoeUI.copyWith(
+                                                                        fontSize: 14
+                                                                            .px,
+                                                                        color: AppColors
+                                                                            .fontGrey),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              "SVG, PNG, JPG or GIF (max. 800x400px)",
+                                                              style: textStyle
+                                                                      .SegoeUI
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          12.px,
+                                                                      color: AppColors
+                                                                          .fontBlack),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Spacer(),
+                                                        Image.asset(
+                                                            "Assets/icons/ic_file.png",
+                                                            width: 40,
+                                                            height: 40),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(height: 16.0),
+                                              Container(
+                                                  width: 500,
+                                                  height: 100,
+                                                  decoration: BoxDecoration(
+                                                      color: AppColors.white_00,
+                                                      border: Border.all(
+                                                        color:
+                                                            Color(0xffD5D7DA),
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0)),
+                                                  padding: EdgeInsets.all(12.0),
+                                                  child: Column(
+                                                    children: [
+                                                      Row(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Image.asset(
+                                                            'Assets/icons/ic_pdf.png',
+                                                            height: 40.0,
+                                                            width: 40.0,
+                                                          ),
+                                                          SizedBox(width: 12.0),
+                                                          Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                'Tech design requirements.pdf',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: AppColors
+                                                                      .fontLightBlack,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '200 KB',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: AppColors
+                                                                      .unselectIconColor,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Spacer(),
+                                                          Image.asset(
+                                                            'Assets/icons/ic_checkbox_fill.png',
+                                                            height: 16.0,
+                                                            width: 16.0,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      SizedBox(height: 8.0),
+                                                      Row(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          SizedBox(
+                                                            width: 40.0,
+                                                          ),
+                                                          SizedBox(width: 12.0),
+                                                          Container(
+                                                            width: 370,
+                                                            height: 10,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: AppColors
+                                                                  .mainGreen,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12.0),
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 12.0),
+                                                          Text(
+                                                            '100%',
+                                                            style: TextStyle(
+                                                              color: AppColors
+                                                                  .unselectIconColor,
+                                                            ),
+                                                          )
+                                                        ],
+                                                      )
+                                                    ],
+                                                  )),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 48.0),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                            color: AppColors.borderColor),
+                                        color: AppColors.white_00),
+                                    padding: EdgeInsets.all(12.0),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width: 200,
+                                          child: SizedBox(
+                                            child: Text(
+                                              'Product Registration Form',
+                                              style: TextStyle(
+                                                  color:
+                                                      AppColors.fontLightBlack),
+                                            ),
+                                          ),
+                                        ),
+                                        Spacer(),
+                                        SizedBox(
+                                          width: 500,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                    color: AppColors.white_00,
+                                                    border: Border.all(
+                                                      color: Color(0xffD5D7DA),
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0)),
+                                                padding: EdgeInsets.all(12.0),
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      'Choose the format for this resouce',
+                                                      style: TextStyle(
+                                                          color: AppColors
+                                                              .unselectIconColor),
+                                                    ),
+                                                    Spacer(),
+                                                    Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_outlined,
+                                                        color: AppColors
+                                                            .unselectIconColor)
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(height: 16.0),
+                                              Container(
+                                                width: 500,
+                                                height: 100,
+                                                decoration: BoxDecoration(
+                                                    color: AppColors.white_00,
+                                                    border: Border.all(
+                                                      color: Color(0xffD5D7DA),
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0)),
+                                                padding: EdgeInsets.all(12.0),
+                                                child: Text(
+                                                  'Quickly fill out the product registration form with your photo and details.',
+                                                  style: TextStyle(
+                                                      color:
+                                                          AppColors.fontBlack),
+                                                ),
+                                              ),
+                                              SizedBox(height: 6.0),
+                                              Text(
+                                                '40 characters left',
+                                                style: TextStyle(
+                                                    color: AppColors
+                                                        .unselectIconColor),
+                                              ),
+                                              SizedBox(height: 16.0),
+                                              Container(
+                                                width: 500,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                    border: Border.all(
+                                                        color: AppColors
+                                                            .borderColor)),
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical: 10),
+                                                child: Column(
+                                                  children: [
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          color: AppColors
+                                                              .white_00,
+                                                          border: Border.all(
+                                                              color: AppColors
+                                                                  .borderColor)),
+                                                      padding:
+                                                          EdgeInsets.all(11),
+                                                      child: Image.asset(
+                                                          "Assets/icons/ic_upload.png",
+                                                          width: 25,
+                                                          height: 25),
+                                                    ),
+                                                    SizedBox(height: 6),
+                                                    Text.rich(
+                                                      TextSpan(
+                                                        children: [
+                                                          TextSpan(
+                                                            text:
+                                                                'Click to upload ',
+                                                            style: textStyle
+                                                                    .SegoeUISemiBold
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        14.px,
+                                                                    color: AppColors
+                                                                        .mainGreen),
+                                                          ),
+                                                          TextSpan(
+                                                            text:
+                                                                'or drag and drop',
+                                                            style: textStyle
+                                                                    .SegoeUI
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        14.px,
+                                                                    color: AppColors
+                                                                        .fontGrey),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "SVG, PNG, JPG or GIF (max. 800x400px)",
+                                                      style: textStyle.SegoeUI
+                                                          .copyWith(
+                                                              fontSize: 12.px,
+                                                              color: AppColors
+                                                                  .fontBlack),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(height: 16.0),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 48.0),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 300,
+                              child: Container(),
+                            ),
+                            SizedBox(
+                              width: 800,
+                              child: Row(children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                      margin: const EdgeInsets.only(
+                                          left: 10.0, right: 20.0),
+                                      child: Divider(
+                                        color: AppColors.borderColor,
+                                        height: 36,
+                                      )),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: AppColors.mainGreen,
+                                      border: Border.all(
+                                          color: AppColors.borderColor),
+                                      borderRadius:
+                                          BorderRadius.circular(12.0)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Add Resource',
+                                      style: textStyle.SegoeUISemiBold.copyWith(
+                                          fontSize: 14.px,
+                                          color: AppColors.white_00),
+                                    ),
                                   ),
                                 ),
-                              ],
-                            )),
+                                Expanded(
+                                  child: Container(
+                                      margin: const EdgeInsets.only(
+                                          left: 20.0, right: 10.0),
+                                      child: Divider(
+                                        color: AppColors.borderColor,
+                                        height: 36,
+                                      )),
+                                ),
+                              ]),
+                            ),
+                          ],
+                        )
                       ],
                     ),
             ],

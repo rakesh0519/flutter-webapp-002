@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fujitsuweb/Providers/ui_providers.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class ProductsDetailsScreen extends StatefulWidget {
@@ -13,8 +15,18 @@ class ProductsDetailsScreen extends StatefulWidget {
 class _ProductsDetailsScreenState extends State<ProductsDetailsScreen> {
   bool hideJSeries = false;
   bool disablePush = false;
+  UiProvider uiProvider = UiProvider();
+
+  void initState() {
+    super.initState();
+
+    uiProvider = Provider.of<UiProvider>(context, listen: false);
+  }
+
   @override
   Widget build(BuildContext context) {
+    uiProvider = Provider.of<UiProvider>(context, listen: true);
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

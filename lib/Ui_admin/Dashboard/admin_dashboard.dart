@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fujitsuweb/Providers/ui_providers.dart';
 import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/Project_details/add_system.dart';
-import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/01_Products/products_screen.dart';
-import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/03_Settings/setting_screen.dart';
 import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/products/products_catalog.dart';
 import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/products/products_details/products_details.dart';
 import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/settings/admin_setting_screen.dart';
@@ -634,71 +632,25 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                               ),
                                             )
                                           : uiProvider.adminDashPage ==
-                                                  "Add_Systems"
+                                                  "Product_Details_page"
                                               ? Row(
                                                   children: [
-                                                    InkWell(
-                                                      hoverColor:
-                                                          AppColors.white_00,
-                                                      onTap: () {
-                                                        uiProvider
-                                                            .changeAdminPage(
-                                                                "Projects");
-                                                      },
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                left: 10,
-                                                                right: 10,
-                                                                top: 3,
-                                                                bottom: 5),
-                                                        child: Text(
-                                                          "Projects",
-                                                          style: textStyle
-                                                                  .SegoeUISemiBold
-                                                              .copyWith(
-                                                                  fontSize:
-                                                                      14.px,
-                                                                  color: AppColors
-                                                                      .selectIconColor),
-                                                        ),
+                                                    Container(
+                                                      padding: EdgeInsets.only(
+                                                          left: 10,
+                                                          right: 10,
+                                                          top: 3,
+                                                          bottom: 5),
+                                                      child: Text(
+                                                        "Product",
+                                                        style: textStyle
+                                                                .SegoeUISemiBold
+                                                            .copyWith(
+                                                                fontSize: 14.px,
+                                                                color: AppColors
+                                                                    .selectIconColor),
                                                       ),
                                                     ),
-                                                    SizedBox(width: 0.7.w),
-                                                    Icon(
-                                                        Icons
-                                                            .keyboard_arrow_right_rounded,
-                                                        color: AppColors
-                                                            .fontGrey
-                                                            .withOpacity(0.3)),
-                                                    SizedBox(width: 0.7.w),
-                                                    InkWell(
-                                                      hoverColor:
-                                                          AppColors.white_00,
-                                                      onTap: () {
-                                                        uiProvider.changeAdminPage(
-                                                            "Projects_Details");
-                                                      },
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                left: 10,
-                                                                right: 10,
-                                                                top: 3,
-                                                                bottom: 5),
-                                                        child: Text(
-                                                          "Project Name",
-                                                          style: textStyle
-                                                                  .SegoeUISemiBold
-                                                              .copyWith(
-                                                                  fontSize:
-                                                                      14.px,
-                                                                  color: AppColors
-                                                                      .selectIconColor),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(width: 0.7.w),
                                                     Icon(
                                                         Icons
                                                             .keyboard_arrow_right_rounded,
@@ -719,7 +671,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                           top: 3,
                                                           bottom: 5),
                                                       child: Text(
-                                                        "Add Systems",
+                                                        "Product Details page ",
                                                         style: textStyle
                                                                 .SegoeUISemiBold
                                                             .copyWith(
@@ -731,31 +683,110 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                   ],
                                                 )
                                               : uiProvider.adminDashPage ==
-                                                      "Products"
-                                                  ? Container(
-                                                      decoration: BoxDecoration(
-                                                          color:
-                                                              AppColors.lightBg,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(3)),
-                                                      padding: EdgeInsets.only(
-                                                          left: 10,
-                                                          right: 10,
-                                                          top: 3,
-                                                          bottom: 5),
-                                                      child: Text(
-                                                        "Products",
-                                                        style: textStyle
-                                                                .SegoeUISemiBold
-                                                            .copyWith(
-                                                                fontSize: 14.px,
-                                                                color: AppColors
-                                                                    .selectIconColor),
-                                                      ),
+                                                      "Add_Systems"
+                                                  ? Row(
+                                                      children: [
+                                                        InkWell(
+                                                          hoverColor: AppColors
+                                                              .white_00,
+                                                          onTap: () {
+                                                            uiProvider
+                                                                .changeAdminPage(
+                                                                    "Projects");
+                                                          },
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10,
+                                                                    right: 10,
+                                                                    top: 3,
+                                                                    bottom: 5),
+                                                            child: Text(
+                                                              "Projects",
+                                                              style: textStyle
+                                                                      .SegoeUISemiBold
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          14.px,
+                                                                      color: AppColors
+                                                                          .selectIconColor),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 0.7.w),
+                                                        Icon(
+                                                            Icons
+                                                                .keyboard_arrow_right_rounded,
+                                                            color: AppColors
+                                                                .fontGrey
+                                                                .withOpacity(
+                                                                    0.3)),
+                                                        SizedBox(width: 0.7.w),
+                                                        InkWell(
+                                                          hoverColor: AppColors
+                                                              .white_00,
+                                                          onTap: () {
+                                                            uiProvider
+                                                                .changeAdminPage(
+                                                                    "Projects_Details");
+                                                          },
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 10,
+                                                                    right: 10,
+                                                                    top: 3,
+                                                                    bottom: 5),
+                                                            child: Text(
+                                                              "Project Name",
+                                                              style: textStyle
+                                                                      .SegoeUISemiBold
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          14.px,
+                                                                      color: AppColors
+                                                                          .selectIconColor),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 0.7.w),
+                                                        Icon(
+                                                            Icons
+                                                                .keyboard_arrow_right_rounded,
+                                                            color: AppColors
+                                                                .fontGrey
+                                                                .withOpacity(
+                                                                    0.3)),
+                                                        SizedBox(width: 0.7.w),
+                                                        Container(
+                                                          decoration: BoxDecoration(
+                                                              color: AppColors
+                                                                  .lightBg,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          3)),
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 10,
+                                                                  right: 10,
+                                                                  top: 3,
+                                                                  bottom: 5),
+                                                          child: Text(
+                                                            "Add Systems",
+                                                            style: textStyle
+                                                                    .SegoeUISemiBold
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        14.px,
+                                                                    color: AppColors
+                                                                        .selectIconColor),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     )
                                                   : uiProvider.adminDashPage ==
-                                                          "Setting"
+                                                          "Products"
                                                       ? Container(
                                                           decoration: BoxDecoration(
                                                               color: AppColors
@@ -771,7 +802,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                                   top: 3,
                                                                   bottom: 5),
                                                           child: Text(
-                                                            "Settings",
+                                                            "Products",
                                                             style: textStyle
                                                                     .SegoeUISemiBold
                                                                 .copyWith(
@@ -781,7 +812,35 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                                         .selectIconColor),
                                                           ),
                                                         )
-                                                      : SizedBox()
+                                                      : uiProvider.adminDashPage ==
+                                                              "Setting"
+                                                          ? Container(
+                                                              decoration: BoxDecoration(
+                                                                  color: AppColors
+                                                                      .lightBg,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              3)),
+                                                              padding: EdgeInsets
+                                                                  .only(
+                                                                      left: 10,
+                                                                      right: 10,
+                                                                      top: 3,
+                                                                      bottom:
+                                                                          5),
+                                                              child: Text(
+                                                                "Settings",
+                                                                style: textStyle
+                                                                        .SegoeUISemiBold
+                                                                    .copyWith(
+                                                                        fontSize: 14
+                                                                            .px,
+                                                                        color: AppColors
+                                                                            .selectIconColor),
+                                                              ),
+                                                            )
+                                                          : SizedBox()
                             ],
                           ),
                           SizedBox(height: 2.h),

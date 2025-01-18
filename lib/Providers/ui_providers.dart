@@ -10,7 +10,6 @@ class UiProvider with ChangeNotifier {
   }
 
   changeAdminPage(String value) {
-    print('value -----$value');
     adminDashPage = value;
     notifyListeners();
   }
