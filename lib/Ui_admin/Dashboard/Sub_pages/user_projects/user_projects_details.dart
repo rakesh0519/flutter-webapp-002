@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/Project_details/invoices.dart';
-import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/Project_details/notification.dart';
-import 'package:fujitsuweb/Ui_Web/00_Dashboard/Sub_Page/00_Projects/Project_details/systems.dart';
 import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/user_projects/admin_notifications.dart';
 import 'package:fujitsuweb/Ui_admin/Dashboard/Sub_pages/user_projects/admin_systems.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
@@ -34,167 +31,182 @@ class _UserProjectsDetailsState extends State<UserProjectsDetails> {
   TextEditingController addressController = TextEditingController();
   TextEditingController zipController = TextEditingController();
 
-  String? _selectedState;
-  String? _selectedCity;
   List<String> stateNames = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
 
   ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Project Name",
+    double width = MediaQuery.of(context).size.width;
+    print(width);
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Project Name",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 20.px, color: AppColors.fontBlack),
+                    ),
+                    Text(
+                      "Oversee the projects your team is managing and adjust their permissions.",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 14.px, color: AppColors.fontBlack),
+                    ),
+                  ],
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  shareDialog();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    "Assets/icons/ic_share.png",
+                    width: 20,
+                    height: 20,
+                    color: AppColors.fontLightBlack,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 2.h),
+          Row(
+            children: [
+              InkWell(
+                hoverColor: AppColors.white_00,
+                splashColor: AppColors.white_00,
+                onTap: () {
+                  setState(() {
+                    selected = "Project Details";
+                  });
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: selected == "Project Details"
+                          ? AppColors.selectColor
+                          : Colors.transparent,
+                      borderRadius: BorderRadius.circular(6)),
+                  padding:
+                      EdgeInsets.only(left: 15, right: 15, top: 6, bottom: 10),
+                  child: Text(
+                    "Project Details",
                     style: textStyle.SegoeUISemiBold.copyWith(
-                        fontSize: 20.px, color: AppColors.fontBlack),
+                        fontSize: 12.px, color: AppColors.selectIconColor),
                   ),
-                  Text(
-                    "Oversee the projects your team is managing and adjust their permissions.",
-                    style: textStyle.SegoeUI.copyWith(
-                        fontSize: 14.px, color: AppColors.fontBlack),
+                ),
+              ),
+              SizedBox(width: 10),
+              InkWell(
+                hoverColor: AppColors.white_00,
+                splashColor: AppColors.white_00,
+                onTap: () {
+                  setState(() {
+                    selected = "Systems";
+                  });
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: selected == "Systems"
+                          ? AppColors.selectColor
+                          : Colors.transparent,
+                      borderRadius: BorderRadius.circular(6)),
+                  padding:
+                      EdgeInsets.only(left: 15, right: 15, top: 6, bottom: 10),
+                  child: Text(
+                    "Systems",
+                    style: textStyle.SegoeUISemiBold.copyWith(
+                        fontSize: 12.px, color: AppColors.selectIconColor),
                   ),
-                ],
-              ),
-            ),
-            // InkWell(
-            //   onTap: () {
-            //     addDocument();
-            //   },
-            //   child: Image.asset("Assets/icons/ic_green_add.png",
-            //       width: 38, height: 38),
-            // ),
-            // SizedBox(width: 0.6.w),
-            // InkWell(
-            //   onTap: () {
-            //     requestDialog();
-            //   },
-            //   child: Image.asset("Assets/icons/ic_notes.png",
-            //       width: 38, height: 38),
-            // ),
-            // SizedBox(width: 0.6.w),
-            // InkWell(
-            //   onTap: () {},
-            //   child: Image.asset("Assets/icons/ic_save.png",
-            //       width: 38, height: 38),
-            // ),
-            // SizedBox(width: 0.6.w),
-            InkWell(
-              onTap: () {
-                shareDialog();
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  "Assets/icons/ic_share.png",
-                  width: 20,
-                  height: 20,
-                  color: AppColors.fontLightBlack,
                 ),
               ),
-            ),
-          ],
-        ),
-        SizedBox(height: 2.h),
-        Row(
-          children: [
-            InkWell(
-              hoverColor: AppColors.white_00,
-              splashColor: AppColors.white_00,
-              onTap: () {
-                setState(() {
-                  selected = "Project Details";
-                });
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: selected == "Project Details"
-                        ? AppColors.selectColor
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(6)),
-                padding:
-                    EdgeInsets.only(left: 15, right: 15, top: 6, bottom: 10),
-                child: Text(
-                  "Project Details",
-                  style: textStyle.SegoeUISemiBold.copyWith(
-                      fontSize: 12.px, color: AppColors.selectIconColor),
+              SizedBox(width: 10),
+              InkWell(
+                hoverColor: AppColors.white_00,
+                splashColor: AppColors.white_00,
+                onTap: () {
+                  setState(() {
+                    selected = "Notifications";
+                  });
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: selected == "Notifications"
+                          ? AppColors.selectColor
+                          : Colors.transparent,
+                      borderRadius: BorderRadius.circular(6)),
+                  padding:
+                      EdgeInsets.only(left: 15, right: 15, top: 6, bottom: 10),
+                  child: Text(
+                    "Notifications",
+                    style: textStyle.SegoeUISemiBold.copyWith(
+                        fontSize: 12.px, color: AppColors.selectIconColor),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(width: 10),
-            InkWell(
-              hoverColor: AppColors.white_00,
-              splashColor: AppColors.white_00,
-              onTap: () {
-                setState(() {
-                  selected = "Systems";
-                });
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: selected == "Systems"
-                        ? AppColors.selectColor
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(6)),
-                padding:
-                    EdgeInsets.only(left: 15, right: 15, top: 6, bottom: 10),
-                child: Text(
-                  "Systems",
-                  style: textStyle.SegoeUISemiBold.copyWith(
-                      fontSize: 12.px, color: AppColors.selectIconColor),
-                ),
-              ),
-            ),
-            SizedBox(width: 10),
-            InkWell(
-              hoverColor: AppColors.white_00,
-              splashColor: AppColors.white_00,
-              onTap: () {
-                setState(() {
-                  selected = "Notifications";
-                });
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: selected == "Notifications"
-                        ? AppColors.selectColor
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(6)),
-                padding:
-                    EdgeInsets.only(left: 15, right: 15, top: 6, bottom: 10),
-                child: Text(
-                  "Notifications",
-                  style: textStyle.SegoeUISemiBold.copyWith(
-                      fontSize: 12.px, color: AppColors.selectIconColor),
-                ),
-              ),
-            ),
-          ],
-        ),
-        SizedBox(height: 4.h),
-        selected == "Project Details"
-            ? Expanded(
-                child: Scrollbar(
+            ],
+          ),
+          SizedBox(height: 4.h),
+          selected == "Project Details"
+              ? Scrollbar(
                   controller: scrollController,
                   thumbVisibility: true,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 500,
-                        child: Column(
+                  child: width > 1000
+                      ? Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              flex: 3,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'About the project',
+                                    style: textStyle.SegoeUISemiBold.copyWith(
+                                        fontSize: 14.px,
+                                        color: AppColors.selectIconColor),
+                                  ),
+                                  SizedBox(height: 1.h),
+                                  Text(
+                                    'Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla odio nisl vitae. In aliquet pellentesque aenean hac vestibulum turpis mi bibendum diam. Tempor integer aliquam in vitae malesuada fringilla. Elit nisi in eleifend sed nisi. Pulvinar at orci, proin imperdiet commodo consectetur convallis risus. Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim mauris id.Diam elit, orci, tincidunt aenean tempus. Quis velit eget ut tortor tellus. Sed vel, congue felis elit erat nam nibh orci.Non pellentesque congue eget consectetur turpis.Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt aenean tempus. Quis velit eget ut tortor tellus. Sed vel, congue felis elit erat nam nibh orci.',
+                                    style: TextStyle(
+                                      color: AppColors.fontGrey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Spacer(),
+                            Expanded(
+                              flex: 2,
+                              child: Align(
+                                alignment: Alignment.topRight,
+                                child: Image.asset(
+                                  'Assets/icons/logo.png',
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 100.0),
+                          ],
+                        )
+                      : Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            Image.asset(
+                              'Assets/icons/logo.png',
+                            ),
+                            SizedBox(height: 1.h),
                             Text(
                               'About the project',
                               style: textStyle.SegoeUISemiBold.copyWith(
@@ -210,49 +222,12 @@ class _UserProjectsDetailsState extends State<UserProjectsDetails> {
                             ),
                           ],
                         ),
-                      ),
-                      Spacer(),
-                      SizedBox(
-                        width: 500,
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: Image.asset(
-                            'Assets/icons/logo.png',
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 100.0),
-                      // SizedBox(
-                      //   width: 45.w,
-                      //   child: Theme(
-                      //     data: Theme.of(context).copyWith(
-                      //         scrollbarTheme: ScrollbarThemeData(
-                      //       thumbColor:
-                      //           WidgetStateProperty.all(Colors.transparent),
-                      //     )),
-                      //     child: SingleChildScrollView(
-                      //       controller: scrollController,
-                      //       child: Column(
-                      //         children: [
-                      //           Text(
-                      //             'About the project',
-                      //             style: textStyle.SegoeUISemiBold.copyWith(
-                      //                 fontSize: 14.px,
-                      //                 color: AppColors.selectIconColor),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ),
-              )
-            : selected == "Systems"
-                ? AdminSystemsScreen()
-                : AdminNotificationsScreen()
-      ],
+                )
+              : selected == "Systems"
+                  ? AdminSystemsScreen()
+                  : AdminNotificationsScreen()
+        ],
+      ),
     );
   }
 

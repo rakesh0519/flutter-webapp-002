@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fujitsuweb/Providers/ui_providers.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
@@ -14,7 +15,20 @@ class AdminSystemsScreen extends StatefulWidget {
 
 class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
   UiProvider uiProvider = UiProvider();
-
+  List projects = [
+    {
+      "name": "AIRSTAGE H-Series",
+      "subName": "NovaTech 6",
+      "Quantity": "Quantity: 32",
+      "high_value": true,
+    },
+    {
+      "name": "AIRSTAGE H-Series",
+      "subName": "NovaTech 6",
+      "Quantity": "Quantity: 32",
+      "high_value": false,
+    },
+  ];
   @override
   void initState() {
     super.initState();
@@ -25,496 +39,291 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
   @override
   Widget build(BuildContext context) {
     uiProvider = Provider.of<UiProvider>(context, listen: true);
+    double width = MediaQuery.of(context).size.width;
 
-    return Expanded(
-        child: isZoneAdded == false
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                      child: Image.asset(
-                    "Assets/images/no_data.png",
-                    width: 120,
-                    height: 120,
-                  )),
-                  Text(
-                    "No zones added",
-                    style: textStyle.SegoeUISemiBold.copyWith(
-                        fontSize: 14.px, color: AppColors.fontBlack),
+    return isZoneAdded == false
+        ? Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                  child: Image.asset(
+                "Assets/images/no_data.png",
+                width: 120,
+                height: 120,
+              )),
+              Text(
+                "No zones added",
+                style: textStyle.SegoeUISemiBold.copyWith(
+                    fontSize: 14.px, color: AppColors.fontBlack),
+              ),
+              SizedBox(height: 0.4.h),
+              Text(
+                "If seems like your are yet to add a zone to your project",
+                style: textStyle.SegoeUI.copyWith(
+                    fontSize: 13.px, color: AppColors.fontBlack),
+              ),
+              SizedBox(height: 3.h),
+              InkWell(
+                onTap: () {
+                  addZoneDialog();
+                },
+                child: Container(
+                  height: 38,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: AppColors.mainGreen,
                   ),
-                  SizedBox(height: 0.4.h),
-                  Text(
-                    "If seems like your are yet to add a zone to your project",
-                    style: textStyle.SegoeUI.copyWith(
-                        fontSize: 13.px, color: AppColors.fontBlack),
-                  ),
-                  SizedBox(height: 3.h),
-                  InkWell(
-                    onTap: () {
-                      addZoneDialog();
-                    },
-                    child: Container(
-                      height: 38,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: AppColors.mainGreen,
+                  padding: EdgeInsets.symmetric(horizontal: 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Image.asset("Assets/icons/ic_add.png",
+                          width: 38, height: 38),
+                      Text(
+                        "New Zone",
+                        style: textStyle.SegoeUI.copyWith(
+                            fontSize: 14.px, color: AppColors.white_00),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset("Assets/icons/ic_add.png",
-                              width: 38, height: 38),
-                          Text(
-                            "New Zone",
-                            style: textStyle.SegoeUI.copyWith(
-                                fontSize: 14.px, color: AppColors.white_00),
-                          ),
-                          SizedBox(width: 1.w)
-                        ],
-                      ),
-                    ),
+                      SizedBox(width: 1.w)
+                    ],
                   ),
-                ],
-              )
-            : SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                ),
+              ),
+            ],
+          )
+        : SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "1. Zone Name",
+                            style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 14.px,
+                              color: AppColors.darkGreen,
+                            ),
+                          ),
+                          Wrap(
+                            spacing: 8.0,
+                            runSpacing: 4.0,
                             children: [
-                              Text(
-                                "1. Zone Name",
-                                style: textStyle.SegoeUISemiBold.copyWith(
-                                    fontSize: 14.px,
-                                    color: AppColors.darkGreen),
-                              ),
                               Row(
+                                mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
                                     "Zone type",
                                     style: textStyle.SegoeUISemiBold.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.darkGreen),
+                                      fontSize: 12.px,
+                                      color: AppColors.darkGreen,
+                                    ),
                                   ),
                                   Text(
                                     ": J-Series",
                                     style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                  Text(
-                                    "  |  ",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                  Text(
-                                    "BTU",
-                                    style: textStyle.SegoeUISemiBold.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.darkGreen),
-                                  ),
-                                  Text(
-                                    ": 23",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                  Text(
-                                    "  |  ",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                  Text(
-                                    "Unit Type",
-                                    style: textStyle.SegoeUISemiBold.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.darkGreen),
-                                  ),
-                                  Text(
-                                    ": 23",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                  Text(
-                                    "  |  ",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                  Text(
-                                    "Lineset length",
-                                    style: textStyle.SegoeUISemiBold.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.darkGreen),
-                                  ),
-                                  Text(
-                                    ": 1000",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            upLoadFileDialog();
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.neonBorder),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.asset(
-                                "Assets/icons/ic_notes_new.png",
-                                width: 20,
-                                height: 20,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Image.asset("Assets/icons/ic_block.png",
-                            width: 20, height: 20),
-                        SizedBox(width: 10),
-                      ],
-                    ),
-                    Divider(
-                      color: AppColors.borderColor,
-                      height: 30,
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height / 2 - 100,
-                      // child: Column(
-                      //   mainAxisAlignment: MainAxisAlignment.center,
-                      //   crossAxisAlignment: CrossAxisAlignment.center,
-                      //   children: [
-                      //     Text(
-                      //       "No systems added found",
-                      //       style: textStyle.SegoeUISemiBold.copyWith(
-                      //           fontSize: 14.px, color: AppColors.fontBlack),
-                      //     ),
-                      //     SizedBox(height: 0.4.h),
-                      //     Text(
-                      //       "you are yet to add system to this zone of your project.",
-                      //       style: textStyle.SegoeUI.copyWith(
-                      //           fontSize: 13.px, color: AppColors.fontBlack),
-                      //     ),
-                      //     SizedBox(height: 3.h),
-                      //     InkWell(
-                      //       onTap: () {
-                      //         uiProvider.changeDashboardPage("Add_Systems");
-                      //       },
-                      //       child: Container(
-                      //         height: 38,
-                      //         decoration: BoxDecoration(
-                      //           borderRadius: BorderRadius.circular(8),
-                      //           color: AppColors.mainGreen,
-                      //         ),
-                      //         padding: EdgeInsets.symmetric(horizontal: 0),
-                      //         child: Row(
-                      //           mainAxisSize: MainAxisSize.min,
-                      //           children: [
-                      //             Image.asset("Assets/icons/ic_add.png",
-                      //                 width: 38, height: 38),
-                      //             Text(
-                      //               "New System",
-                      //               style: textStyle.SegoeUI.copyWith(
-                      //                   fontSize: 14.px,
-                      //                   color: AppColors.white_00),
-                      //             ),
-                      //             SizedBox(width: 1.w)
-                      //           ],
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: AppColors.white_00,
-                                border: Border.all(color: AppColors.mainGreen),
-                                borderRadius: BorderRadius.circular(12.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 70.0,
-                                  left: 20.0,
-                                  right: 170.0,
-                                  bottom: 20.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'AIRSTAGE H-Series',
-                                    style:
-                                        TextStyle(color: AppColors.darkGreen),
-                                  ),
-                                  SizedBox(height: 8.0),
-                                  Text(
-                                    'NovaTech 6',
-                                    style: TextStyle(
-                                        color: AppColors.fontLightBlack,
-                                        fontSize: 22.0),
-                                  ),
-                                  SizedBox(height: 8.0),
-                                  Text(
-                                    'Quantity: 32',
-                                    style: TextStyle(
-                                        color: AppColors.fontLightBlack,
-                                        fontSize: 12.0),
-                                  ),
-                                  SizedBox(height: 5.0),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: AppColors.backRed,
-                                        border: Border.all(
-                                            color: AppColors.borderRed),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: Text(
-                                        'Hig Priority',
-                                        style: TextStyle(
-                                            color: AppColors.fontRed,
-                                            fontSize: 12.0),
-                                      ),
+                                      fontSize: 12.px,
+                                      color: AppColors.fontGrey,
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ),
-                          SizedBox(width: 30.0),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: AppColors.white_00,
-                                border:
-                                    Border.all(color: AppColors.borderColor),
-                                borderRadius: BorderRadius.circular(12.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 70.0,
-                                  left: 20.0,
-                                  right: 170.0,
-                                  bottom: 20.0),
-                              child: Column(
+                              Text(
+                                "  |  ",
+                                style: textStyle.SegoeUI.copyWith(
+                                  fontSize: 12.px,
+                                  color: AppColors.fontGrey,
+                                ),
+                              ),
+                              Row(
                                 mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'AIRSTAGE H-Series',
-                                    style:
-                                        TextStyle(color: AppColors.darkGreen),
+                                    "BTU",
+                                    style: textStyle.SegoeUISemiBold.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.darkGreen,
+                                    ),
                                   ),
-                                  SizedBox(height: 8.0),
                                   Text(
-                                    'NovaTech 6',
-                                    style: TextStyle(
-                                        color: AppColors.fontLightBlack,
-                                        fontSize: 22.0),
+                                    ": 23",
+                                    style: textStyle.SegoeUI.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.fontGrey,
+                                    ),
                                   ),
-                                  SizedBox(height: 8.0),
-                                  Text(
-                                    'Quantity: 32',
-                                    style: TextStyle(
-                                        color: AppColors.fontLightBlack,
-                                        fontSize: 12.0),
-                                  ),
-                                  // SizedBox(height: 5.0),
-                                  // Container(
-                                  //   decoration: BoxDecoration(
-                                  //       color: AppColors.backRed,
-                                  //       border: Border.all(
-                                  //           color: AppColors.borderRed),
-                                  //       borderRadius:
-                                  //           BorderRadius.circular(16.0)),
-                                  //   child: Padding(
-                                  //     padding: const EdgeInsets.all(5.0),
-                                  //     child: Text(
-                                  //       'Hig Priority',
-                                  //       style: TextStyle(
-                                  //           color: AppColors.fontRed,
-                                  //           fontSize: 12.0),
-                                  //     ),
-                                  //   ),
-                                  // ),
                                 ],
                               ),
-                            ),
+                              Text(
+                                "  |  ",
+                                style: textStyle.SegoeUI.copyWith(
+                                  fontSize: 12.px,
+                                  color: AppColors.fontGrey,
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    "Unit Type",
+                                    style: textStyle.SegoeUISemiBold.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.darkGreen,
+                                    ),
+                                  ),
+                                  Text(
+                                    ": 23",
+                                    style: textStyle.SegoeUI.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.fontGrey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                "  |  ",
+                                style: textStyle.SegoeUI.copyWith(
+                                  fontSize: 12.px,
+                                  color: AppColors.fontGrey,
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    "Lineset length",
+                                    style: textStyle.SegoeUISemiBold.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.darkGreen,
+                                    ),
+                                  ),
+                                  Text(
+                                    ": 1000",
+                                    style: textStyle.SegoeUI.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.fontGrey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
                     Row(
                       children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "2. Zone Name",
-                                style: textStyle.SegoeUISemiBold.copyWith(
-                                    fontSize: 14.px,
-                                    color: AppColors.darkGreen),
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Zone type",
-                                    style: textStyle.SegoeUISemiBold.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.darkGreen),
+                        width > 615
+                            ? InkWell(
+                                onTap: () {
+                                  upLoadFileDialog();
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border:
+                                        Border.all(color: AppColors.neonBorder),
+                                    borderRadius: BorderRadius.circular(12.0),
                                   ),
-                                  Text(
-                                    ": J-Series",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.asset(
+                                      "Assets/icons/ic_notes_new.png",
+                                      width: 20,
+                                      height: 20,
+                                    ),
                                   ),
-                                  Text(
-                                    "  |  ",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                  Text(
-                                    "BTU",
-                                    style: textStyle.SegoeUISemiBold.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.darkGreen),
-                                  ),
-                                  Text(
-                                    ": 23",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                  Text(
-                                    "  |  ",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                  Text(
-                                    "Unit Type",
-                                    style: textStyle.SegoeUISemiBold.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.darkGreen),
-                                  ),
-                                  Text(
-                                    ": 23",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                  Text(
-                                    "  |  ",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                  Text(
-                                    "Lineset length",
-                                    style: textStyle.SegoeUISemiBold.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.darkGreen),
-                                  ),
-                                  Text(
-                                    ": 1000",
-                                    style: textStyle.SegoeUI.copyWith(
-                                        fontSize: 12.px,
-                                        color: AppColors.fontGrey),
-                                  ),
-                                ],
+                                ),
                               )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: AppColors.neonBorder),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              "Assets/icons/ic_notes_new.png",
-                              width: 20,
-                              height: 20,
-                            ),
-                          ),
-                        ),
+                            : SizedBox.shrink(),
                         SizedBox(width: 10),
-                        Image.asset("Assets/icons/ic_block.png",
-                            width: 20, height: 20),
+                        width > 615
+                            ? Image.asset("Assets/icons/ic_block.png",
+                                width: 20, height: 20)
+                            : SizedBox.shrink(),
                         SizedBox(width: 10),
                       ],
                     ),
-                    Divider(
-                      color: AppColors.borderColor,
-                      height: 30,
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                  ],
+                ),
+                SizedBox(height: 1.h),
+                width < 615
+                    ? Row(
                         children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 120.0),
-                            decoration: BoxDecoration(
-                                color: AppColors.white_00,
-                                border: Border.all(color: AppColors.mainGreen),
-                                borderRadius: BorderRadius.circular(12.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 70.0,
-                                  left: 20.0,
-                                  right: 170.0,
-                                  bottom: 20.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'AIRSTAGE H-Series',
-                                    style:
-                                        TextStyle(color: AppColors.darkGreen),
-                                  ),
-                                  SizedBox(height: 8.0),
-                                  Text(
-                                    'NovaTech 6',
-                                    style: TextStyle(
-                                        color: AppColors.fontLightBlack,
-                                        fontSize: 22.0),
-                                  ),
-                                  SizedBox(height: 8.0),
-                                  Text(
-                                    'Quantity: 32',
-                                    style: TextStyle(
-                                        color: AppColors.fontLightBlack,
-                                        fontSize: 12.0),
-                                  ),
-                                  SizedBox(height: 5.0),
-                                  Container(
+                          InkWell(
+                            onTap: () {
+                              upLoadFileDialog();
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: AppColors.neonBorder),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset(
+                                  "Assets/icons/ic_notes_new.png",
+                                  width: 20,
+                                  height: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Image.asset("Assets/icons/ic_block.png",
+                              width: 20, height: 20)
+                        ],
+                      )
+                    : SizedBox.shrink(),
+                Divider(
+                  color: AppColors.borderColor,
+                  height: 30,
+                ),
+                MasonryGridView.count(
+                  shrinkWrap: true,
+                  itemCount: projects.length,
+                  crossAxisCount: _getGridCrossAxisCount(context),
+                  mainAxisSpacing: 4,
+                  crossAxisSpacing: 12,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.white_00,
+                          border: Border.all(color: AppColors.mainGreen),
+                          borderRadius: BorderRadius.circular(12.0)),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 70.0, left: 20.0, bottom: 20.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              projects[index]["name"],
+                              style: TextStyle(color: AppColors.darkGreen),
+                            ),
+                            SizedBox(height: 8.0),
+                            Text(
+                              projects[index]["subName"],
+                              style: TextStyle(
+                                  color: AppColors.fontLightBlack,
+                                  fontSize: 22.0),
+                            ),
+                            SizedBox(height: 8.0),
+                            Text(
+                              projects[index]["Quantity"],
+                              style: TextStyle(
+                                  color: AppColors.fontLightBlack,
+                                  fontSize: 12.0),
+                            ),
+                            SizedBox(height: 5.0),
+                            projects[index]["high_value"] == true
+                                ? Container(
                                     decoration: BoxDecoration(
                                         color: AppColors.backRed,
                                         border: Border.all(
@@ -530,92 +339,248 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
                                             fontSize: 12.0),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
+                                  )
+                                : SizedBox.shrink(),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                SizedBox(height: 3.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "1. Zone Name",
+                            style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 14.px,
+                              color: AppColors.darkGreen,
                             ),
                           ),
-                          SizedBox(width: 30.0),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: AppColors.white_00,
-                                border:
-                                    Border.all(color: AppColors.borderColor),
-                                borderRadius: BorderRadius.circular(12.0)),
-                            margin: EdgeInsets.only(top: 120.0),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 70.0,
-                                  left: 20.0,
-                                  right: 170.0,
-                                  bottom: 20.0),
-                              child: Column(
+                          Wrap(
+                            spacing: 8.0,
+                            runSpacing: 4.0,
+                            children: [
+                              Row(
                                 mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'AIRSTAGE H-Series',
-                                    style:
-                                        TextStyle(color: AppColors.darkGreen),
+                                    "Zone type",
+                                    style: textStyle.SegoeUISemiBold.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.darkGreen,
+                                    ),
                                   ),
-                                  SizedBox(height: 8.0),
                                   Text(
-                                    'NovaTech 6',
-                                    style: TextStyle(
-                                        color: AppColors.fontLightBlack,
-                                        fontSize: 22.0),
-                                  ),
-                                  SizedBox(height: 8.0),
-                                  Text(
-                                    'Quantity: 32',
-                                    style: TextStyle(
-                                        color: AppColors.fontLightBlack,
-                                        fontSize: 12.0),
+                                    ": J-Series",
+                                    style: textStyle.SegoeUI.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.fontGrey,
+                                    ),
                                   ),
                                 ],
                               ),
+                              Text(
+                                "  |  ",
+                                style: textStyle.SegoeUI.copyWith(
+                                  fontSize: 12.px,
+                                  color: AppColors.fontGrey,
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    "BTU",
+                                    style: textStyle.SegoeUISemiBold.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.darkGreen,
+                                    ),
+                                  ),
+                                  Text(
+                                    ": 23",
+                                    style: textStyle.SegoeUI.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.fontGrey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                "  |  ",
+                                style: textStyle.SegoeUI.copyWith(
+                                  fontSize: 12.px,
+                                  color: AppColors.fontGrey,
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    "Unit Type",
+                                    style: textStyle.SegoeUISemiBold.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.darkGreen,
+                                    ),
+                                  ),
+                                  Text(
+                                    ": 23",
+                                    style: textStyle.SegoeUI.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.fontGrey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                "  |  ",
+                                style: textStyle.SegoeUI.copyWith(
+                                  fontSize: 12.px,
+                                  color: AppColors.fontGrey,
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    "Lineset length",
+                                    style: textStyle.SegoeUISemiBold.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.darkGreen,
+                                    ),
+                                  ),
+                                  Text(
+                                    ": 1000",
+                                    style: textStyle.SegoeUI.copyWith(
+                                      fontSize: 12.px,
+                                      color: AppColors.fontGrey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        width > 615
+                            ? InkWell(
+                                onTap: () {
+                                  upLoadFileDialog();
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border:
+                                        Border.all(color: AppColors.neonBorder),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.asset(
+                                      "Assets/icons/ic_notes_new.png",
+                                      width: 20,
+                                      height: 20,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : SizedBox.shrink(),
+                        SizedBox(width: 10),
+                        width > 615
+                            ? Image.asset("Assets/icons/ic_block.png",
+                                width: 20, height: 20)
+                            : SizedBox.shrink(),
+                        SizedBox(width: 10),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 1.h),
+                width < 615
+                    ? Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              upLoadFileDialog();
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: AppColors.neonBorder),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset(
+                                  "Assets/icons/ic_notes_new.png",
+                                  width: 20,
+                                  height: 20,
+                                ),
+                              ),
                             ),
                           ),
-                          SizedBox(width: 30.0),
-                          Stack(
-                            alignment: Alignment.topCenter,
+                          SizedBox(width: 10),
+                          Image.asset("Assets/icons/ic_block.png",
+                              width: 20, height: 20)
+                        ],
+                      )
+                    : SizedBox.shrink(),
+                Divider(
+                  color: AppColors.borderColor,
+                  height: 30,
+                ),
+                MasonryGridView.count(
+                  shrinkWrap: true,
+                  itemCount: projects.length,
+                  crossAxisCount: _getGridCrossAxisCount(context),
+                  mainAxisSpacing: 4,
+                  crossAxisSpacing: 12,
+                  itemBuilder: (context, index) {
+                    double screenWidth = MediaQuery.of(context).size.width;
+
+                    return Stack(
+                      alignment: Alignment.topCenter,
+                      children: [
+                        Container(
+                          width: screenWidth,
+                          margin: EdgeInsets.only(top: 100),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: AppColors.borderColor),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          padding: const EdgeInsets.only(
+                              top: 80.0, left: 20.0, bottom: 20.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: EdgeInsets.only(top: 120.0),
-                                decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: AppColors.borderColor),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                padding: const EdgeInsets.only(
-                                    top: 70.0,
-                                    left: 20.0,
-                                    right: 170.0,
-                                    bottom: 20.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'AIRSTAGE H-Series',
-                                      style:
-                                          TextStyle(color: AppColors.darkGreen),
-                                    ),
-                                    SizedBox(height: 8.0),
-                                    Text(
-                                      'NovaTech 6',
-                                      style: TextStyle(
-                                          color: AppColors.fontLightBlack,
-                                          fontSize: 22.0),
-                                    ),
-                                    SizedBox(height: 8.0),
-                                    Text(
-                                      'Quantity: 32',
-                                      style: TextStyle(
-                                          color: AppColors.fontLightBlack,
-                                          fontSize: 12.0),
-                                    ),
-                                    SizedBox(height: 5.0),
-                                    Container(
+                              Text(
+                                'AIRSTAGE H-Series',
+                                style: TextStyle(color: AppColors.darkGreen),
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(
+                                'NovaTech 6',
+                                style: TextStyle(
+                                    color: AppColors.fontLightBlack,
+                                    fontSize: 22.0),
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(
+                                'Quantity: 32',
+                                style: TextStyle(
+                                    color: AppColors.fontLightBlack,
+                                    fontSize: 12.0),
+                              ),
+                              SizedBox(height: 5.0),
+                              projects[index]["high_value"] == true
+                                  ? Container(
                                       decoration: BoxDecoration(
                                           color: AppColors.backRed,
                                           border: Border.all(
@@ -631,37 +596,25 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
                                               fontSize: 12.0),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Positioned(
-                                top: 0,
-                                child: Image.asset(
-                                  "Assets/images/image_1.png",
-                                  height: 250,
-                                  width: 300,
-                                ),
-                              ),
-                              // Align(
-                              //   alignment: Alignment.topCenter,
-                              //   child: Container(
-                              //     child: Image.asset(
-                              //       "Assets/images/image_3.png",
-                              //       height: 200,
-                              //       width: 200,
-                              //     ),
-                              //   ),
-                              // ),
+                                    )
+                                  : SizedBox.shrink(),
                             ],
                           ),
-                          SizedBox(width: 30.0),
-                        ],
-                      ),
-                    ),
-                  ],
+                        ),
+                        Positioned(
+                          top: 50,
+                          child: Image.asset(
+                            "Assets/images/image_1.png",
+                            height: 150,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
-              ));
+              ],
+            ),
+          );
   }
 
   bool isZoneAdded = true;
@@ -682,7 +635,7 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
               builder: (BuildContext context, StateSetter setState) {
             return Dialog(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0)), //this right here
+                  borderRadius: BorderRadius.circular(12.0)),
               child: Container(
                 width: 550,
                 decoration: BoxDecoration(
@@ -796,8 +749,7 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
                                     isExpanded: true,
                                     onChanged: (String? newValue) {
                                       setState(() {
-                                        _selectedZone =
-                                            newValue; // Update the selected value
+                                        _selectedZone = newValue;
                                       });
                                     },
                                     items: stateNames
@@ -846,8 +798,7 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
                                     isExpanded: true,
                                     onChanged: (String? newValue) {
                                       setState(() {
-                                        _zoneCount =
-                                            newValue; // Update the selected value
+                                        _zoneCount = newValue;
                                       });
                                     },
                                     items: stateNames
@@ -899,8 +850,7 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
                                     isExpanded: true,
                                     onChanged: (String? newValue) {
                                       setState(() {
-                                        _btu =
-                                            newValue; // Update the selected value
+                                        _btu = newValue;
                                       });
                                     },
                                     items: stateNames
@@ -948,8 +898,7 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
                                     isExpanded: true,
                                     onChanged: (String? newValue) {
                                       setState(() {
-                                        _unitType =
-                                            newValue; // Update the selected value
+                                        _unitType = newValue;
                                       });
                                     },
                                     items: stateNames
@@ -1078,7 +1027,7 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
               builder: (BuildContext context, StateSetter setState) {
             return Dialog(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0)), //this right here
+                  borderRadius: BorderRadius.circular(12.0)),
               child: Container(
                 width: 550,
                 decoration: BoxDecoration(
@@ -1233,12 +1182,14 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
                                     width: 40.0,
                                   ),
                                   SizedBox(width: 12.0),
-                                  Container(
-                                    width: 370,
-                                    height: 10,
-                                    decoration: BoxDecoration(
-                                      color: AppColors.mainGreen,
-                                      borderRadius: BorderRadius.circular(12.0),
+                                  Expanded(
+                                    child: Container(
+                                      height: 10,
+                                      decoration: BoxDecoration(
+                                        color: AppColors.mainGreen,
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
                                     ),
                                   ),
                                   SizedBox(width: 12.0),
@@ -1280,7 +1231,7 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(width: 0.5.w),
+                          SizedBox(width: 1.w),
                           Expanded(
                             child: InkWell(
                               onTap: () {},
@@ -1312,5 +1263,21 @@ class _AdminSystemsScreenState extends State<AdminSystemsScreen> {
         }).whenComplete(() {
       setState(() {});
     });
+  }
+
+  int _getGridCrossAxisCount(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    if (width >= 1500) {
+      return 5;
+    } else if (width >= 1200) {
+      return 4;
+    } else if (width >= 900) {
+      return 3;
+    } else if (width >= 600) {
+      return 2;
+    } else {
+      return 1;
+    }
   }
 }

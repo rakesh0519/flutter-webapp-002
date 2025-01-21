@@ -612,24 +612,52 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                         )
                                       : uiProvider.adminDashPage ==
                                               "User_Projects_Details"
-                                          ? Container(
-                                              decoration: BoxDecoration(
-                                                  color: AppColors.lightBg,
-                                                  borderRadius:
-                                                      BorderRadius.circular(3)),
-                                              padding: EdgeInsets.only(
-                                                  left: 10,
-                                                  right: 10,
-                                                  top: 3,
-                                                  bottom: 5),
-                                              child: Text(
-                                                "Project Name",
-                                                style: textStyle.SegoeUISemiBold
-                                                    .copyWith(
-                                                        fontSize: 14.px,
-                                                        color: AppColors
-                                                            .selectIconColor),
-                                              ),
+                                          ? Row(
+                                              children: [
+                                                Container(
+                                                  padding: EdgeInsets.only(
+                                                      left: 10,
+                                                      right: 10,
+                                                      top: 3,
+                                                      bottom: 5),
+                                                  child: Text(
+                                                    "Users",
+                                                    style: textStyle
+                                                            .SegoeUISemiBold
+                                                        .copyWith(
+                                                            fontSize: 14.px,
+                                                            color: AppColors
+                                                                .selectIconColor),
+                                                  ),
+                                                ),
+                                                Icon(
+                                                    Icons
+                                                        .keyboard_arrow_right_rounded,
+                                                    color: AppColors.fontGrey
+                                                        .withOpacity(0.3)),
+                                                SizedBox(width: 0.7.w),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                      color: AppColors.lightBg,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              3)),
+                                                  padding: EdgeInsets.only(
+                                                      left: 10,
+                                                      right: 10,
+                                                      top: 3,
+                                                      bottom: 5),
+                                                  child: Text(
+                                                    "Project Name",
+                                                    style: textStyle
+                                                            .SegoeUISemiBold
+                                                        .copyWith(
+                                                            fontSize: 14.px,
+                                                            color: AppColors
+                                                                .selectIconColor),
+                                                  ),
+                                                )
+                                              ],
                                             )
                                           : uiProvider.adminDashPage ==
                                                   "Product_Details_page"

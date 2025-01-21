@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fujitsuweb/Providers/ui_providers.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
@@ -14,30 +15,152 @@ class ProductsCatalogScreen extends StatefulWidget {
 
 class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
   ScrollController scrollController = ScrollController();
-
   bool hovering = false;
-
   bool isGridView = true;
   UiProvider uiProvider = UiProvider();
+  List projects = [
+    {
+      "name": "AIRSTAGE H-Series",
+      "company": "QuantumDrive 3000",
+      "details": "12000 BTU Wall Mount"
+          "\nR-32 Heat Pump"
+          "\nBuilt-in Filtration",
+      "image": true,
+    },
+    {
+      "name": "AIRSTAGE H-Series",
+      "company": "QuantumDrive 3000",
+      "details": "12000 BTU Wall Mount"
+          "\nR-32 Heat Pump"
+          "\nBuilt-in Filtration",
+      "image": false,
+    },
+    {
+      "name": "AIRSTAGE H-Series",
+      "company": "QuantumDrive 3000",
+      "details": "12000 BTU Wall Mount"
+          "\nR-32 Heat Pump"
+          "\nBuilt-in Filtration",
+      "image": true,
+    },
+    {
+      "name": "AIRSTAGE H-Series",
+      "company": "QuantumDrive 3000",
+      "details": "12000 BTU Wall Mount"
+          "\nR-32 Heat Pump"
+          "\nBuilt-in Filtration",
+      "image": false,
+    },
+    {
+      "name": "AIRSTAGE H-Series",
+      "company": "QuantumDrive 3000",
+      "details": "12000 BTU Wall Mount"
+          "\nR-32 Heat Pump"
+          "\nBuilt-in Filtration",
+      "image": true,
+    },
+    {
+      "name": "AIRSTAGE H-Series",
+      "company": "QuantumDrive 3000",
+      "details": "12000 BTU Wall Mount"
+          "\nR-32 Heat Pump"
+          "\nBuilt-in Filtration",
+      "image": false,
+    },
+    {
+      "name": "AIRSTAGE H-Series",
+      "company": "QuantumDrive 3000",
+      "details": "12000 BTU Wall Mount"
+          "\nR-32 Heat Pump"
+          "\nBuilt-in Filtration",
+      "image": true,
+    },
+    {
+      "name": "AIRSTAGE H-Series",
+      "company": "QuantumDrive 3000",
+      "details": "12000 BTU Wall Mount"
+          "\nR-32 Heat Pump"
+          "\nBuilt-in Filtration",
+      "image": false,
+    },
+  ];
 
   void initState() {
     super.initState();
-
     uiProvider = Provider.of<UiProvider>(context, listen: false);
   }
 
   @override
   Widget build(BuildContext context) {
     uiProvider = Provider.of<UiProvider>(context, listen: true);
+    double width = MediaQuery.of(context).size.width;
 
     return Column(
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Column(
+        Visibility(
+          visible:
+              width >= 1500 || width >= 1200 || width >= 900 ? true : false,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Product Catalog",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 20.px, color: AppColors.fontBlack),
+                    ),
+                    Text(
+                      "Here’s a list of all our products available for your projects.",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 14.px, color: AppColors.fontBlack),
+                    ),
+                  ],
+                ),
+              ),
+              Image.asset("Assets/icons/ic_filter.png", width: 38, height: 38),
+              SizedBox(width: 0.6.w),
+              Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
+              SizedBox(width: 0.6.w),
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                        color: AppColors.darkBorderColor.withOpacity(0.3))),
+                height: 40,
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "Assets/icons/ic_search.png",
+                      width: 23,
+                      height: 23,
+                      color: AppColors.unselectIconColor,
+                    ),
+                    SizedBox(width: 0.6.w),
+                    Text(
+                      "Search",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 16.px, color: AppColors.unselectIconColor),
+                    ),
+                    SizedBox(width: 18.w),
+                  ],
+                ),
+              ),
+              SizedBox(width: 0.6.w),
+            ],
+          ),
+        ),
+        Visibility(
+          visible: width < 900 ? true : false,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -52,1509 +175,134 @@ class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
                   ),
                 ],
               ),
-            ),
-            InkWell(
-              onTap: () {
-                Scaffold.of(context).openEndDrawer();
-              },
-              child: Image.asset("Assets/icons/ic_filter.png",
-                  width: 38, height: 38),
-            ),
-            SizedBox(width: 0.6.w),
-            InkWell(
-              onTap: () {
-                addSpesCategoryDialog();
-              },
-              child:
-                  Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
-            ),
-            SizedBox(width: 0.6.w),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                      color: AppColors.darkBorderColor.withOpacity(0.3))),
-              height: 40,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
+              SizedBox(height: 2.0.h),
+              Row(
                 children: [
-                  Image.asset(
-                    "Assets/icons/ic_search.png",
-                    width: 23,
-                    height: 23,
-                    color: AppColors.unselectIconColor,
+                  Image.asset("Assets/icons/ic_filter.png",
+                      width: 38, height: 38),
+                  SizedBox(width: 0.6.w),
+                  Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
+                  SizedBox(width: 0.6.w),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                              color:
+                                  AppColors.darkBorderColor.withOpacity(0.3))),
+                      height: 40,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            "Assets/icons/ic_search.png",
+                            width: 23,
+                            height: 23,
+                            color: AppColors.unselectIconColor,
+                          ),
+                          SizedBox(width: 0.6.w),
+                          Text(
+                            "Search",
+                            style: textStyle.SegoeUI.copyWith(
+                                fontSize: 16.px,
+                                color: AppColors.unselectIconColor),
+                          ),
+                          SizedBox(width: 18.w),
+                        ],
+                      ),
+                    ),
                   ),
                   SizedBox(width: 0.6.w),
-                  Text(
-                    "Search",
-                    style: textStyle.SegoeUI.copyWith(
-                        fontSize: 16.px, color: AppColors.unselectIconColor),
-                  ),
-                  SizedBox(width: 18.w),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-        SizedBox(height: 30),
-        // isGridView == true
-        //     ?
         Expanded(
-          child: Scrollbar(
-            controller: scrollController,
-            thumbVisibility: true,
-            child: Theme(
-              data: Theme.of(context).copyWith(
-                  scrollbarTheme: ScrollbarThemeData(
-                thumbColor: WidgetStateProperty.all(Colors.transparent),
-              )),
-              child: SingleChildScrollView(
-                controller: scrollController,
-                child: Column(
-                  children: [
-                    Row(
+          child: MasonryGridView.count(
+            shrinkWrap: true,
+            itemCount: projects.length,
+            crossAxisCount: _getGridCrossAxisCount(context),
+            mainAxisSpacing: 4,
+            crossAxisSpacing: 12,
+            itemBuilder: (context, index) {
+              double screenWidth = MediaQuery.of(context).size.width;
+
+              return Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  Container(
+                    width: screenWidth,
+                    margin: EdgeInsets.only(top: 100),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.borderColor),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.only(
+                        top: 80.0, left: 20.0, bottom: 20.0),
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Expanded(
-                          child: MouseRegion(
-                            onEnter: (_) => setState(() => hovering = true),
-                            onExit: (_) => setState(() => hovering = false),
-                            child: Stack(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: hovering == true
-                                              ? AppColors.mainGreen
-                                              : AppColors.borderColor),
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: AppColors.white_00),
-                                  margin: EdgeInsets.only(top: 70),
-                                  padding: EdgeInsets.only(
-                                      top: 60, left: 20, right: 20, bottom: 25),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "AIRSTAGE H-Series",
-                                        style:
-                                            textStyle.SegoeUISemiBold.copyWith(
-                                                fontSize: 14.px,
-                                                color: AppColors.darkGreen),
-                                      ),
-                                      Text(
-                                        "QuantumDrive 3000",
-                                        style:
-                                            textStyle.SegoeUISemiBold.copyWith(
-                                                fontSize: 24.px,
-                                                color:
-                                                    AppColors.fontLightBlack),
-                                      ),
-                                      SizedBox(height: 10),
-                                      Text(
-                                        "12000 BTU Wall Mount"
-                                        "\nR-32 Heat Pump"
-                                        "\nBuilt-in Filtration",
-                                        style: textStyle.SegoeUI.copyWith(
-                                            fontSize: 12.px,
-                                            color: AppColors.fontLightBlack),
-                                      ),
-                                      SizedBox(height: 20),
-
-                                      /*
-                                      InkWell(
-                                        onTap: () {
-
-                                          addToProjectDialog();
-
-                                        },
-                                        child: Container(
-                                          width: MediaQuery.of(context).size.width,
-                                          height: 36,
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(6),
-                                              border: Border.all(color: AppColors.neonBorder)
-                                          ),
-                                          child: Row(
-                                            children: [
-
-                                              SizedBox(width: 5),
-
-                                              Padding(
-                                                padding: const EdgeInsets.all(8.0),
-                                                child: Icon(
-                                                  Icons.remove,
-                                                  color: AppColors.mainGreen,
-                                                  size: 20,
-                                                ),
-                                              ),
-
-                                              Expanded(
-                                                child: Center(
-                                                  child: Text(
-                                                    "Add to Project",
-                                                    style: textStyle.SegoeUISemiBold.copyWith(
-                                                        fontSize: 14.px,
-                                                        color: AppColors.mainGreen
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-
-                                              Padding(
-                                                padding: const EdgeInsets.all(8.0),
-                                                child: Icon(
-                                                  Icons.add,
-                                                  color: AppColors.mainGreen,
-                                                  size: 20,
-                                                ),
-                                              ),
-
-                                              SizedBox(width: 5),
-
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-
-                                      SizedBox(height: 10),
-                            */
-                                      // InkWell(
-                                      //   onTap: () {
-                                      //     viewProduct();
-                                      //   },
-                                      //   child: Container(
-                                      //     width:
-                                      //         MediaQuery.of(context).size.width,
-                                      //     height: 36,
-                                      //     decoration: BoxDecoration(
-                                      //         borderRadius:
-                                      //             BorderRadius.circular(6),
-                                      //         border: Border.all(
-                                      //             color: hovering == true
-                                      //                 ? AppColors.mainGreen
-                                      //                 : AppColors.borderColor)),
-                                      //     child: Center(
-                                      //       child: Text(
-                                      //         "View Details",
-                                      //         style: textStyle.SegoeUISemiBold
-                                      //             .copyWith(
-                                      //                 fontSize: 14.px,
-                                      //                 color: AppColors
-                                      //                     .fontLightBlack),
-                                      //       ),
-                                      //     ),
-                                      //   ),
-                                      // ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          InkWell(
-                                            onTap: () {
-                                              uiProvider.changeAdminPage(
-                                                  'Product_Details_page');
-                                            },
-                                            child: Image.asset(
-                                                "Assets/icons/ic_edit.png",
-                                                width: 38,
-                                                height: 38),
-                                          ),
-                                          Image.asset(
-                                              "Assets/icons/ic_copy.png",
-                                              width: 20,
-                                              height: 20),
-                                          Image.asset(
-                                              "Assets/icons/ic_eyeoff.png",
-                                              width: 20,
-                                              height: 20),
-                                          InkWell(
-                                            onTap: () {
-                                              deleteDialog();
-                                            },
-                                            child: Image.asset(
-                                                "Assets/icons/ic_delete.png",
-                                                width: 20,
-                                                height: 20),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20),
-                                  child: Center(
-                                      child: Image.asset(
-                                          "Assets/images/image_4.png")),
-                                ),
-                              ],
+                        Text(
+                          projects[index]["name"],
+                          style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 14.px, color: AppColors.darkGreen),
+                        ),
+                        Text(
+                          projects[index]["company"],
+                          style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 24.px, color: AppColors.fontLightBlack),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          projects[index]["details"],
+                          style: textStyle.SegoeUI.copyWith(
+                              fontSize: 12.px, color: AppColors.fontLightBlack),
+                        ),
+                        SizedBox(height: 12.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                uiProvider
+                                    .changeAdminPage('Product_Details_page');
+                              },
+                              child: Image.asset("Assets/icons/ic_edit.png",
+                                  width: 38, height: 38),
                             ),
-                          ),
+                            Image.asset("Assets/icons/ic_copy.png",
+                                width: 20, height: 20),
+                            Image.asset("Assets/icons/ic_eyeoff.png",
+                                width: 20, height: 20),
+                            InkWell(
+                              onTap: () {
+                                deleteDialog();
+                              },
+                              child: Image.asset("Assets/icons/ic_delete.png",
+                                  width: 20, height: 20),
+                            ),
+                            SizedBox(width: 8.0),
+                          ],
                         ),
-                        SizedBox(width: 20),
-                        Expanded(
-                          child: Stack(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: AppColors.borderColor),
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: AppColors.white_00),
-                                margin: EdgeInsets.only(top: 70),
-                                padding: EdgeInsets.only(
-                                    top: 60, left: 20, right: 20, bottom: 25),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "AIRSTAGE H-Series",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 14.px,
-                                          color: AppColors.darkGreen),
-                                    ),
-                                    Text(
-                                      "NovaSphere 500",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 24.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      "19000 BTU Overhead Air Distribution Unit"
-                                      "\nR-290 Innovative Heat Transfer System"
-                                      "\nAdvanced Air Purification Technology",
-                                      style: textStyle.SegoeUI.copyWith(
-                                          fontSize: 12.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 20),
-                                    // InkWell(
-                                    //   onTap: () {
-                                    //     viewProduct();
-                                    //   },
-                                    //   child: Container(
-                                    //     width:
-                                    //         MediaQuery.of(context).size.width,
-                                    //     height: 36,
-                                    //     decoration: BoxDecoration(
-                                    //         borderRadius:
-                                    //             BorderRadius.circular(6),
-                                    //         border: Border.all(
-                                    //             color: AppColors.borderColor)),
-                                    //     child: Center(
-                                    //       child: Text(
-                                    //         "View Details",
-                                    //         style: textStyle.SegoeUISemiBold
-                                    //             .copyWith(
-                                    //                 fontSize: 14.px,
-                                    //                 color: AppColors
-                                    //                     .fontLightBlack),
-                                    //       ),
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Image.asset("Assets/icons/ic_edit.png",
-                                            width: 38, height: 38),
-                                        Image.asset("Assets/icons/ic_copy.png",
-                                            width: 20, height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_eyeoff.png",
-                                            width: 20,
-                                            height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_delete.png",
-                                            width: 20,
-                                            height: 20),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Center(
-                                    child: Image.asset(
-                                        "Assets/images/image_4.png")),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 20),
-                        Expanded(
-                          child: Stack(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: AppColors.borderColor),
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: AppColors.white_00),
-                                margin: EdgeInsets.only(top: 70),
-                                padding: EdgeInsets.only(
-                                    top: 60, left: 20, right: 20, bottom: 25),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "AIRSTAGE H-Series",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 14.px,
-                                          color: AppColors.darkGreen),
-                                    ),
-                                    Text(
-                                      "HyperFusion 7",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 24.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      "20000 BTU Ceiling-Mounted Air Installation"
-                                      "\nR-410A Smart Climate Management"
-                                      "\nNext-Gen Air Quality Filtration",
-                                      style: textStyle.SegoeUI.copyWith(
-                                          fontSize: 12.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 20),
-                                    // InkWell(
-                                    //   onTap: () {},
-                                    //   child: Container(
-                                    //     width:
-                                    //         MediaQuery.of(context).size.width,
-                                    //     height: 36,
-                                    //     decoration: BoxDecoration(
-                                    //         borderRadius:
-                                    //             BorderRadius.circular(6),
-                                    //         border: Border.all(
-                                    //             color: AppColors.borderColor)),
-                                    //     child: Center(
-                                    //       child: Text(
-                                    //         "View Details",
-                                    //         style: textStyle.SegoeUISemiBold
-                                    //             .copyWith(
-                                    //                 fontSize: 14.px,
-                                    //                 color: AppColors
-                                    //                     .fontLightBlack),
-                                    //       ),
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Image.asset("Assets/icons/ic_edit.png",
-                                            width: 38, height: 38),
-                                        Image.asset("Assets/icons/ic_copy.png",
-                                            width: 20, height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_eyeoff.png",
-                                            width: 20,
-                                            height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_delete.png",
-                                            width: 20,
-                                            height: 20),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Center(
-                                    child: Image.asset(
-                                        "Assets/images/image_5.png")),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 20),
-                        Expanded(
-                          child: Stack(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: AppColors.borderColor),
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: AppColors.white_00),
-                                margin: EdgeInsets.only(top: 70),
-                                padding: EdgeInsets.only(
-                                    top: 60, left: 20, right: 20, bottom: 25),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "AIRSTAGE H-Series",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 14.px,
-                                          color: AppColors.darkGreen),
-                                    ),
-                                    Text(
-                                      "EcoWave 100",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 24.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      "21000 BTU Ceiling-Mounted Air Solution\nR-32 Versatile Heating and Cooling Technology\nCutting-Edge Air Purification System",
-                                      style: textStyle.SegoeUI.copyWith(
-                                          fontSize: 12.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 20),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Image.asset("Assets/icons/ic_edit.png",
-                                            width: 38, height: 38),
-                                        Image.asset("Assets/icons/ic_copy.png",
-                                            width: 20, height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_eyeoff.png",
-                                            width: 20,
-                                            height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_delete.png",
-                                            width: 20,
-                                            height: 20),
-                                      ],
-                                    ),
-                                    // InkWell(
-                                    //   onTap: () {},
-                                    //   child: Container(
-                                    //     width:
-                                    //         MediaQuery.of(context).size.width,
-                                    //     height: 36,
-                                    //     decoration: BoxDecoration(
-                                    //         borderRadius:
-                                    //             BorderRadius.circular(6),
-                                    //         border: Border.all(
-                                    //             color: AppColors.borderColor)),
-                                    //     child: Center(
-                                    //       child: Text(
-                                    //         "View Details",
-                                    //         style: textStyle.SegoeUISemiBold
-                                    //             .copyWith(
-                                    //                 fontSize: 14.px,
-                                    //                 color: AppColors
-                                    //                     .fontLightBlack),
-                                    //       ),
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Center(
-                                    child: Image.asset(
-                                        "Assets/images/image_6.png")),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 40),
                       ],
                     ),
-                    SizedBox(height: 20),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Stack(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: AppColors.borderColor),
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: AppColors.white_00),
-                                margin: EdgeInsets.only(top: 70),
-                                padding: EdgeInsets.only(
-                                    top: 60, left: 20, right: 20, bottom: 25),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "AIRSTAGE H-Series",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 14.px,
-                                          color: AppColors.darkGreen),
-                                    ),
-                                    Text(
-                                      "QuantumDrive 3000",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 24.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      "12000 BTU Wall Mount"
-                                      "\nR-32 Heat Pump"
-                                      "\nBuilt-in Filtration",
-                                      style: textStyle.SegoeUI.copyWith(
-                                          fontSize: 12.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 20),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Image.asset("Assets/icons/ic_edit.png",
-                                            width: 38, height: 38),
-                                        Image.asset("Assets/icons/ic_copy.png",
-                                            width: 20, height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_eyeoff.png",
-                                            width: 20,
-                                            height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_delete.png",
-                                            width: 20,
-                                            height: 20),
-                                      ],
-                                    ),
-                                    // InkWell(
-                                    //   onTap: () {},
-                                    //   child: Container(
-                                    //     width:
-                                    //         MediaQuery.of(context).size.width,
-                                    //     height: 36,
-                                    //     decoration: BoxDecoration(
-                                    //         borderRadius:
-                                    //             BorderRadius.circular(6),
-                                    //         border: Border.all(
-                                    //             color: AppColors.borderColor)),
-                                    //     child: Center(
-                                    //       child: Text(
-                                    //         "View Details",
-                                    //         style: textStyle.SegoeUISemiBold
-                                    //             .copyWith(
-                                    //                 fontSize: 14.px,
-                                    //                 color: AppColors
-                                    //                     .fontLightBlack),
-                                    //       ),
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Center(
-                                    child: Image.asset(
-                                        "Assets/images/image_4.png")),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 20),
-                        Expanded(
-                          child: Stack(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: AppColors.borderColor),
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: AppColors.white_00),
-                                margin: EdgeInsets.only(top: 70),
-                                padding: EdgeInsets.only(
-                                    top: 60, left: 20, right: 20, bottom: 25),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "AIRSTAGE H-Series",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 14.px,
-                                          color: AppColors.darkGreen),
-                                    ),
-                                    Text(
-                                      "NovaSphere 500",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 24.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      "19000 BTU Overhead Air Distribution Unit"
-                                      "\nR-290 Innovative Heat Transfer System"
-                                      "\nAdvanced Air Purification Technology",
-                                      style: textStyle.SegoeUI.copyWith(
-                                          fontSize: 12.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 20),
-                                    // InkWell(
-                                    //   onTap: () {},
-                                    //   child: Container(
-                                    //     width:
-                                    //         MediaQuery.of(context).size.width,
-                                    //     height: 36,
-                                    //     decoration: BoxDecoration(
-                                    //         borderRadius:
-                                    //             BorderRadius.circular(6),
-                                    //         border: Border.all(
-                                    //             color: AppColors.borderColor)),
-                                    //     child: Center(
-                                    //       child: Text(
-                                    //         "View Details",
-                                    //         style: textStyle.SegoeUISemiBold
-                                    //             .copyWith(
-                                    //                 fontSize: 14.px,
-                                    //                 color: AppColors
-                                    //                     .fontLightBlack),
-                                    //       ),
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Image.asset("Assets/icons/ic_edit.png",
-                                            width: 38, height: 38),
-                                        Image.asset("Assets/icons/ic_copy.png",
-                                            width: 20, height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_eyeoff.png",
-                                            width: 20,
-                                            height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_delete.png",
-                                            width: 20,
-                                            height: 20),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Center(
-                                    child: Image.asset(
-                                        "Assets/images/image_4.png")),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 20),
-                        Expanded(
-                          child: Stack(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: AppColors.borderColor),
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: AppColors.white_00),
-                                margin: EdgeInsets.only(top: 70),
-                                padding: EdgeInsets.only(
-                                    top: 60, left: 20, right: 20, bottom: 25),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "AIRSTAGE H-Series",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 14.px,
-                                          color: AppColors.darkGreen),
-                                    ),
-                                    Text(
-                                      "HyperFusion 7",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 24.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      "20000 BTU Ceiling-Mounted Air Installation"
-                                      "\nR-410A Smart Climate Management"
-                                      "\nNext-Gen Air Quality Filtration",
-                                      style: textStyle.SegoeUI.copyWith(
-                                          fontSize: 12.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 20),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Image.asset("Assets/icons/ic_edit.png",
-                                            width: 38, height: 38),
-                                        Image.asset("Assets/icons/ic_copy.png",
-                                            width: 20, height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_eyeoff.png",
-                                            width: 20,
-                                            height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_delete.png",
-                                            width: 20,
-                                            height: 20),
-                                      ],
-                                    ),
-                                    // InkWell(
-                                    //   onTap: () {},
-                                    //   child: Container(
-                                    //     width:
-                                    //         MediaQuery.of(context).size.width,
-                                    //     height: 36,
-                                    //     decoration: BoxDecoration(
-                                    //         borderRadius:
-                                    //             BorderRadius.circular(6),
-                                    //         border: Border.all(
-                                    //             color: AppColors.borderColor)),
-                                    //     child: Center(
-                                    //       child: Text(
-                                    //         "View Details",
-                                    //         style: textStyle.SegoeUISemiBold
-                                    //             .copyWith(
-                                    //                 fontSize: 14.px,
-                                    //                 color: AppColors
-                                    //                     .fontLightBlack),
-                                    //       ),
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Center(
-                                    child: Image.asset(
-                                        "Assets/images/image_5.png")),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 20),
-                        Expanded(
-                          child: Stack(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: AppColors.borderColor),
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: AppColors.white_00),
-                                margin: EdgeInsets.only(top: 70),
-                                padding: EdgeInsets.only(
-                                    top: 60, left: 20, right: 20, bottom: 25),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "AIRSTAGE H-Series",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 14.px,
-                                          color: AppColors.darkGreen),
-                                    ),
-                                    Text(
-                                      "EcoWave 100",
-                                      style: textStyle.SegoeUISemiBold.copyWith(
-                                          fontSize: 24.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      "21000 BTU Ceiling-Mounted Air Solution\nR-32 Versatile Heating and Cooling Technology\nCutting-Edge Air Purification System",
-                                      style: textStyle.SegoeUI.copyWith(
-                                          fontSize: 12.px,
-                                          color: AppColors.fontLightBlack),
-                                    ),
-                                    SizedBox(height: 20),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Image.asset("Assets/icons/ic_edit.png",
-                                            width: 38, height: 38),
-                                        Image.asset("Assets/icons/ic_copy.png",
-                                            width: 20, height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_eyeoff.png",
-                                            width: 20,
-                                            height: 20),
-                                        Image.asset(
-                                            "Assets/icons/ic_delete.png",
-                                            width: 20,
-                                            height: 20),
-                                      ],
-                                    ),
-                                    // InkWell(
-                                    //   onTap: () {},
-                                    //   child: Container(
-                                    //     width:
-                                    //         MediaQuery.of(context).size.width,
-                                    //     height: 36,
-                                    //     decoration: BoxDecoration(
-                                    //         borderRadius:
-                                    //             BorderRadius.circular(6),
-                                    //         border: Border.all(
-                                    //             color: AppColors.borderColor)),
-                                    //     child: Center(
-                                    //       child: Text(
-                                    //         "View Details",
-                                    //         style: textStyle.SegoeUISemiBold
-                                    //             .copyWith(
-                                    //                 fontSize: 14.px,
-                                    //                 color: AppColors
-                                    //                     .fontLightBlack),
-                                    //       ),
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Center(
-                                    child: Image.asset(
-                                        "Assets/images/image_6.png")),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 40),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
+                  ),
+                  Positioned(
+                    top: 50,
+                    child: projects[index]["image"] == true
+                        ? Image.asset(
+                            "Assets/images/image_6.png",
+                            height: 150,
+                          )
+                        : SizedBox.shrink(),
+                  ),
+                ],
+              );
+            },
           ),
-        )
-        // : Expanded(
-        //     child: Scrollbar(
-        //       controller: scrollController,
-        //       thumbVisibility: true,
-        //       child: Theme(
-        //         data: Theme.of(context).copyWith(
-        //             scrollbarTheme: ScrollbarThemeData(
-        //           thumbColor: WidgetStateProperty.all(Colors.transparent),
-        //         )),
-        //         child: SingleChildScrollView(
-        //           controller: scrollController,
-        //           child: Column(
-        //             children: [
-        //               MouseRegion(
-        //                 onEnter: (_) => setState(() => hovering = true),
-        //                 onExit: (_) => setState(() => hovering = false),
-        //                 child: Container(
-        //                   decoration: BoxDecoration(
-        //                       border: Border.all(
-        //                           color: hovering == true
-        //                               ? AppColors.mainGreen
-        //                               : AppColors.borderColor),
-        //                       borderRadius: BorderRadius.circular(12),
-        //                       color: AppColors.white_00),
-        //                   padding: EdgeInsets.only(
-        //                       top: 10, left: 10, right: 30, bottom: 10),
-        //                   child: Row(
-        //                     crossAxisAlignment: CrossAxisAlignment.center,
-        //                     mainAxisAlignment: MainAxisAlignment.center,
-        //                     children: [
-        //                       SizedBox(
-        //                         width: 300,
-        //                         child: Center(
-        //                           child: Image.asset(
-        //                             "Assets/images/image_4.png",
-        //                             width: 200,
-        //                           ),
-        //                         ),
-        //                       ),
-        //                       SizedBox(width: 30),
-        //                       SizedBox(
-        //                         width: 250,
-        //                         child: Column(
-        //                           crossAxisAlignment:
-        //                               CrossAxisAlignment.start,
-        //                           children: [
-        //                             Text(
-        //                               "AIRSTAGE H-Series",
-        //                               style: textStyle.SegoeUISemiBold
-        //                                   .copyWith(
-        //                                       fontSize: 14.px,
-        //                                       color: AppColors.darkGreen),
-        //                             ),
-        //                             Text(
-        //                               "QuantumDrive 3000",
-        //                               style: textStyle.SegoeUISemiBold
-        //                                   .copyWith(
-        //                                       fontSize: 24.px,
-        //                                       color:
-        //                                           AppColors.fontLightBlack),
-        //                             ),
-        //                           ],
-        //                         ),
-        //                       ),
-        //                       SizedBox(width: 50),
-        //                       Expanded(
-        //                         child: Text(
-        //                           "12000 BTU Wall Mount"
-        //                           "\nR-32 Heat Pump"
-        //                           "\nBuilt-in Filtration",
-        //                           style: textStyle.SegoeUI.copyWith(
-        //                               fontSize: 14.px,
-        //                               color: AppColors.fontLightBlack),
-        //                         ),
-        //                       ),
-        //                       SizedBox(height: 20),
-        //                       InkWell(
-        //                         onTap: () {
-        //                           viewProduct();
-        //                         },
-        //                         child: Text(
-        //                           "View Details",
-        //                           style: textStyle.SegoeUISemiBold.copyWith(
-        //                               fontSize: 16.px,
-        //                               color: AppColors.fontLightBlack),
-        //                         ),
-        //                       ),
-        //                     ],
-        //                   ),
-        //                 ),
-        //               ),
-        //               SizedBox(height: 15),
-        //               Container(
-        //                 decoration: BoxDecoration(
-        //                     border:
-        //                         Border.all(color: AppColors.borderColor),
-        //                     borderRadius: BorderRadius.circular(12),
-        //                     color: AppColors.white_00),
-        //                 padding: EdgeInsets.only(
-        //                     top: 10, left: 10, right: 30, bottom: 10),
-        //                 child: Row(
-        //                   crossAxisAlignment: CrossAxisAlignment.center,
-        //                   mainAxisAlignment: MainAxisAlignment.center,
-        //                   children: [
-        //                     SizedBox(
-        //                       width: 300,
-        //                       child: Center(
-        //                         child: Image.asset(
-        //                           "Assets/images/image_4.png",
-        //                           width: 200,
-        //                         ),
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 30),
-        //                     SizedBox(
-        //                       width: 250,
-        //                       child: Column(
-        //                         crossAxisAlignment:
-        //                             CrossAxisAlignment.start,
-        //                         children: [
-        //                           Text(
-        //                             "AIRSTAGE H-Series",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 14.px,
-        //                                     color: AppColors.darkGreen),
-        //                           ),
-        //                           Text(
-        //                             "NovaSphere 500",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 24.px,
-        //                                     color:
-        //                                         AppColors.fontLightBlack),
-        //                           ),
-        //                         ],
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 50),
-        //                     Expanded(
-        //                       child: Text(
-        //                         "19000 BTU Overhead Air Distribution Unit"
-        //                         "\nR-290 Innovative Heat Transfer System"
-        //                         "\nAdvanced Air Purification Technology",
-        //                         style: textStyle.SegoeUI.copyWith(
-        //                             fontSize: 14.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                     SizedBox(height: 20),
-        //                     InkWell(
-        //                       onTap: () {
-        //                         viewProduct();
-        //                       },
-        //                       child: Text(
-        //                         "View Details",
-        //                         style: textStyle.SegoeUISemiBold.copyWith(
-        //                             fontSize: 16.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //               SizedBox(height: 15),
-        //               Container(
-        //                 decoration: BoxDecoration(
-        //                     border:
-        //                         Border.all(color: AppColors.borderColor),
-        //                     borderRadius: BorderRadius.circular(12),
-        //                     color: AppColors.white_00),
-        //                 padding: EdgeInsets.only(left: 10, right: 30),
-        //                 child: Row(
-        //                   crossAxisAlignment: CrossAxisAlignment.center,
-        //                   mainAxisAlignment: MainAxisAlignment.center,
-        //                   children: [
-        //                     SizedBox(
-        //                       width: 300,
-        //                       child: Image.asset(
-        //                         "Assets/images/image_5.png",
-        //                         width: 300,
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 30),
-        //                     SizedBox(
-        //                       width: 250,
-        //                       child: Column(
-        //                         crossAxisAlignment:
-        //                             CrossAxisAlignment.start,
-        //                         children: [
-        //                           Text(
-        //                             "AIRSTAGE H-Series",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 14.px,
-        //                                     color: AppColors.darkGreen),
-        //                           ),
-        //                           Text(
-        //                             "HyperFusion 7",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 24.px,
-        //                                     color:
-        //                                         AppColors.fontLightBlack),
-        //                           ),
-        //                         ],
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 50),
-        //                     Expanded(
-        //                       child: Text(
-        //                         "20000 BTU Ceiling-Mounted Air Installation"
-        //                         "\nR-410A Smart Climate Management"
-        //                         "\nNext-Gen Air Quality Filtration",
-        //                         style: textStyle.SegoeUI.copyWith(
-        //                             fontSize: 14.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                     SizedBox(height: 20),
-        //                     InkWell(
-        //                       onTap: () {
-        //                         viewProduct();
-        //                       },
-        //                       child: Text(
-        //                         "View Details",
-        //                         style: textStyle.SegoeUISemiBold.copyWith(
-        //                             fontSize: 16.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //               SizedBox(height: 15),
-        //               Container(
-        //                 decoration: BoxDecoration(
-        //                     border:
-        //                         Border.all(color: AppColors.borderColor),
-        //                     borderRadius: BorderRadius.circular(12),
-        //                     color: AppColors.white_00),
-        //                 padding: EdgeInsets.only(left: 10, right: 30),
-        //                 child: Row(
-        //                   crossAxisAlignment: CrossAxisAlignment.center,
-        //                   mainAxisAlignment: MainAxisAlignment.center,
-        //                   children: [
-        //                     SizedBox(
-        //                       width: 300,
-        //                       child: Image.asset(
-        //                         "Assets/images/image_6.png",
-        //                         width: 300,
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 30),
-        //                     SizedBox(
-        //                       width: 250,
-        //                       child: Column(
-        //                         crossAxisAlignment:
-        //                             CrossAxisAlignment.start,
-        //                         children: [
-        //                           Text(
-        //                             "AIRSTAGE H-Series",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 14.px,
-        //                                     color: AppColors.darkGreen),
-        //                           ),
-        //                           Text(
-        //                             "EcoWave 100",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 24.px,
-        //                                     color:
-        //                                         AppColors.fontLightBlack),
-        //                           ),
-        //                         ],
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 50),
-        //                     Expanded(
-        //                       child: Text(
-        //                         "21000 BTU Ceiling-Mounted Air Solution"
-        //                         "\nR-32 Versatile Heating and Cooling Technology"
-        //                         "\nCutting-Edge Air Purification System",
-        //                         style: textStyle.SegoeUI.copyWith(
-        //                             fontSize: 14.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                     SizedBox(height: 20),
-        //                     InkWell(
-        //                       onTap: () {
-        //                         viewProduct();
-        //                       },
-        //                       child: Text(
-        //                         "View Details",
-        //                         style: textStyle.SegoeUISemiBold.copyWith(
-        //                             fontSize: 16.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //               SizedBox(height: 15),
-        //               MouseRegion(
-        //                 onEnter: (_) => setState(() => hovering = true),
-        //                 onExit: (_) => setState(() => hovering = false),
-        //                 child: Container(
-        //                   decoration: BoxDecoration(
-        //                       border: Border.all(
-        //                           color: hovering == true
-        //                               ? AppColors.mainGreen
-        //                               : AppColors.borderColor),
-        //                       borderRadius: BorderRadius.circular(12),
-        //                       color: AppColors.white_00),
-        //                   padding: EdgeInsets.only(
-        //                       top: 10, left: 10, right: 30, bottom: 10),
-        //                   child: Row(
-        //                     crossAxisAlignment: CrossAxisAlignment.center,
-        //                     mainAxisAlignment: MainAxisAlignment.center,
-        //                     children: [
-        //                       SizedBox(
-        //                         width: 300,
-        //                         child: Center(
-        //                           child: Image.asset(
-        //                             "Assets/images/image_4.png",
-        //                             width: 200,
-        //                           ),
-        //                         ),
-        //                       ),
-        //                       SizedBox(width: 30),
-        //                       SizedBox(
-        //                         width: 250,
-        //                         child: Column(
-        //                           crossAxisAlignment:
-        //                               CrossAxisAlignment.start,
-        //                           children: [
-        //                             Text(
-        //                               "AIRSTAGE H-Series",
-        //                               style: textStyle.SegoeUISemiBold
-        //                                   .copyWith(
-        //                                       fontSize: 14.px,
-        //                                       color: AppColors.darkGreen),
-        //                             ),
-        //                             Text(
-        //                               "QuantumDrive 3000",
-        //                               style: textStyle.SegoeUISemiBold
-        //                                   .copyWith(
-        //                                       fontSize: 24.px,
-        //                                       color:
-        //                                           AppColors.fontLightBlack),
-        //                             ),
-        //                           ],
-        //                         ),
-        //                       ),
-        //                       SizedBox(width: 50),
-        //                       Expanded(
-        //                         child: Text(
-        //                           "12000 BTU Wall Mount"
-        //                           "\nR-32 Heat Pump"
-        //                           "\nBuilt-in Filtration",
-        //                           style: textStyle.SegoeUI.copyWith(
-        //                               fontSize: 14.px,
-        //                               color: AppColors.fontLightBlack),
-        //                         ),
-        //                       ),
-        //                       SizedBox(height: 20),
-        //                       InkWell(
-        //                         onTap: () {
-        //                           viewProduct();
-        //                         },
-        //                         child: Text(
-        //                           "View Details",
-        //                           style: textStyle.SegoeUISemiBold.copyWith(
-        //                               fontSize: 16.px,
-        //                               color: AppColors.fontLightBlack),
-        //                         ),
-        //                       ),
-        //                     ],
-        //                   ),
-        //                 ),
-        //               ),
-        //               SizedBox(height: 15),
-        //               Container(
-        //                 decoration: BoxDecoration(
-        //                     border:
-        //                         Border.all(color: AppColors.borderColor),
-        //                     borderRadius: BorderRadius.circular(12),
-        //                     color: AppColors.white_00),
-        //                 padding: EdgeInsets.only(
-        //                     top: 10, left: 10, right: 30, bottom: 10),
-        //                 child: Row(
-        //                   crossAxisAlignment: CrossAxisAlignment.center,
-        //                   mainAxisAlignment: MainAxisAlignment.center,
-        //                   children: [
-        //                     SizedBox(
-        //                       width: 300,
-        //                       child: Center(
-        //                         child: Image.asset(
-        //                           "Assets/images/image_4.png",
-        //                           width: 200,
-        //                         ),
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 30),
-        //                     SizedBox(
-        //                       width: 250,
-        //                       child: Column(
-        //                         crossAxisAlignment:
-        //                             CrossAxisAlignment.start,
-        //                         children: [
-        //                           Text(
-        //                             "AIRSTAGE H-Series",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 14.px,
-        //                                     color: AppColors.darkGreen),
-        //                           ),
-        //                           Text(
-        //                             "NovaSphere 500",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 24.px,
-        //                                     color:
-        //                                         AppColors.fontLightBlack),
-        //                           ),
-        //                         ],
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 50),
-        //                     Expanded(
-        //                       child: Text(
-        //                         "19000 BTU Overhead Air Distribution Unit"
-        //                         "\nR-290 Innovative Heat Transfer System"
-        //                         "\nAdvanced Air Purification Technology",
-        //                         style: textStyle.SegoeUI.copyWith(
-        //                             fontSize: 14.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                     SizedBox(height: 20),
-        //                     InkWell(
-        //                       onTap: () {
-        //                         viewProduct();
-        //                       },
-        //                       child: Text(
-        //                         "View Details",
-        //                         style: textStyle.SegoeUISemiBold.copyWith(
-        //                             fontSize: 16.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //               SizedBox(height: 15),
-        //               Container(
-        //                 decoration: BoxDecoration(
-        //                     border:
-        //                         Border.all(color: AppColors.borderColor),
-        //                     borderRadius: BorderRadius.circular(12),
-        //                     color: AppColors.white_00),
-        //                 padding: EdgeInsets.only(left: 10, right: 30),
-        //                 child: Row(
-        //                   crossAxisAlignment: CrossAxisAlignment.center,
-        //                   mainAxisAlignment: MainAxisAlignment.center,
-        //                   children: [
-        //                     SizedBox(
-        //                       width: 300,
-        //                       child: Image.asset(
-        //                         "Assets/images/image_5.png",
-        //                         width: 300,
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 30),
-        //                     SizedBox(
-        //                       width: 250,
-        //                       child: Column(
-        //                         crossAxisAlignment:
-        //                             CrossAxisAlignment.start,
-        //                         children: [
-        //                           Text(
-        //                             "AIRSTAGE H-Series",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 14.px,
-        //                                     color: AppColors.darkGreen),
-        //                           ),
-        //                           Text(
-        //                             "HyperFusion 7",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 24.px,
-        //                                     color:
-        //                                         AppColors.fontLightBlack),
-        //                           ),
-        //                         ],
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 50),
-        //                     Expanded(
-        //                       child: Text(
-        //                         "20000 BTU Ceiling-Mounted Air Installation"
-        //                         "\nR-410A Smart Climate Management"
-        //                         "\nNext-Gen Air Quality Filtration",
-        //                         style: textStyle.SegoeUI.copyWith(
-        //                             fontSize: 14.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                     SizedBox(height: 20),
-        //                     InkWell(
-        //                       onTap: () {
-        //                         viewProduct();
-        //                       },
-        //                       child: Text(
-        //                         "View Details",
-        //                         style: textStyle.SegoeUISemiBold.copyWith(
-        //                             fontSize: 16.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //               SizedBox(height: 15),
-        //               Container(
-        //                 decoration: BoxDecoration(
-        //                     border:
-        //                         Border.all(color: AppColors.borderColor),
-        //                     borderRadius: BorderRadius.circular(12),
-        //                     color: AppColors.white_00),
-        //                 padding: EdgeInsets.only(left: 10, right: 30),
-        //                 child: Row(
-        //                   crossAxisAlignment: CrossAxisAlignment.center,
-        //                   mainAxisAlignment: MainAxisAlignment.center,
-        //                   children: [
-        //                     SizedBox(
-        //                       width: 300,
-        //                       child: Image.asset(
-        //                         "Assets/images/image_6.png",
-        //                         width: 300,
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 30),
-        //                     SizedBox(
-        //                       width: 250,
-        //                       child: Column(
-        //                         crossAxisAlignment:
-        //                             CrossAxisAlignment.start,
-        //                         children: [
-        //                           Text(
-        //                             "AIRSTAGE H-Series",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 14.px,
-        //                                     color: AppColors.darkGreen),
-        //                           ),
-        //                           Text(
-        //                             "EcoWave 100",
-        //                             style:
-        //                                 textStyle.SegoeUISemiBold.copyWith(
-        //                                     fontSize: 24.px,
-        //                                     color:
-        //                                         AppColors.fontLightBlack),
-        //                           ),
-        //                         ],
-        //                       ),
-        //                     ),
-        //                     SizedBox(width: 50),
-        //                     Expanded(
-        //                       child: Text(
-        //                         "21000 BTU Ceiling-Mounted Air Solution"
-        //                         "\nR-32 Versatile Heating and Cooling Technology"
-        //                         "\nCutting-Edge Air Purification System",
-        //                         style: textStyle.SegoeUI.copyWith(
-        //                             fontSize: 14.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                     SizedBox(height: 20),
-        //                     InkWell(
-        //                       onTap: () {
-        //                         viewProduct();
-        //                       },
-        //                       child: Text(
-        //                         "View Details",
-        //                         style: textStyle.SegoeUISemiBold.copyWith(
-        //                             fontSize: 16.px,
-        //                             color: AppColors.fontLightBlack),
-        //                       ),
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //             ],
-        //           ),
-        //         ),
-        //       ),
-        //     ),
-        //   )
+        ),
       ],
     );
   }
@@ -2763,5 +1511,21 @@ class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
         }).whenComplete(() {
       setState(() {});
     });
+  }
+
+  int _getGridCrossAxisCount(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    if (width >= 1500) {
+      return 5;
+    } else if (width >= 1200) {
+      return 4;
+    } else if (width >= 900) {
+      return 3;
+    } else if (width >= 600) {
+      return 2;
+    } else {
+      return 1;
+    }
   }
 }
