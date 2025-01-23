@@ -23,7 +23,6 @@ class _DashboardState extends State<Dashboard> {
   @override
   void initState() {
     super.initState();
-
     uiProvider = Provider.of<UiProvider>(context, listen: false);
   }
 

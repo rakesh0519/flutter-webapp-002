@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
 import 'package:provider/provider.dart';
@@ -144,9 +145,7 @@ class _ProjectsState extends State<Projects> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     uiProvider = Provider.of<UiProvider>(context, listen: false);
   }
 
@@ -155,194 +154,313 @@ class _ProjectsState extends State<Projects> {
   @override
   Widget build(BuildContext context) {
     uiProvider = Provider.of<UiProvider>(context, listen: true);
+    double width = MediaQuery.of(context).size.width;
+    print(width);
+
     return Column(
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Projects",
-                    style: textStyle.SegoeUISemiBold.copyWith(
-                        fontSize: 20.px, color: AppColors.fontBlack),
-                  ),
-                  Text(
-                    "Oversee the projects your team is managing and adjust their permissions.",
-                    style: textStyle.SegoeUI.copyWith(
-                        fontSize: 14.px, color: AppColors.fontBlack),
-                  ),
-                ],
+        Visibility(
+          visible:
+              width >= 1500 || width >= 1200 || width >= 900 ? true : false,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Projects",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 20.px, color: AppColors.fontBlack),
+                    ),
+                    Text(
+                      "Oversee the projects your team is managing and adjust their permissions.",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 14.px, color: AppColors.fontBlack),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Image.asset("Assets/icons/ic_filter.png", width: 38, height: 38),
-            SizedBox(width: 0.6.w),
-            Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
-            SizedBox(width: 0.6.w),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                      color: AppColors.darkBorderColor.withOpacity(0.3))),
-              height: 40,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
+              Image.asset("Assets/icons/ic_filter.png", width: 38, height: 38),
+              SizedBox(width: 0.6.w),
+              Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
+              SizedBox(width: 0.6.w),
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                        color: AppColors.darkBorderColor.withOpacity(0.3))),
+                height: 40,
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "Assets/icons/ic_search.png",
+                      width: 23,
+                      height: 23,
+                      color: AppColors.unselectIconColor,
+                    ),
+                    SizedBox(width: 0.6.w),
+                    Text(
+                      "Search",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 16.px, color: AppColors.unselectIconColor),
+                    ),
+                    SizedBox(width: 18.w),
+                  ],
+                ),
+              ),
+              SizedBox(width: 0.6.w),
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                        color: AppColors.darkBorderColor.withOpacity(0.3))),
+                height: 40,
+                child: Row(
+                  children: [
+                    InkWell(
+                      splashColor: AppColors.white_00,
+                      hoverColor: AppColors.white_00,
+                      onTap: () {
+                        setState(() {
+                          isGridView = true;
+                        });
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Image.asset(
+                          "Assets/icons/ic_grid.png",
+                          width: 20,
+                          height: 20,
+                          color: isGridView == true
+                              ? AppColors.mainGreen
+                              : AppColors.selectIconColor,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                      width: 2,
+                      child: VerticalDivider(
+                        color: AppColors.darkBorderColor.withOpacity(0.3),
+                      ),
+                    ),
+                    InkWell(
+                      splashColor: AppColors.white_00,
+                      hoverColor: AppColors.white_00,
+                      onTap: () {
+                        setState(() {
+                          isGridView = false;
+                        });
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Image.asset(
+                          "Assets/icons/ic_list.png",
+                          width: 20,
+                          height: 20,
+                          color: isGridView == false
+                              ? AppColors.mainGreen
+                              : AppColors.selectIconColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Visibility(
+          visible: width < 900 ? true : false,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Projects",
+                style: textStyle.SegoeUISemiBold.copyWith(
+                    fontSize: 20.px, color: AppColors.fontBlack),
+              ),
+              Text(
+                "Oversee the projects your team is managing and adjust their permissions.",
+                style: textStyle.SegoeUI.copyWith(
+                    fontSize: 14.px, color: AppColors.fontBlack),
+              ),
+              SizedBox(height: 1.h),
+              Row(
                 children: [
-                  Image.asset(
-                    "Assets/icons/ic_search.png",
-                    width: 23,
-                    height: 23,
-                    color: AppColors.unselectIconColor,
+                  Image.asset("Assets/icons/ic_filter.png",
+                      width: 38, height: 38),
+                  SizedBox(width: 0.6.w),
+                  Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
+                  SizedBox(width: 0.6.w),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                              color:
+                                  AppColors.darkBorderColor.withOpacity(0.3))),
+                      height: 40,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            "Assets/icons/ic_search.png",
+                            width: 23,
+                            height: 23,
+                            color: AppColors.unselectIconColor,
+                          ),
+                          SizedBox(width: 0.6.w),
+                          Text(
+                            "Search",
+                            style: textStyle.SegoeUI.copyWith(
+                                fontSize: 16.px,
+                                color: AppColors.unselectIconColor),
+                          ),
+                          SizedBox(width: 18.w),
+                        ],
+                      ),
+                    ),
                   ),
                   SizedBox(width: 0.6.w),
-                  Text(
-                    "Search",
-                    style: textStyle.SegoeUI.copyWith(
-                        fontSize: 16.px, color: AppColors.unselectIconColor),
-                  ),
-                  SizedBox(width: 18.w),
-                ],
-              ),
-            ),
-            SizedBox(width: 0.6.w),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                      color: AppColors.darkBorderColor.withOpacity(0.3))),
-              height: 40,
-              child: Row(
-                children: [
-                  InkWell(
-                    splashColor: AppColors.white_00,
-                    hoverColor: AppColors.white_00,
-                    onTap: () {
-                      setState(() {
-                        isGridView = true;
-                      });
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Image.asset(
-                        "Assets/icons/ic_grid.png",
-                        width: 20,
-                        height: 20,
-                        color: isGridView == true
-                            ? AppColors.mainGreen
-                            : AppColors.selectIconColor,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                            color: AppColors.darkBorderColor.withOpacity(0.3))),
                     height: 40,
-                    width: 2,
-                    child: VerticalDivider(
-                      color: AppColors.darkBorderColor.withOpacity(0.3),
-                    ),
-                  ),
-                  InkWell(
-                    splashColor: AppColors.white_00,
-                    hoverColor: AppColors.white_00,
-                    onTap: () {
-                      setState(() {
-                        isGridView = false;
-                      });
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Image.asset(
-                        "Assets/icons/ic_list.png",
-                        width: 20,
-                        height: 20,
-                        color: isGridView == false
-                            ? AppColors.mainGreen
-                            : AppColors.selectIconColor,
-                      ),
+                    child: Row(
+                      children: [
+                        InkWell(
+                          splashColor: AppColors.white_00,
+                          hoverColor: AppColors.white_00,
+                          onTap: () {
+                            setState(() {
+                              isGridView = true;
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Image.asset(
+                              "Assets/icons/ic_grid.png",
+                              width: 20,
+                              height: 20,
+                              color: isGridView == true
+                                  ? AppColors.mainGreen
+                                  : AppColors.selectIconColor,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 40,
+                          width: 2,
+                          child: VerticalDivider(
+                            color: AppColors.darkBorderColor.withOpacity(0.3),
+                          ),
+                        ),
+                        InkWell(
+                          splashColor: AppColors.white_00,
+                          hoverColor: AppColors.white_00,
+                          onTap: () {
+                            setState(() {
+                              isGridView = false;
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Image.asset(
+                              "Assets/icons/ic_list.png",
+                              width: 20,
+                              height: 20,
+                              color: isGridView == false
+                                  ? AppColors.mainGreen
+                                  : AppColors.selectIconColor,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
-              ),
-            ),
-          ],
+              )
+            ],
+          ),
         ),
         SizedBox(height: 3.h),
         projects.isNotEmpty
             ? isGridView == true
                 ? Expanded(
-                    child: Scrollbar(
-                      controller: scrollController,
-                      thumbVisibility: true,
-                      child: GridView.builder(
-                        controller: scrollController,
-                        itemCount: projects.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
-                            childAspectRatio: 1.13,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10),
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: MouseRegion(
-                              onEnter: (_) =>
-                                  setState(() => _hovering[index] = true),
-                              onExit: (_) =>
-                                  setState(() => _hovering[index] = false),
-                              child: InkWell(
-                                hoverColor: AppColors.white_00,
-                                onTap: () {
-                                  uiProvider
-                                      .changeDashboardPage("Projects_Details");
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: _hovering[index]
-                                              ? Colors.black.withOpacity(0.1)
-                                              : AppColors
-                                                  .white_00, // Shadow color
-                                          blurRadius:
-                                              10, // Softness of the shadow
-                                          spreadRadius: 2, // Size of the shadow
-                                          offset: Offset(
-                                              0, 4), // Position of the shadow
-                                        ),
-                                      ],
-                                      border: Border.all(
-                                          color: _hovering[index]
-                                              ? AppColors.mainGreen
-                                              : AppColors.borderColor),
-                                      borderRadius: BorderRadius.circular(16),
-                                      color: AppColors.white_00),
-                                  padding: EdgeInsets.all(20),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Container(
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  color: AppColors.white_00,
-                                                  border: Border.all(
-                                                      color: AppColors
-                                                          .borderColor)),
-                                              padding: EdgeInsets.all(8),
-                                              child: SizedBox(
-                                                height: 25,
-                                                width: 25,
-                                              )),
-                                          SizedBox(width: 10),
-                                          Column(
+                    child: MasonryGridView.count(
+                      shrinkWrap: true,
+                      itemCount: projects.length,
+                      crossAxisCount: _getGridCrossAxisCount(context),
+                      mainAxisSpacing: 4,
+                      crossAxisSpacing: 4,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: MouseRegion(
+                            onEnter: (_) =>
+                                setState(() => _hovering[index] = true),
+                            onExit: (_) =>
+                                setState(() => _hovering[index] = false),
+                            child: InkWell(
+                              hoverColor: AppColors.white_00,
+                              onTap: () {
+                                uiProvider
+                                    .changeDashboardPage("Projects_Details");
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: _hovering[index]
+                                            ? Colors.black.withOpacity(0.1)
+                                            : AppColors.white_00,
+                                        blurRadius: 10,
+                                        spreadRadius: 2,
+                                        offset: Offset(0, 4),
+                                      ),
+                                    ],
+                                    border: Border.all(
+                                        color: _hovering[index]
+                                            ? AppColors.mainGreen
+                                            : AppColors.borderColor),
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: AppColors.white_00),
+                                padding: EdgeInsets.all(20),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                                color: AppColors.white_00,
+                                                border: Border.all(
+                                                    color:
+                                                        AppColors.borderColor)),
+                                            padding: EdgeInsets.all(8),
+                                            child: SizedBox(
+                                              height: 25,
+                                              width: 25,
+                                            )),
+                                        SizedBox(width: 10),
+                                        Expanded(
+                                          child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 projects[index]["name"],
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
                                                 style: textStyle.SegoeUISemiBold
                                                     .copyWith(
                                                         fontSize: 14.px,
@@ -351,6 +469,8 @@ class _ProjectsState extends State<Projects> {
                                               ),
                                               Text(
                                                 projects[index]["company"],
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
                                                 style:
                                                     textStyle.SegoeUI.copyWith(
                                                         fontSize: 14.px,
@@ -359,127 +479,128 @@ class _ProjectsState extends State<Projects> {
                                               ),
                                             ],
                                           ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 15),
-                                      Text(
-                                        projects[index]["details"],
-                                        maxLines: 3,
-                                        style: textStyle.SegoeUI.copyWith(
-                                            fontSize: 12.px,
-                                            color: AppColors.fontLightBlack),
-                                      ),
-                                      SizedBox(height: 15),
-                                      Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 2),
-                                            child: Image.asset(
-                                                "Assets/icons/ic_message.png",
-                                                width: 20),
-                                          ),
-                                          SizedBox(width: 8),
-                                          Text(
-                                            projects[index]["number"],
-                                            maxLines: 1,
-                                            style: textStyle.SegoeUISemiBold
-                                                .copyWith(
-                                                    fontSize: 14.px,
-                                                    color: AppColors.fontGrey),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 5),
-                                      Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 2),
-                                            child: Image.asset(
-                                                "Assets/icons/ic_address.png",
-                                                width: 20),
-                                          ),
-                                          SizedBox(width: 8),
-                                          Text(
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 15),
+                                    Text(
+                                      projects[index]["details"],
+                                      maxLines: 3,
+                                      style: textStyle.SegoeUI.copyWith(
+                                          fontSize: 12.px,
+                                          color: AppColors.fontLightBlack),
+                                    ),
+                                    SizedBox(height: 15),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 2),
+                                          child: Image.asset(
+                                              "Assets/icons/ic_message.png",
+                                              width: 20),
+                                        ),
+                                        SizedBox(width: 8),
+                                        Text(
+                                          projects[index]["number"],
+                                          maxLines: 1,
+                                          style: textStyle.SegoeUISemiBold
+                                              .copyWith(
+                                                  fontSize: 14.px,
+                                                  color: AppColors.fontGrey),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 5),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 2),
+                                          child: Image.asset(
+                                              "Assets/icons/ic_address.png",
+                                              width: 20),
+                                        ),
+                                        SizedBox(width: 8),
+                                        Expanded(
+                                          child: Text(
                                             projects[index]["address"],
                                             maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
                                             style: textStyle.SegoeUISemiBold
                                                 .copyWith(
-                                                    //fontWeight: FontWeight.w400,
                                                     fontSize: 14.px,
                                                     color: AppColors.fontGrey),
                                           ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 15),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: InkWell(
-                                              onTap: () {},
-                                              child: Container(
-                                                height: 36,
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                    color: AppColors.white_00,
-                                                    border: Border.all(
-                                                        color: AppColors
-                                                            .darkBorderColor
-                                                            .withOpacity(0.3))),
-                                                padding:
-                                                    EdgeInsets.only(bottom: 2),
-                                                child: Center(
-                                                  child: Text(
-                                                    "View Details",
-                                                    style: textStyle
-                                                            .SegoeUISemiBold
-                                                        .copyWith(
-                                                            fontSize: 14.px,
-                                                            color: AppColors
-                                                                .fontLightBlack),
-                                                  ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 15),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: InkWell(
+                                            onTap: () {},
+                                            child: Container(
+                                              height: 36,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  color: AppColors.white_00,
+                                                  border: Border.all(
+                                                      color: AppColors
+                                                          .darkBorderColor
+                                                          .withOpacity(0.3))),
+                                              padding:
+                                                  EdgeInsets.only(bottom: 2),
+                                              child: Center(
+                                                child: Text(
+                                                  "View Details",
+                                                  style: textStyle
+                                                          .SegoeUISemiBold
+                                                      .copyWith(
+                                                          fontSize: 14.px,
+                                                          color: AppColors
+                                                              .fontLightBlack),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                          SizedBox(width: 10),
-                                          Container(
-                                            height: 36,
-                                            width: 36,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                color: AppColors.white_00,
-                                                border: Border.all(
-                                                    color: AppColors
-                                                        .darkBorderColor
-                                                        .withOpacity(0.3))),
-                                            child: Center(
-                                                child: Image.asset(
-                                                    "Assets/icons/ic_share.png",
-                                                    width: 20)),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                        ),
+                                        SizedBox(width: 10),
+                                        Container(
+                                          height: 36,
+                                          width: 36,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              color: AppColors.white_00,
+                                              border: Border.all(
+                                                  color: AppColors
+                                                      .darkBorderColor
+                                                      .withOpacity(0.3))),
+                                          child: Center(
+                                              child: Image.asset(
+                                                  "Assets/icons/ic_share.png",
+                                                  width: 20)),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   )
                 : Expanded(
@@ -508,13 +629,10 @@ class _ProjectsState extends State<Projects> {
                                         BoxShadow(
                                           color: _hovering[index]
                                               ? Colors.black.withOpacity(0.1)
-                                              : AppColors
-                                                  .white_00, // Shadow color
-                                          blurRadius:
-                                              10, // Softness of the shadow
-                                          spreadRadius: 2, // Size of the shadow
-                                          offset: Offset(
-                                              0, 4), // Position of the shadow
+                                              : AppColors.white_00,
+                                          blurRadius: 10,
+                                          spreadRadius: 2,
+                                          offset: Offset(0, 4),
                                         ),
                                       ],
                                       border: Border.all(
@@ -526,64 +644,147 @@ class _ProjectsState extends State<Projects> {
                                   margin: EdgeInsets.only(right: 20),
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 15, vertical: 15),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(30),
-                                              color: AppColors.white_00,
-                                              border: Border.all(
-                                                  color:
-                                                      AppColors.borderColor)),
-                                          padding: EdgeInsets.all(8),
-                                          child: SizedBox(
-                                            height: 25,
-                                            width: 25,
-                                          )),
-                                      SizedBox(width: 10),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                  child: width > 630
+                                      ? Row(
                                           children: [
+                                            Container(
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            30),
+                                                    color: AppColors.white_00,
+                                                    border: Border.all(
+                                                        color: AppColors
+                                                            .borderColor)),
+                                                padding: EdgeInsets.all(8),
+                                                child: SizedBox(
+                                                  height: 25,
+                                                  width: 25,
+                                                )),
+                                            SizedBox(width: 10),
+                                            Expanded(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    projects[index]["name"],
+                                                    style: textStyle
+                                                            .SegoeUISemiBold
+                                                        .copyWith(
+                                                            fontSize: 14.px,
+                                                            color: AppColors
+                                                                .fontBlack),
+                                                  ),
+                                                  Text(
+                                                    projects[index]["company"],
+                                                    style: textStyle.SegoeUI
+                                                        .copyWith(
+                                                            fontSize: 14.px,
+                                                            color: AppColors
+                                                                .fontLightBlack),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(width: 10),
                                             Text(
-                                              projects[index]["name"],
+                                              "View Details",
+                                              style: textStyle.SegoeUISemiBold
+                                                  .copyWith(
+                                                      fontSize: 14.px,
+                                                      color: AppColors
+                                                          .fontLightBlack),
+                                            ),
+                                            SizedBox(width: 10),
+                                            Text(
+                                              "Share",
                                               style: textStyle.SegoeUISemiBold
                                                   .copyWith(
                                                       fontSize: 14.px,
                                                       color:
-                                                          AppColors.fontBlack),
+                                                          AppColors.mainGreen),
                                             ),
-                                            Text(
-                                              projects[index]["company"],
-                                              style: textStyle.SegoeUI.copyWith(
-                                                  fontSize: 14.px,
-                                                  color:
-                                                      AppColors.fontLightBlack),
+                                          ],
+                                        )
+                                      : Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(30),
+                                                        color:
+                                                            AppColors.white_00,
+                                                        border: Border.all(
+                                                            color: AppColors
+                                                                .borderColor)),
+                                                    padding: EdgeInsets.all(8),
+                                                    child: SizedBox(
+                                                      height: 25,
+                                                      width: 25,
+                                                    )),
+                                                SizedBox(width: 10),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      projects[index]["name"],
+                                                      style: textStyle
+                                                              .SegoeUISemiBold
+                                                          .copyWith(
+                                                              fontSize: 14.px,
+                                                              color: AppColors
+                                                                  .fontBlack),
+                                                    ),
+                                                    Text(
+                                                      projects[index]
+                                                          ["company"],
+                                                      style: textStyle.SegoeUI
+                                                          .copyWith(
+                                                              fontSize: 14.px,
+                                                              color: AppColors
+                                                                  .fontLightBlack),
+                                                    ),
+                                                    SizedBox(height: 1.h),
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                          "View Details",
+                                                          style: textStyle
+                                                                  .SegoeUISemiBold
+                                                              .copyWith(
+                                                                  fontSize:
+                                                                      14.px,
+                                                                  color: AppColors
+                                                                      .fontLightBlack),
+                                                        ),
+                                                        SizedBox(width: 10),
+                                                        Text(
+                                                          "Share",
+                                                          style: textStyle
+                                                                  .SegoeUISemiBold
+                                                              .copyWith(
+                                                                  fontSize:
+                                                                      14.px,
+                                                                  color: AppColors
+                                                                      .mainGreen),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
-                                      ),
-                                      SizedBox(width: 10),
-                                      Text(
-                                        "View Details",
-                                        style:
-                                            textStyle.SegoeUISemiBold.copyWith(
-                                                fontSize: 14.px,
-                                                color:
-                                                    AppColors.fontLightBlack),
-                                      ),
-                                      SizedBox(width: 10),
-                                      Text(
-                                        "Share",
-                                        style:
-                                            textStyle.SegoeUISemiBold.copyWith(
-                                                fontSize: 14.px,
-                                                color: AppColors.mainGreen),
-                                      ),
-                                    ],
-                                  ),
                                 ),
                               ),
                             ),
@@ -793,6 +994,22 @@ class _ProjectsState extends State<Projects> {
     );
   }
 
+  int _getGridCrossAxisCount(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    if (width >= 1500) {
+      return 5;
+    } else if (width >= 1200) {
+      return 4;
+    } else if (width >= 900) {
+      return 3;
+    } else if (width >= 600) {
+      return 2;
+    } else {
+      return 1;
+    }
+  }
+
   projectDialog() {
     TextEditingController projectNameController = TextEditingController();
 
@@ -801,7 +1018,7 @@ class _ProjectsState extends State<Projects> {
         builder: (BuildContext context) {
           return Dialog(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0)), //this right here
+                borderRadius: BorderRadius.circular(12.0)),
             child: Container(
               width: 400,
               decoration: BoxDecoration(

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fujitsuweb/Ui_Web/00_Dashboard/dashboard.dart';
 import 'package:fujitsuweb/Ui_admin/Dashboard/admin_dashboard.dart';
 import 'package:fujitsuweb/Ui_web/00_Auth/forgot_password.dart';
 import 'package:fujitsuweb/Ui_web/00_Auth/register_screen.dart';
 import 'package:sizer/sizer.dart';
-
 import '../../Values/AppColors.dart';
 import '../../Values/Constants.dart';
-import '../00_Dashboard/dashboard.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -23,6 +22,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    print(width);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Row(
@@ -181,14 +182,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 3.h),
                         InkWell(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AdminDashboard()));
                             // Navigator.push(
                             //     context,
                             //     MaterialPageRoute(
-                            //         builder: (context) => Dashboard()));
+                            //         builder: (context) => AdminDashboard()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Dashboard()));
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width,
@@ -240,15 +241,19 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
           ),
-          Expanded(
-              flex: MediaQuery.of(context).size.width < 800 ? 1 : 2,
-              child: Container(
-                  color: AppColors.white_30,
-                  height: MediaQuery.of(context).size.height,
-                  child: Image.asset(
-                    "Assets/icons/login_bg.png",
-                    fit: BoxFit.fill,
-                  )))
+          width > 900
+              ? Expanded(
+                  flex: MediaQuery.of(context).size.width < 800 ? 1 : 2,
+                  child: Container(
+                    color: AppColors.white_30,
+                    height: MediaQuery.of(context).size.height,
+                    child: Image.asset(
+                      "Assets/icons/login_bg.png",
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                )
+              : SizedBox.shrink()
         ],
       ),
     );

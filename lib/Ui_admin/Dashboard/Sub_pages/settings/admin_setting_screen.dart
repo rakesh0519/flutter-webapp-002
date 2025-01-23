@@ -1428,10 +1428,12 @@ class _AdminSettingScreenState extends State<AdminSettingScreen> {
                       children: [
                         Row(
                           children: [
-                            Expanded(
-                              flex: 1,
-                              child: SizedBox(),
-                            ),
+                            width > 600
+                                ? Expanded(
+                                    flex: 1,
+                                    child: SizedBox(),
+                                  )
+                                : SizedBox.shrink(),
                             Expanded(
                               flex: 5,
                               child: Column(
@@ -2321,7 +2323,7 @@ class _AdminSettingScreenState extends State<AdminSettingScreen> {
                                 ],
                               ),
                             ),
-                            Spacer(),
+                            width > 600 ? Spacer() : SizedBox.shrink(),
                           ],
                         ),
                         SizedBox(height: 48.0),
