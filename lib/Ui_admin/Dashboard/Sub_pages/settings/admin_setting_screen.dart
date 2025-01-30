@@ -4,6 +4,8 @@ import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../../Ui_Web/00_Auth/login_screen.dart';
+
 class AdminSettingScreen extends StatefulWidget {
   const AdminSettingScreen({super.key});
 
@@ -123,26 +125,38 @@ class _AdminSettingScreenState extends State<AdminSettingScreen> {
                         width > 680
                             ? Padding(
                                 padding: const EdgeInsets.only(top: 20),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: AppColors.borderColor),
-                                      borderRadius: BorderRadius.circular(8)),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 13, vertical: 8),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "Logout",
-                                        style:
-                                            textStyle.SegoeUISemiBold.copyWith(
-                                                fontSize: 14.px,
-                                                color: AppColors.fontRed),
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.of(context).pushAndRemoveUntil(
+                                      MaterialPageRoute(
+                                        builder: (context) => LoginScreen(),
                                       ),
-                                      SizedBox(width: 10),
-                                      Image.asset("Assets/icons/ic_logout.png",
-                                          width: 20, height: 20),
-                                    ],
+                                      (Route<dynamic> route) => false,
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: AppColors.borderColor),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 13, vertical: 8),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "Logout",
+                                          style: textStyle.SegoeUISemiBold
+                                              .copyWith(
+                                                  fontSize: 14.px,
+                                                  color: AppColors.fontRed),
+                                        ),
+                                        SizedBox(width: 10),
+                                        Image.asset(
+                                            "Assets/icons/ic_logout.png",
+                                            width: 20,
+                                            height: 20),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               )
@@ -192,23 +206,35 @@ class _AdminSettingScreenState extends State<AdminSettingScreen> {
                           ),
                         ),
                         SizedBox(width: 2.h),
-                        Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.borderColor),
-                              borderRadius: BorderRadius.circular(8)),
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 13, vertical: 8),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Logout",
-                                style: textStyle.SegoeUISemiBold.copyWith(
-                                    fontSize: 14.px, color: AppColors.fontRed),
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
                               ),
-                              SizedBox(width: 10),
-                              Image.asset("Assets/icons/ic_logout.png",
-                                  width: 20, height: 20),
-                            ],
+                              (Route<dynamic> route) => false,
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: AppColors.borderColor),
+                                borderRadius: BorderRadius.circular(8)),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 13, vertical: 8),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Logout",
+                                  style: textStyle.SegoeUISemiBold.copyWith(
+                                      fontSize: 14.px,
+                                      color: AppColors.fontRed),
+                                ),
+                                SizedBox(width: 10),
+                                Image.asset("Assets/icons/ic_logout.png",
+                                    width: 20, height: 20),
+                              ],
+                            ),
                           ),
                         )
                       ],
