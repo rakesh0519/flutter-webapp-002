@@ -440,7 +440,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                           )),
                     ),
                     Expanded(child: SizedBox()),
-                    InkWell(
+                    /* InkWell(
                       hoverColor: Colors.transparent,
                       focusColor: Colors.transparent,
                       splashColor: Colors.transparent,
@@ -468,7 +468,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 ? AppColors.selectIconColor
                                 : AppColors.unselectIconColor,
                           )),
-                    ),
+                    ),*/
                     SizedBox(height: 1.h),
                     InkWell(
                       hoverColor: Colors.transparent,

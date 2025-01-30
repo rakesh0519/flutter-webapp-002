@@ -4,6 +4,7 @@ import 'package:fujitsuweb/Ui_admin/Dashboard/admin_dashboard.dart';
 import 'package:fujitsuweb/Ui_web/00_Auth/forgot_password.dart';
 import 'package:fujitsuweb/Ui_web/00_Auth/register_screen.dart';
 import 'package:sizer/sizer.dart';
+
 import '../../Values/AppColors.dart';
 import '../../Values/Constants.dart';
 
@@ -182,14 +183,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 3.h),
                         InkWell(
                           onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => AdminDashboard()));
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Dashboard()));
+                            if (userIdController.text == "Admin") {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AdminDashboard()));
+                            } else {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Dashboard()));
+                            }
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width,
