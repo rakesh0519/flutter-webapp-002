@@ -251,10 +251,12 @@ class _UsersScreenState extends State<UsersScreen> {
               SizedBox(height: 2.0.h),
               Row(
                 children: [
-                  Image.asset("Assets/icons/ic_filter.png",
-                      width: 38, height: 38),
-                  SizedBox(width: 0.6.w),
-                  Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
+                  InkWell(
+                      onTap: () {
+                        createUserDialog();
+                      },
+                      child: Image.asset("Assets/icons/ic_add.png",
+                          width: 38, height: 38)),
                   SizedBox(width: 0.6.w),
                   Expanded(
                     child: Container(
@@ -542,7 +544,7 @@ class _UsersScreenState extends State<UsersScreen> {
                     SizedBox(height: 3.h),
                     InkWell(
                       onTap: () {
-                        projectDialog();
+                        createUserDialog();
                       },
                       child: Container(
                         height: 38,
@@ -830,7 +832,7 @@ class _UsersScreenState extends State<UsersScreen> {
     });
   }
 
-  projectDialog() {
+  createUserDialog() {
     return showDialog(
         context: context,
         builder: (BuildContext context) {

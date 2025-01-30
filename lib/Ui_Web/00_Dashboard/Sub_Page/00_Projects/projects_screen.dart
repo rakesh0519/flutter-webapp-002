@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
@@ -185,7 +184,12 @@ class _ProjectsState extends State<Projects> {
               ),
               Image.asset("Assets/icons/ic_filter.png", width: 38, height: 38),
               SizedBox(width: 0.6.w),
-              Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
+              InkWell(
+                  onTap: () {
+                    projectDialog();
+                  },
+                  child: Image.asset("Assets/icons/ic_add.png",
+                      width: 38, height: 38)),
               SizedBox(width: 0.6.w),
               Container(
                 decoration: BoxDecoration(
@@ -548,7 +552,10 @@ class _ProjectsState extends State<Projects> {
                                       children: [
                                         Expanded(
                                           child: InkWell(
-                                            onTap: () {},
+                                            onTap: () {
+                                              uiProvider.changeDashboardPage(
+                                                  "Projects_Details");
+                                            },
                                             child: Container(
                                               height: 36,
                                               decoration: BoxDecoration(
@@ -576,21 +583,26 @@ class _ProjectsState extends State<Projects> {
                                           ),
                                         ),
                                         SizedBox(width: 10),
-                                        Container(
-                                          height: 36,
-                                          width: 36,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              color: AppColors.white_00,
-                                              border: Border.all(
-                                                  color: AppColors
-                                                      .darkBorderColor
-                                                      .withOpacity(0.3))),
-                                          child: Center(
-                                              child: Image.asset(
-                                                  "Assets/icons/ic_share.png",
-                                                  width: 20)),
+                                        InkWell(
+                                          onTap: () {
+                                            shareDialog();
+                                          },
+                                          child: Container(
+                                            height: 36,
+                                            width: 36,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: AppColors.white_00,
+                                                border: Border.all(
+                                                    color: AppColors
+                                                        .darkBorderColor
+                                                        .withOpacity(0.3))),
+                                            child: Center(
+                                                child: Image.asset(
+                                                    "Assets/icons/ic_share.png",
+                                                    width: 20)),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -1036,8 +1048,14 @@ class _ProjectsState extends State<Projects> {
                       children: [
                         Image.asset("Assets/icons/ic_folder.png", width: 40),
                         Spacer(),
-                        Icon(Icons.close,
-                            color: AppColors.darkBorderColor.withOpacity(0.3))
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(Icons.close,
+                              color:
+                                  AppColors.darkBorderColor.withOpacity(0.3)),
+                        )
                       ],
                     ),
                     SizedBox(height: 2.h),
@@ -1131,6 +1149,235 @@ class _ProjectsState extends State<Projects> {
                               child: Center(
                                 child: Text(
                                   "Confirm",
+                                  style: textStyle.SegoeUI.copyWith(
+                                      fontSize: 14.px,
+                                      color: AppColors.white_00),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        }).whenComplete(() {});
+  }
+
+  shareDialog() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0)), //this right here
+            child: Container(
+              width: 400,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                color: AppColors.white_00,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset("Assets/icons/ic_add_people.png",
+                            width: 40),
+                        Spacer(),
+                        InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Icon(Icons.close,
+                                color: AppColors.fontLightBlack))
+                      ],
+                    ),
+                    SizedBox(height: 2.h),
+                    Text(
+                      "Share with people",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 16.px, color: AppColors.fontBlack),
+                    ),
+                    SizedBox(height: 0.4.h),
+                    Text(
+                      "The following users have access to this project:",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 14.px, color: AppColors.fontBlack),
+                    ),
+                    SizedBox(height: 3.h),
+                    Row(
+                      children: [
+                        Image.asset("Assets/images/avatar_1.png", width: 36),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Candice Wu",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.fontBlack),
+                              ),
+                              Text(
+                                "candice@untitledui.com",
+                                style: textStyle.SegoeUI.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.fontLightBlack),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Text(
+                          "Remove",
+                          style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 14.px, color: AppColors.red_00),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Image.asset("Assets/images/avatar_1.png", width: 36),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Demi Wilkinson",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.fontBlack),
+                              ),
+                              Text(
+                                "demi@untitledui.com",
+                                style: textStyle.SegoeUI.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.fontLightBlack),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Text(
+                          "Remove",
+                          style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 14.px, color: AppColors.red_00),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Image.asset("Assets/images/Avatar_2.png", width: 36),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Drew Cano",
+                                style: textStyle.SegoeUISemiBold.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.fontBlack),
+                              ),
+                              Text(
+                                "drew@untitledui.com",
+                                style: textStyle.SegoeUI.copyWith(
+                                    fontSize: 14.px,
+                                    color: AppColors.fontLightBlack),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Text(
+                          "Remove",
+                          style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 14.px, color: AppColors.red_00),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 15),
+                    Text(
+                      "Team member",
+                      style: textStyle.SegoeUI.copyWith(
+                          fontSize: 12.px, color: AppColors.fontBlack),
+                    ),
+                    SizedBox(height: 3),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.borderColor),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                      child: Row(
+                        children: [
+                          Image.asset("Assets/icons/ic_user.png", width: 20),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: Text(
+                              "Select team member",
+                              style: textStyle.SegoeUI.copyWith(
+                                  fontSize: 14.px, color: AppColors.fontBlack),
+                            ),
+                          ),
+                          Icon(Icons.keyboard_arrow_down_rounded,
+                              color: AppColors.fontLightBlack)
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 3.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: AppColors.white_00,
+                                  border: Border.all(
+                                      color: AppColors.darkBorderColor
+                                          .withOpacity(0.3))),
+                              child: Center(
+                                child: Text(
+                                  "Cancel",
+                                  style: textStyle.SegoeUI.copyWith(
+                                      fontSize: 14.px,
+                                      color: AppColors.selectIconColor),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 0.5.w),
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: AppColors.mainGreen),
+                              child: Center(
+                                child: Text(
+                                  "Done",
                                   style: textStyle.SegoeUI.copyWith(
                                       fontSize: 14.px,
                                       color: AppColors.white_00),

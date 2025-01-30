@@ -391,11 +391,11 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: uiProvider.adminDashPage == "Projects"
+                              color: uiProvider.adminDashPage == "Users"
                                   ? AppColors.selectColor
                                   : AppColors.white_00,
                               border: Border.all(
-                                color: uiProvider.adminDashPage == "Projects"
+                                color: uiProvider.adminDashPage == "Users"
                                     ? AppColors.selectColor
                                     : AppColors.white_00,
                               )),
@@ -404,7 +404,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                             "Assets/icons/ic_user_person.png",
                             width: 20,
                             height: 20,
-                            color: uiProvider.adminDashPage == "Projects"
+                            color: uiProvider.adminDashPage == "Users"
                                 ? AppColors.selectIconColor
                                 : AppColors.unselectIconColor,
                           )),

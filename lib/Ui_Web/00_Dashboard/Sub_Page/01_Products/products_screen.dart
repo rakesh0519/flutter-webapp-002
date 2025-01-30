@@ -56,8 +56,6 @@ class _ProductsState extends State<Products> {
                     width: 38, height: 38),
               ),
               SizedBox(width: 0.6.w),
-              Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
-              SizedBox(width: 0.6.w),
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
