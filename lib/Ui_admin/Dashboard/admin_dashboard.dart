@@ -371,13 +371,19 @@ class _AdminDashboardState extends State<AdminDashboard> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(height: 2.h),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColors.white_00,
-                          border: Border.all(color: AppColors.borderColor)),
-                      padding: EdgeInsets.all(9),
-                      child: SizedBox(width: 20, height: 20),
+                    // Container(
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(10),
+                    //       color: AppColors.white_00,
+                    //       border: Border.all(color: AppColors.borderColor)),
+                    //   padding: EdgeInsets.all(9),
+                    //   child: SizedBox(width: 20, height: 20),
+                    // ),
+                    Image.asset(
+                      "Assets/icons/logo.png",
+                      fit: BoxFit.fill,
+                      width: 40,
+                      height: 40,
                     ),
                     SizedBox(height: 2.h),
                     InkWell(

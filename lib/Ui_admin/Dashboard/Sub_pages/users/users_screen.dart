@@ -194,7 +194,11 @@ class _UsersScreenState extends State<UsersScreen> {
                   ],
                 ),
               ),
-              Image.asset("Assets/icons/ic_filter.png", width: 38, height: 38),
+              // Image.asset(
+              //   "Assets/icons/ic_filter.png",
+              //   width: 38,
+              //   height: 38,
+              // ),
               SizedBox(width: 0.6.w),
               Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
               SizedBox(width: 0.6.w),
@@ -251,6 +255,12 @@ class _UsersScreenState extends State<UsersScreen> {
               SizedBox(height: 2.0.h),
               Row(
                 children: [
+                  // Image.asset(
+                  //   "Assets/icons/ic_filter.png",
+                  //   width: 38,
+                  //   height: 38,
+                  // ),
+                  // SizedBox(width: 0.6.w),
                   InkWell(
                       onTap: () {
                         createUserDialog();
@@ -337,18 +347,25 @@ class _UsersScreenState extends State<UsersScreen> {
                               children: [
                                 Row(
                                   children: [
-                                    Container(
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                            color: AppColors.white_00,
-                                            border: Border.all(
-                                                color: AppColors.borderColor)),
-                                        padding: EdgeInsets.all(8),
-                                        child: SizedBox(
-                                          height: 25,
-                                          width: 25,
-                                        )),
+                                    // Container(
+                                    //   decoration: BoxDecoration(
+                                    //       borderRadius:
+                                    //           BorderRadius.circular(30),
+                                    //       color: AppColors.white_00,
+                                    //       border: Border.all(
+                                    //           color: AppColors.borderColor)),
+                                    //   padding: EdgeInsets.all(8),
+                                    //   child: Image.asset(
+                                    //     "Assets/images/avatar_1.png",
+                                    //     width: 35,
+                                    //     fit: BoxFit.cover,
+                                    //   ),
+                                    // ),
+                                    Image.asset(
+                                      "Assets/images/avatar_1.png",
+                                      width: 40,
+                                      fit: BoxFit.cover,
+                                    ),
                                     SizedBox(width: 10),
                                     Expanded(
                                       child: Text(
@@ -358,7 +375,8 @@ class _UsersScreenState extends State<UsersScreen> {
                                         style:
                                             textStyle.SegoeUISemiBold.copyWith(
                                                 fontSize: 14.px,
-                                                color: AppColors.fontBlack),
+                                                color: AppColors.fontBlack,
+                                                fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                   ],

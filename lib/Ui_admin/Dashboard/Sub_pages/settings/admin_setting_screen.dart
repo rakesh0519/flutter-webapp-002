@@ -1563,7 +1563,7 @@ class _AdminSettingScreenState extends State<AdminSettingScreen> {
                                                                   .circular(8),
                                                           border: Border.all(
                                                               color: AppColors
-                                                                  .borderColor)),
+                                                                  .mainGreen)),
                                                       padding:
                                                           EdgeInsets.symmetric(
                                                               vertical: 10),
@@ -1628,10 +1628,10 @@ class _AdminSettingScreenState extends State<AdminSettingScreen> {
                                                                 ],
                                                               ),
                                                               Spacer(),
-                                                              Image.asset(
-                                                                  "Assets/icons/ic_file.png",
-                                                                  width: 40,
-                                                                  height: 40),
+                                                              // Image.asset(
+                                                              //     "Assets/icons/ic_file.png",
+                                                              //     width: 40,
+                                                              //     height: 40),
                                                             ],
                                                           ),
                                                         ],

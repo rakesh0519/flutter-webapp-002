@@ -33,7 +33,7 @@ class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
       "details": "12000 BTU Wall Mount"
           "\nR-32 Heat Pump"
           "\nBuilt-in Filtration",
-      "image": false,
+      "image": true,
     },
     {
       "name": "AIRSTAGE H-Series",
@@ -49,7 +49,7 @@ class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
       "details": "12000 BTU Wall Mount"
           "\nR-32 Heat Pump"
           "\nBuilt-in Filtration",
-      "image": false,
+      "image": true,
     },
     {
       "name": "AIRSTAGE H-Series",
@@ -65,7 +65,7 @@ class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
       "details": "12000 BTU Wall Mount"
           "\nR-32 Heat Pump"
           "\nBuilt-in Filtration",
-      "image": false,
+      "image": true,
     },
     {
       "name": "AIRSTAGE H-Series",
@@ -81,7 +81,7 @@ class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
       "details": "12000 BTU Wall Mount"
           "\nR-32 Heat Pump"
           "\nBuilt-in Filtration",
-      "image": false,
+      "image": true,
     },
   ];
 
@@ -123,7 +123,12 @@ class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
               ),
               Image.asset("Assets/icons/ic_filter.png", width: 38, height: 38),
               SizedBox(width: 0.6.w),
-              Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
+              GestureDetector(
+                  onTap: () {
+                    uiProvider.changeAdminPage('Product_Details_page');
+                  },
+                  child: Image.asset("Assets/icons/ic_add.png",
+                      width: 38, height: 38)),
               SizedBox(width: 0.6.w),
               Container(
                 decoration: BoxDecoration(
@@ -181,7 +186,12 @@ class _ProductsCatalogScreenState extends State<ProductsCatalogScreen> {
                   Image.asset("Assets/icons/ic_filter.png",
                       width: 38, height: 38),
                   SizedBox(width: 0.6.w),
-                  Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
+                  GestureDetector(
+                      onTap: () {
+                        uiProvider.changeAdminPage('Product_Details_page');
+                      },
+                      child: Image.asset("Assets/icons/ic_add.png",
+                          width: 38, height: 38)),
                   SizedBox(width: 0.6.w),
                   Expanded(
                     child: Container(

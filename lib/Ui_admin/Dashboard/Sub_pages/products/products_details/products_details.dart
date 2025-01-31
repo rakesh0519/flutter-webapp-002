@@ -33,6 +33,140 @@ class _ProductsDetailsScreenState extends State<ProductsDetailsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          width > 1000
+              ? Row(
+                  children: [
+                    Text(
+                      "Product Name",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 20.px, color: AppColors.fontBlack),
+                    ),
+                    Spacer(),
+                    Image.asset(
+                      "Assets/icons/product_rows.png",
+                      width: 18,
+                      // height: 20,
+                      color: AppColors.fontGrey,
+                    ),
+                    SizedBox(width: 8.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.neonBorder),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          "Assets/icons/ic_notes_new.png",
+                          width: 20,
+                          height: 20,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 8.0),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.white_00,
+                          border: Border.all(color: AppColors.borderColor),
+                          borderRadius: BorderRadius.circular(8.0)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 8.0),
+                        child: Text(
+                          'Discard',
+                          style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 14.px, color: AppColors.fontLightBlack),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 8.0),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.mainGreen,
+                          border: Border.all(color: AppColors.borderColor),
+                          borderRadius: BorderRadius.circular(8.0)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 8.0),
+                        child: Text(
+                          'Save',
+                          style: textStyle.SegoeUISemiBold.copyWith(
+                              fontSize: 14.px, color: AppColors.white_00),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Product Name",
+                      style: textStyle.SegoeUISemiBold.copyWith(
+                          fontSize: 20.px, color: AppColors.fontBlack),
+                    ),
+                    SizedBox(height: 8.0),
+                    Row(
+                      children: [
+                        Image.asset(
+                          "Assets/icons/product_rows.png",
+                          width: 18,
+                          // height: 20,
+                          color: AppColors.fontGrey,
+                        ),
+                        SizedBox(width: 8.0),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: AppColors.neonBorder),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.asset(
+                              "Assets/icons/ic_notes_new.png",
+                              width: 20,
+                              height: 20,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 8.0),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: AppColors.white_00,
+                              border: Border.all(color: AppColors.borderColor),
+                              borderRadius: BorderRadius.circular(8.0)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 8.0),
+                            child: Text(
+                              'Discard',
+                              style: textStyle.SegoeUISemiBold.copyWith(
+                                  fontSize: 14.px,
+                                  color: AppColors.fontLightBlack),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 8.0),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: AppColors.mainGreen,
+                              border: Border.all(color: AppColors.borderColor),
+                              borderRadius: BorderRadius.circular(8.0)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 8.0),
+                            child: Text(
+                              'Save',
+                              style: textStyle.SegoeUISemiBold.copyWith(
+                                  fontSize: 14.px, color: AppColors.white_00),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+          SizedBox(height: 24),
           width > 1350
               ? Row(
                   crossAxisAlignment: CrossAxisAlignment.start,

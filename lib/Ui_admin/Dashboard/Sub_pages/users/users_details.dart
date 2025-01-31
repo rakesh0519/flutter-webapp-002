@@ -168,8 +168,10 @@ class _UsersDetailsState extends State<UsersDetails> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      decoration: BoxDecoration(color: AppColors.white_00),
+                      decoration: BoxDecoration(color: AppColors.grey_00),
                       height: 150,
+                      width: double.infinity,
+                      // child: Image.asset('Assets/images/Image.png'),
                     ),
                     Container(
                       decoration: BoxDecoration(color: AppColors.white_00),
@@ -691,8 +693,10 @@ class _UsersDetailsState extends State<UsersDetails> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 2),
                                       child: Image.asset(
-                                          "Assets/icons/ic_message.png",
-                                          width: 20),
+                                        "Assets/icons/ic_zone_dot.png",
+                                        width: 20,
+                                        color: AppColors.fontGrey,
+                                      ),
                                     ),
                                     SizedBox(width: 8),
                                     Text(
@@ -731,8 +735,10 @@ class _UsersDetailsState extends State<UsersDetails> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 2),
                                       child: Image.asset(
-                                          "Assets/icons/ic_address.png",
-                                          width: 20),
+                                        "Assets/icons/ic_products.png",
+                                        width: 20,
+                                        color: AppColors.fontGrey,
+                                      ),
                                     ),
                                     SizedBox(width: 8),
                                     Text(
@@ -768,28 +774,24 @@ class _UsersDetailsState extends State<UsersDetails> {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: InkWell(
-                                        onTap: () {},
-                                        child: Container(
-                                          height: 36,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              color: AppColors.white_00,
-                                              border: Border.all(
-                                                  color: AppColors
-                                                      .darkBorderColor
-                                                      .withOpacity(0.3))),
-                                          padding: EdgeInsets.only(bottom: 2),
-                                          child: Center(
-                                            child: Text(
-                                              "View Details",
-                                              style: textStyle.SegoeUISemiBold
-                                                  .copyWith(
-                                                      fontSize: 14.px,
-                                                      color: AppColors
-                                                          .fontLightBlack),
-                                            ),
+                                      child: Container(
+                                        height: 36,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            color: AppColors.white_00,
+                                            border: Border.all(
+                                                color: AppColors.darkBorderColor
+                                                    .withOpacity(0.3))),
+                                        padding: EdgeInsets.only(bottom: 2),
+                                        child: Center(
+                                          child: Text(
+                                            "View Details",
+                                            style: textStyle.SegoeUISemiBold
+                                                .copyWith(
+                                                    fontSize: 14.px,
+                                                    color: AppColors
+                                                        .fontLightBlack),
                                           ),
                                         ),
                                       ),
