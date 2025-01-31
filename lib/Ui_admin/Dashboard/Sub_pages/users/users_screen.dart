@@ -200,7 +200,12 @@ class _UsersScreenState extends State<UsersScreen> {
               //   height: 38,
               // ),
               SizedBox(width: 0.6.w),
-              Image.asset("Assets/icons/ic_add.png", width: 38, height: 38),
+              InkWell(
+                  onTap: () {
+                    createUserDialog();
+                  },
+                  child: Image.asset("Assets/icons/ic_add.png",
+                      width: 38, height: 38)),
               SizedBox(width: 0.6.w),
               Container(
                 decoration: BoxDecoration(
@@ -381,7 +386,7 @@ class _UsersScreenState extends State<UsersScreen> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 1.h),
+                                SizedBox(height: 15),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -456,7 +461,7 @@ class _UsersScreenState extends State<UsersScreen> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 1.h),
+                                SizedBox(height: 15),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -473,7 +478,7 @@ class _UsersScreenState extends State<UsersScreen> {
                                                     .withOpacity(0.3))),
                                         // padding: EdgeInsets.all(10.0),
                                         padding: EdgeInsets.symmetric(
-                                            vertical: 10.0, horizontal: 8.0),
+                                            vertical: 10.0, horizontal: 18.0),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceAround,
@@ -894,8 +899,14 @@ class _UsersScreenState extends State<UsersScreen> {
                           ],
                         ),
                         Spacer(),
-                        Icon(Icons.close,
-                            color: AppColors.darkBorderColor.withOpacity(0.3))
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(Icons.close,
+                              color:
+                                  AppColors.darkBorderColor.withOpacity(0.3)),
+                        )
                       ],
                     ),
                     Text(

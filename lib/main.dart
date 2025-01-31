@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:fujitsuweb/Ui_Web/splash_screen.dart';
-import 'package:fujitsuweb/Ui_admin/Dashboard/admin_dashboard.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+
 import 'Providers/ui_providers.dart';
+import 'Ui_Web/splash_screen.dart';
 
 void main() {
   usePathUrlStrategy();
@@ -28,9 +28,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          // home: SplashScreen(),
-          home: AdminDashboard(),
-
+          home: SplashScreen(),
           // initialRoute: '/',
           // onGenerateRoute: RouterGenerator.generateRoute,
         );

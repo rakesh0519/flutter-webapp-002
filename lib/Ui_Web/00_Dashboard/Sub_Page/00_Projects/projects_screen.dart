@@ -182,7 +182,6 @@ class _ProjectsState extends State<Projects> {
                   ],
                 ),
               ),
-              Image.asset("Assets/icons/ic_filter.png", width: 38, height: 38),
               SizedBox(width: 0.6.w),
               InkWell(
                   onTap: () {
