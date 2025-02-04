@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fujitsuweb/Providers/auth_provider.dart';
 import 'package:fujitsuweb/Ui_Web/00_Dashboard/dashboard.dart';
 import 'package:fujitsuweb/Ui_admin/Dashboard/admin_dashboard.dart';
 import 'package:fujitsuweb/Ui_web/00_Auth/forgot_password.dart';
@@ -20,6 +21,28 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
 
   bool isRememberMe = false;
+
+  AuthProvider authProvider = AuthProvider();
+  loginMethod() async {
+    var data = {
+      "username": userIdController.text,
+      "password": passwordController.text
+    };
+    await authProvider.loginMethod(data, "/auth/login");
+
+    if (authProvider.isLogin) {
+      showToastMessageGreen("Login Successfully");
+      if (userIdController.text == "Admin") {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => AdminDashboard()));
+      } else {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Dashboard()));
+      }
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => Dashboard()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -183,17 +206,25 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 3.h),
                         InkWell(
                           onTap: () {
-                            if (userIdController.text == "Admin") {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AdminDashboard()));
+                            print('--------');
+                            if (userIdController.text.isEmpty) {
+                              showToastMessage('Plaese Enter your UserId');
+                            } else if (passwordController.text.isEmpty) {
+                              showToastMessage('Plaese Enter your Password');
                             } else {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Dashboard()));
+                              loginMethod();
                             }
+                            // if (userIdController.text == "Admin") {
+                            //   Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //           builder: (context) => AdminDashboard()));
+                            // } else {
+                            //   Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //           builder: (context) => Dashboard()));
+                            // }
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width,

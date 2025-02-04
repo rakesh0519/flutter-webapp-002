@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fujitsuweb/Providers/auth_provider.dart';
 import 'package:fujitsuweb/Ui_web/00_Auth/check_email.dart';
 import 'package:fujitsuweb/Ui_web/00_Auth/login_screen.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
@@ -20,6 +21,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController companyController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  AuthProvider authProvider = AuthProvider();
+
+  signupMethod() async {
+    var data = {
+      "company_name": companyController.text,
+      "confirm_password": passwordController.text,
+      "email": emailController.text,
+      "firstname": firstNameController.text,
+      "lastname": lastNameController.text,
+      "password": passwordController.text,
+      "phone": {
+        "country_code": "+1",
+        "mobileno": mobileController.text,
+      },
+      "username": emailController.text,
+      "zip": "12345"
+    };
+    await authProvider.signiUpMethod(data, "/auth/register");
+    if (authProvider.isLogin) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => CheckEmail(
+                    email: emailController.text,
+                  )));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -296,10 +325,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     SizedBox(height: 3.h),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CheckEmail()));
+                        if (firstNameController.text.isEmpty) {
+                          showToastMessage('Please Enter your FirstName');
+                        } else if (lastNameController.text.isEmpty) {
+                          showToastMessage('Please Enter your LastName');
+                        } else if (mobileController.text.isEmpty) {
+                          showToastMessage('Please Enter your phone Number');
+                        } else if (companyController.text.isEmpty) {
+                          showToastMessage('Please Enter your Company Name');
+                        } else if (emailController.text.isEmpty) {
+                          showToastMessage('Please Enter your Email');
+                        } else if (passwordController.text.isEmpty) {
+                          showToastMessage('Please Enter your password');
+                        } else {
+                          signupMethod();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CheckEmail(
+                                        email: emailController.text,
+                                      )));
+                        }
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => CheckEmail()));
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width,
