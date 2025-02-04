@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fujitsuweb/Providers/auth_provider.dart';
 import 'package:fujitsuweb/Ui_web/00_Auth/login_screen.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
@@ -6,7 +7,9 @@ import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
 class CheckEmail extends StatefulWidget {
-  const CheckEmail({super.key});
+  final String? email;
+
+  const CheckEmail({super.key, required this.email});
 
   @override
   State<CheckEmail> createState() => _CheckEmailState();
@@ -17,6 +20,22 @@ class _CheckEmailState extends State<CheckEmail> {
 
   bool isSendCode = false;
   bool isEmailVerified = false;
+
+  AuthProvider authProvider = AuthProvider();
+  verifyserRegistrationMethod() async {
+    var data = {
+      "email": widget.email,
+      "otp": "8492",
+    };
+    await authProvider.verifyUserRegistrationMethod(data, "/auth/verify");
+    if (authProvider.isLogin) {
+      setState(() {
+        isEmailVerified = true;
+      });
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => CheckEmail()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -183,15 +202,20 @@ class _CheckEmailState extends State<CheckEmail> {
                           isSendCode == true
                               ? InkWell(
                                   onTap: () {
-                                    setState(() {
-                                      isEmailVerified = true;
-                                    });
+                                    if (pinController.text.isEmpty) {
+                                      showToastMessage('Please Enter Your otp');
+                                    } else {
+                                      verifyserRegistrationMethod();
+                                    }
+                                    // setState(() {
+                                    //   isEmailVerified = true;
+                                    // });
 
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                LoginScreen()));
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) =>
+                                    //             LoginScreen()));
                                   },
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
