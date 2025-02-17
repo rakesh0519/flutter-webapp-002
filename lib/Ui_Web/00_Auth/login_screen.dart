@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fujitsuweb/Providers/auth_provider.dart';
 import 'package:fujitsuweb/Ui_Web/00_Dashboard/dashboard.dart';
 import 'package:fujitsuweb/Ui_admin/Dashboard/admin_dashboard.dart';
-import 'package:fujitsuweb/Ui_web/00_Auth/forgot_password.dart';
-import 'package:fujitsuweb/Ui_web/00_Auth/register_screen.dart';
+import 'package:fujitsuweb/Ui_Web/00_Auth/forgot_password.dart';
+import 'package:fujitsuweb/Ui_Web/00_Auth/register_screen.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:fujitsuweb/Values/AppColors.dart';

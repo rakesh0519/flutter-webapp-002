@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fujitsuweb/Ui_web/00_Auth/set_new_pass.dart';
+import 'package:fujitsuweb/Ui_Web/00_Auth/set_new_pass.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:fujitsuweb/Values/AppColors.dart';

@@ -5,7 +5,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:sizer/sizer.dart';
 
-import 'package:fujitsuweb/Ui_web/00_Auth/login_screen.dart';
+import 'package:fujitsuweb/Ui_Web/00_Auth/login_screen.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
 
 class SettingScreen extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fujitsuweb/Providers/auth_provider.dart';
-import 'package:fujitsuweb/Ui_web/00_Auth/check_email.dart';
-import 'package:fujitsuweb/Ui_web/00_Auth/login_screen.dart';
+import 'package:fujitsuweb/Ui_Web/00_Auth/check_email.dart';
+import 'package:fujitsuweb/Ui_Web/00_Auth/login_screen.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:sizer/sizer.dart';
 

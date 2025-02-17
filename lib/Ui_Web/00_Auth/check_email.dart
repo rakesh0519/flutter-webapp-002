@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fujitsuweb/Providers/auth_provider.dart';
-import 'package:fujitsuweb/Ui_web/00_Auth/login_screen.dart';
+import 'package:fujitsuweb/Ui_Web/00_Auth/login_screen.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
 import 'package:pinput/pinput.dart';
