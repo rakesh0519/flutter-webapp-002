@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fujitsuweb/Ui_web/00_Auth/set_new_pass.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../Values/AppColors.dart';
-import '../../Values/Constants.dart';
+import 'package:fujitsuweb/Values/AppColors.dart';
+import 'package:fujitsuweb/Values/Constants.dart';
 import 'login_screen.dart';
 
 class ForgotPassword extends StatefulWidget {

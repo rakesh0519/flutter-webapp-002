@@ -4,7 +4,7 @@ import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:fujitsuweb/Values/Constants.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../Ui_Web/00_Auth/login_screen.dart';
+import 'package:fujitsuweb/Ui_Web/00_Auth/login_screen.dart';
 
 class AdminSettingScreen extends StatefulWidget {
   const AdminSettingScreen({super.key});

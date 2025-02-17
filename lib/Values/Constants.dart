@@ -2,7 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'AppColors.dart';
+import 'package:fujitsuweb/Values/AppColors.dart';
 
 abstract class textStyle {
 

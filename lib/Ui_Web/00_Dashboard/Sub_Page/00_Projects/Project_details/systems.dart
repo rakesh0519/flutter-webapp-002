@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../../Providers/ui_providers.dart';
-import '../../../../../Values/AppColors.dart';
-import '../../../../../Values/Constants.dart';
+import 'package:fujitsuweb/Providers/ui_providers.dart';
+import 'package:fujitsuweb/Values/AppColors.dart';
+import 'package:fujitsuweb/Values/Constants.dart';
 
 class Systems extends StatefulWidget {
   const Systems({super.key});

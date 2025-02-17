@@ -5,7 +5,7 @@ import 'package:fujitsuweb/Ui_web/00_Auth/login_screen.dart';
 import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../Values/Constants.dart';
+import 'package:fujitsuweb/Values/Constants.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

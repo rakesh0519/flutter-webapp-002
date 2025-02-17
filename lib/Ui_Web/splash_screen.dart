@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Ui_web/00_Auth/login_screen.dart';
+import 'package:fujitsuweb/Ui_Web/00_Auth/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

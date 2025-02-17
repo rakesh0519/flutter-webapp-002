@@ -6,8 +6,8 @@ import 'package:fujitsuweb/Ui_web/00_Auth/forgot_password.dart';
 import 'package:fujitsuweb/Ui_web/00_Auth/register_screen.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../Values/AppColors.dart';
-import '../../Values/Constants.dart';
+import 'package:fujitsuweb/Values/AppColors.dart';
+import 'package:fujitsuweb/Values/Constants.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

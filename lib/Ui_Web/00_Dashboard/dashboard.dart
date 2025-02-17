@@ -5,8 +5,8 @@ import 'package:fujitsuweb/Values/AppColors.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../Providers/ui_providers.dart';
-import '../../Values/Constants.dart';
+import 'package:fujitsuweb/Providers/ui_providers.dart';
+import 'package:fujitsuweb/Values/Constants.dart';
 import 'Sub_Page/00_Projects/Project_details/add_system.dart';
 import 'Sub_Page/01_Products/products_screen.dart';
 import 'Sub_Page/03_Settings/setting_screen.dart';

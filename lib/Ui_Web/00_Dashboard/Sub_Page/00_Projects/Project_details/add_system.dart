@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../../Values/AppColors.dart';
-import '../../../../../Values/Constants.dart';
+import 'package:fujitsuweb/Values/AppColors.dart';
+import 'package:fujitsuweb/Values/Constants.dart';
 
 class AddSystem extends StatefulWidget {
   const AddSystem({super.key});

@@ -5,7 +5,7 @@ import 'package:fujitsuweb/Values/Constants.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../Providers/ui_providers.dart';
+import 'package:fujitsuweb/Providers/ui_providers.dart';
 
 class Projects extends StatefulWidget {
   const Projects({super.key});
