@@ -22,6 +22,16 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'  # Use the latest stable Flutter version
+
+      - name: Get Dependencies
+        run: flutter pub get
+
+      - name: Build Flutter Web App
+        run: flutter build web
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
       - name: Get Id Token
