@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read # Required for actions/checkout
+      contents: read
 
     steps:
       - name: Checkout repository
@@ -99,4 +99,4 @@ jobs:
         with:
           app-name: 'flutter-webapp-003'
           slot-name: 'Production'
-          package: build/web/
+          package: release.zip
