@@ -19,7 +19,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.x' # Adjust based on your Flutter version
+          flutter-version: '3.x'
           channel: stable
 
       - name: Install dependencies
@@ -27,6 +27,36 @@ jobs:
 
       - name: Build Flutter web app
         run: flutter build web --release
+
+      - name: Add web.config for Azure Web Apps
+        run: |
+          echo '<?xml version="1.0" encoding="utf-8"?>
+          <configuration>
+            <system.webServer>
+              <staticContent>
+                <mimeMap fileExtension=".wasm" mimeType="application/wasm" />
+              </staticContent>
+              <httpProtocol>
+                <customHeaders>
+                  <add name="Cache-Control" value="no-cache, no-store, must-revalidate" />
+                  <add name="Pragma" value="no-cache" />
+                  <add name="Expires" value="-1" />
+                </customHeaders>
+              </httpProtocol>
+              <rewrite>
+                <rules>
+                  <rule name="Flutter Route" stopProcessing="true">
+                    <match url=".*" />
+                    <conditions logicalGrouping="MatchAll">
+                      <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                      <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+                    </conditions>
+                    <action type="Rewrite" url="/index.html" />
+                  </rule>
+                </rules>
+              </rewrite>
+            </system.webServer>
+          </configuration>' > build/web/web.config
 
       - name: Zip artifact for deployment
         run: zip -r release.zip build/web
@@ -44,8 +74,8 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write # Required for requesting the JWT
-      contents: read # Required for actions/checkout
+      id-token: write
+      contents: read
 
     steps:
       - name: Download artifact from build job
@@ -69,4 +99,4 @@ jobs:
         with:
           app-name: 'flutter-webapp-003'
           slot-name: 'Production'
-          package: build/web
+          package: build/web/
